@@ -10,7 +10,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--fb);color:var(--ink);font-size:16px;line-height:1.6;background:var(--cream);-webkit-tap-highlight-color:transparent;overflow-x:hidden}
-body:has(.chat-section.open){overflow:hidden}
+
 button{font-family:var(--fb);touch-action:manipulation}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid rgba(79,70,229,.5);outline-offset:2px;border-radius:6px}
@@ -67,7 +67,7 @@ a{color:inherit;text-decoration:none}
 .tg.t1{left:-4px;bottom:34px}.tg.t2{right:84px;top:0;animation-delay:-2s}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.sec{padding:52px 0}
+.sec{padding:44px 0}
 .sec.alt{background:#fff;border-block:1px solid var(--border)}
 .sec-eye{font-size:12px;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
 .sec-t{font-family:var(--fd);font-size:clamp(26px,6.6vw,38px);font-weight:800;line-height:1.1;letter-spacing:-.9px;text-wrap:balance;max-width:620px;margin-inline:auto}
@@ -106,7 +106,7 @@ a{color:inherit;text-decoration:none}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--border);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
 .sticky.show{transform:none;visibility:visible;transition-delay:0s}
 .sticky .btn-prim{max-width:440px;margin:0 auto;background:linear-gradient(180deg,#DC4824,var(--gold));box-shadow:0 8px 20px rgba(255,122,89,.35)}
-.ai{position:relative;overflow:hidden;color:#fff;text-align:center;padding:56px 0;background:radial-gradient(600px 300px at 15% 0%,rgba(79,70,229,.55),transparent 65%),radial-gradient(500px 280px at 100% 100%,rgba(255,122,89,.3),transparent 65%),var(--forest)}
+.ai{position:relative;overflow:hidden;color:#fff;text-align:center;padding:48px 0;background:radial-gradient(600px 300px at 15% 0%,rgba(79,70,229,.55),transparent 65%),radial-gradient(500px 280px at 100% 100%,rgba(255,122,89,.3),transparent 65%),var(--forest)}
 .ai-badge{display:inline-block;font-size:12.5px;font-weight:800;color:#FFD2C4;background:rgba(255,122,89,.15);border:1px solid rgba(255,122,89,.45);padding:6px 14px;border-radius:999px;margin-bottom:16px}
 .ai-t{font-family:var(--fd);font-size:clamp(26px,6.8vw,40px);font-weight:800;line-height:1.12;letter-spacing:-.9px;text-wrap:balance;max-width:640px;margin:0 auto}
 .ai-s{font-size:15px;line-height:1.7;color:#C5CAEA;max-width:520px;margin:12px auto 28px;text-wrap:pretty}
@@ -118,7 +118,7 @@ a{color:inherit;text-decoration:none}
 .ai-note{margin:22px auto 22px;max-width:520px;font-size:12.5px;line-height:1.7;color:#98A0CF}
 .ai .btn-prim{max-width:360px;margin:0 auto}
 @media (min-width:640px){.ai-grid{grid-template-columns:1fr 1fr}}
-@media (min-width:900px){.ai{padding:80px 0}.ai-grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.ai{padding:64px 0}.ai-grid{grid-template-columns:repeat(3,1fr)}}
 .qb{background:#fff;border-block:1px solid var(--border);text-align:center;padding:48px 0}
 .qb-mark{font-family:var(--fd);font-size:76px;line-height:.7;color:var(--gold);font-weight:800;height:40px}
 .qb blockquote{font-family:var(--fd);font-size:clamp(29px,8.6vw,50px);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--ink);text-wrap:balance;max-width:640px;margin:8px auto 0}
@@ -151,7 +151,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:899px){.burger{display:flex}.nav-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--forest);padding:6px 20px 18px;border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 20px 30px rgba(0,0,0,.3)}.nav.open .nav-links{display:flex}.nav-links a{display:block;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:16px}.m-only{display:block;color:var(--gold);color:#FFB9A6;font-weight:800;border-bottom:0!important}}
 @media (min-width:640px){.ai-grid{grid-template-columns:1fr 1fr}}
 @media (min-width:720px){.cards3,.steps{grid-template-columns:repeat(3,1fr)}.cta-row{flex-direction:row;align-items:center;justify-content:center;max-width:none}.cta-row .btn-prim{width:auto;min-width:270px}.ghost{padding:0 24px}}
-@media (min-width:900px){.hero-in{padding:72px 0 84px;gap:44px}.pat-list{grid-template-columns:repeat(4,1fr)}.sec{padding:76px 0}.sticky{display:none}.foot{padding-bottom:40px}.final{padding:52px 28px}}
+@media (min-width:900px){.hero-in{padding:72px 0 84px;gap:44px}.pat-list{grid-template-columns:repeat(4,1fr)}.sec{padding:60px 0}.sticky{display:none}.foot{padding-bottom:40px}.final{padding:52px 28px}}
 @media (max-width:380px){.visual{height:260px}.ph{width:98px;height:180px}}
 /* contoh hasil */
 .sum-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
@@ -280,11 +280,32 @@ textarea.field-input{resize:none;min-height:64px}
 @media (min-width:521px){.chat-section{align-items:center}.chat-card{height:min(92dvh,780px);border-radius:24px;overflow:hidden}}
 @media (max-width:520px){.res-duo,.rep-radio{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.br,.ph,.tg{animation:none}.chat-card,.chat-section{transition:none}}
+
+/* chat inline ala MOSGO */
+.chat-section{position:static;display:block;background:none;opacity:0;pointer-events:auto;max-height:0;overflow:hidden;padding:0;transition:opacity .4s ease,max-height .6s ease;scroll-margin-top:72px}
+.chat-section.open{opacity:1;max-height:6000px;overflow:visible;padding:28px 0 8px}
+.chat-card{width:100%;max-width:720px;margin:0 auto;height:auto;max-height:none;border:1px solid var(--line-2);border-radius:20px;box-shadow:0 20px 50px rgba(18,22,58,.14);transform:none;overflow:hidden}
+.chat-head{padding-top:12px}
+.chat-msgs{flex:none;min-height:220px;max-height:min(56dvh,520px)}
+.chat-input{max-height:none;overflow:visible}
+
+/* chat di bawah: bottom sheet (HP) / popup kanan bawah (desktop) */
+.chat-section{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-end;justify-content:center;background:rgba(13,18,48,.5);opacity:0;pointer-events:none;max-height:none;overflow:hidden;padding:0;transition:opacity .3s}
+.chat-section.open{opacity:1;pointer-events:auto;max-height:none;overflow:hidden;padding:0}
+.chat-card{width:100%;max-width:560px;margin:0;height:min(88dvh,680px);max-height:88dvh;border:0;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.3);transform:translateY(40px);transition:transform .35s ease;overflow:hidden;display:flex;flex-direction:column}
+.chat-section.open .chat-card{transform:none}
+.chat-msgs{flex:1;min-height:0;max-height:none}
+.chat-input{max-height:50%;overflow-y:auto}
+.fab{position:fixed;right:24px;bottom:24px;z-index:9998;display:none;align-items:center;gap:8px;min-height:52px;padding:0 22px;border:0;border-radius:999px;background:linear-gradient(180deg,#DC4824,var(--gold));color:#fff;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 12px 28px rgba(210,60,26,.4)}
+@media (max-width:639px){.chat-card{max-width:none;height:88dvh}body:has(.chat-section.open){overflow:hidden}}
+@media (min-width:640px){.chat-section{inset:auto 24px 24px auto;width:400px;background:none;align-items:stretch}.chat-card{height:min(620px,calc(100dvh - 48px));max-width:none;border-radius:20px;border:1px solid var(--line-2);box-shadow:0 24px 60px rgba(18,22,58,.35)}}
+@media (min-width:900px){.fab{display:flex}body:has(.chat-section.open) .fab{display:none}}
 </style></head><body>
 <div class="sticky" id="lc-sticky"><button type="button" class="btn-prim" onclick="LC.open()">Coba Gratis: Cek Kebutuhan Website</button></div>
+<button class="fab" id="lc-fab" type="button" onclick="LC.open()" aria-label="Buka chat demo">💬 Coba Demo</button>
 <header class="nav"><div class="wrap nav-in"><a href="#top" class="brand">rzdev<span>.biz.id</span></a>
   <button class="burger" type="button" aria-label="Menu" aria-expanded="false" onclick="var n=document.querySelector('.nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">&#9776;</button>
-  <div class="nav-links" onclick="document.querySelector('.nav').classList.remove('open')"><a href="#masalah">Masalah</a><a href="#sistem">Sistem</a><a href="#jenis">Jenis</a><a href="#cara">Cara Kerja</a><a href="#faq">FAQ</a><a href="#top" class="m-only" onclick="LC.open();return false">Coba Demo Gratis</a></div></div></header>
+  <div class="nav-links" onclick="document.querySelector('.nav').classList.remove('open')"><a href="#sistem">Sistem</a><a href="#jenis">Jenis</a><a href="#cara">Cara Kerja</a><a href="#faq">FAQ</a><a href="#top" class="m-only" onclick="LC.open();return false">Coba Demo Gratis</a></div></div></header>
 <main id="top">
 <section class="hero"><div class="wrap hero-in">
   <div>
@@ -302,15 +323,14 @@ textarea.field-input{resize:none;min-height:64px}
   </div>
 </div></section>
 
-<section class="qb"><div class="wrap"><div class="qb-mark">“</div><blockquote>The money is <em>in the list.</em></blockquote><p>Pengunjung yang meninggalkan datanya bisa Anda hubungi lagi kapan pun, tanpa membayar iklan lagi. Website kami dirancang untuk mengubah setiap pengunjung menjadi daftar pelanggan.</p></div></section>
+<div class="wrap"><div class="chat-section" id="lc-chat-section" role="region" aria-labelledby="lc-chat-title" aria-hidden="true"><div class="chat-card">
+  <div class="prog-track"><div class="prog-fill" id="lc-prog" style="width:0%"></div></div>
+  <div class="chat-head"><div class="chat-ava">rz</div><div class="chat-title"><h3 id="lc-chat-title">Asisten rzdev</h3><p>Online</p></div><button type="button" class="chat-close" id="lc-close" aria-label="Tutup chat">✕</button></div>
+  <div class="chat-msgs" id="lc-msgs" role="log" aria-live="polite"></div>
+  <div class="chat-input" id="lc-input"></div>
+</div></div></div>
 
-<section class="sec" id="masalah"><div class="wrap">
-  <div class="head"><div class="sec-eye">Masalah umum</div><h2 class="sec-t">Pengunjung datang lalu pergi, dan Anda tidak punya daftar untuk dihubungi lagi.</h2></div>
-  <div class="cards3">
-    <div class="prob"><div class="n">01</div><h3>Pengunjung pergi tanpa jejak</h3><p>Tanpa data kontak, Anda harus membayar iklan lagi untuk menjangkau orang yang sama.</p></div>
-    <div class="prob"><div class="n">02</div><h3>Penawaran sama untuk semua orang</h3><p>Tanpa tahu kebutuhan tiap pelanggan, penawaran terasa umum dan sulit membuat orang membeli.</p></div>
-    <div class="prob"><div class="n">03</div><h3>Website hanya jadi brosur</h3><p>Halaman informasi saja tidak mengajak pengunjung berinteraksi atau meninggalkan datanya.</p></div>
-  </div></div></section>
+<section class="qb"><div class="wrap"><div class="qb-mark">“</div><blockquote>The money is <em>in the list.</em></blockquote><p>Pengunjung yang meninggalkan datanya bisa Anda hubungi lagi kapan pun, tanpa membayar iklan lagi. Website kami dirancang untuk mengubah setiap pengunjung menjadi daftar pelanggan.</p></div></section>
 
 <section class="ai" id="sistem"><div class="wrap">
   <span class="ai-badge">✨ Sistem rzdev • Berbasis AI</span>
@@ -343,16 +363,6 @@ textarea.field-input{resize:none;min-height:64px}
     <div class="step"><span>3</span><div><b>Penawaran dibuat, hasil masuk WhatsApp</b><p>Offer dikirim ke pelanggan, dan ringkasan data otomatis tiba di WhatsApp Anda dalam 1 menit.</p></div></div>
   </div></div></section>
 
-<section class="sec alt"><div class="wrap">
-  <div class="head"><div class="sec-eye">Contoh hasil</div><h2 class="sec-t">Seperti inilah data pelanggan yang terkumpul</h2></div>
-  <div class="sum-card sample"><span class="tag">CONTOH ILUSTRASI, BUKAN DATA SUNGGUHAN</span><h4>Data pelanggan: Toko Kue Mosa</h4>
-      <div class="sum-item"><strong>Pelanggan</strong><b>Rina</b>, cari kue ulang tahun, anggaran Rp100–250 ribu, butuh hari ini</div>
-      <div class="sum-item"><strong>Skor pelanggan</strong>
-        <div class="bar-row"><span><em>Kesiapan membeli</em><em>85</em></span><div class="bar"><i style="width:85%"></i></div></div>
-        <div class="bar-row"><span><em>Minat produk</em><em>70</em></span><div class="bar"><i style="width:70%"></i></div></div>
-        <div class="bar-row"><span><em>Peluang repeat order</em><em>55</em></span><div class="bar"><i style="width:55%"></i></div></div></div>
-      <div class="sum-item"><strong>Penawaran otomatis</strong>Paket kue ulang tahun, diskon 10%, berlaku 24 jam, dikirim lewat WhatsApp.</div></div></div></section>
-
 <section class="sec" id="faq"><div class="wrap">
   <div class="head"><div class="sec-eye">FAQ</div><h2 class="sec-t">Pertanyaan umum</h2></div>
   <div class="faq">
@@ -365,12 +375,6 @@ textarea.field-input{resize:none;min-height:64px}
 <div class="wrap"><div class="final"><h2>FREE DEMO: Rasakan sistem kami membantu naikkan omzet bisnis Anda</h2><p>Ikuti sistem kami bekerja memahami pelanggan Anda.</p><button class="btn-prim hero-cta" type="button" onclick="LC.open()">Mulai Demo: Cek Kebutuhan Website</button></div></div>
 </main>
 <footer class="foot"><div class="wrap"><a href="#top" class="brand">rzdev<span>.biz.id</span></a>Website quiz berbasis AI. Halaman demo.<br><br>Pengumpulan data pelanggan dilakukan dengan persetujuan pengunjung. Hasil penjualan bergantung pada produk, penawaran, dan trafik Anda, dan tidak dijamin. Seluruh nama, contoh, dan angka adalah ilustrasi.</div></footer>
-<div class="chat-section" id="lc-chat-section" role="region" aria-labelledby="lc-chat-title" aria-hidden="true"><div class="chat-card">
-  <div class="prog-track"><div class="prog-fill" id="lc-prog" style="width:0%"></div></div>
-  <div class="chat-head"><div class="chat-ava">rz</div><div class="chat-title"><h3 id="lc-chat-title">Asisten rzdev</h3><p>Online</p></div><button type="button" class="chat-close" id="lc-close" aria-label="Tutup chat">✕</button></div>
-  <div class="chat-msgs" id="lc-msgs" role="log" aria-live="polite"></div>
-  <div class="chat-input" id="lc-input"></div>
-</div></div>
 <script>
 (function () {
   var REPORT_NAME = 'Free Trial atau Demo', REPORT_PLAIN = 'info hasil data, free trial, dan demo';
@@ -436,9 +440,9 @@ textarea.field-input{resize:none;min-height:64px}
     updateSticky();
     if (!started) {
       started = true;
-      setTimeout(function () { if (!isMobile()) section.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(greet, 500); }, 300);
+      setTimeout(greet, 400);
     } else {
-      setTimeout(function () { if (!isMobile()) section.scrollIntoView({ behavior: 'smooth', block: 'center' }); scrollDown(); }, 100);
+      setTimeout(scrollDown, 100);
     }
     var b = $('lc-start'); if (b) b.textContent = 'Lanjutkan Cek Kebutuhan';
   }
@@ -446,7 +450,7 @@ textarea.field-input{resize:none;min-height:64px}
     var section = $('lc-chat-section'); if (!section) return;
     section.classList.remove('open'); section.setAttribute('aria-hidden', 'true');
     updateSticky();
-    var s = $('lc-start'); if (s && !isMobile()) setTimeout(function () { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 400);
+    
   }
   function greet() {
     typing(700, function () {
