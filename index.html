@@ -1,6 +1,21 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0D1230">
-<title>rzdev.biz.id - Website Quiz Berbasis AI: Ubah Pengunjung Jadi Database Pelanggan (Demo)</title>
+<title>rzdev.biz.id - Website Quiz Berbasis AI: Ubah Pengunjung Jadi Database Pelanggan</title>
 <meta name="description" content="Website quiz berbasis AI yang memahami kebutuhan pelanggan, menyimpannya sebagai data, dan membuat penawaran yang meningkatkan konversi. Coba demo gratis.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -313,7 +328,7 @@ textarea.field-input{resize:none;min-height:64px}
     <h1>Ubah pengunjung website jadi <em>database pelanggan.</em></h1>
     <p class="lead">Tingkatkan konversi bisnis Anda dengan cara mudah: ubah pengunjung menjadi customer, lalu menjadi pelanggan setia.</p>
     <div class="cta-row"><button id="lc-start" class="btn-prim hero-cta" type="button" onclick="LC.open()">Coba Gratis: Cek Kebutuhan Website</button><a class="ghost" href="#cara">Lihat cara kerjanya</a></div>
-    <p class="hero-note">Gratis, tanpa daftar akun. Demo ini tidak mengirim data ke server.</p>
+    <p class="hero-note" id="lc-hero-note">Gratis, tanpa daftar akun. Data hanya dikirim ke sistem rzdev setelah Anda menekan tombol kirim dan menyetujui persetujuan.</p>
     <div class="chips"><span class="chip">Data pelanggan</span><span class="chip">Penawaran tepat sasaran</span><span class="chip">Berbasis AI</span><span class="chip">Info WhatsApp 1 menit</span></div>
   </div>
   <div class="visual" aria-hidden="true">
@@ -366,18 +381,36 @@ textarea.field-input{resize:none;min-height:64px}
 <section class="sec" id="faq"><div class="wrap">
   <div class="head"><div class="sec-eye">FAQ</div><h2 class="sec-t">Pertanyaan umum</h2></div>
   <div class="faq">
-    <details><summary>Apakah benar-benar gratis?</summary><p>Ya. Di halaman demo ini tidak ada pembayaran dan tidak ada data yang dikirim atau disimpan.</p></details>
+    <details><summary>Apakah benar-benar gratis?</summary><p id="lc-faq-data">Ya. Tidak ada pembayaran. Data hanya dikirim jika Anda menekan tombol kirim dan menyetujui persetujuan.</p></details>
     <details><summary>Apakah hasilnya penawaran harga?</summary><p>Bukan. Ini rekomendasi awal untuk perencanaan. Harga ditentukan setelah diskusi kebutuhan.</p></details>
     <details><summary>Bagaimana jika cocok lebih dari satu jenis?</summary><p>Wajar. Karena itu hasil menampilkan satu jenis utama dan satu pendamping.</p></details>
     <details><summary>Berapa lama mengisinya?</summary><p>Sekitar 3 menit, ditambah dua pertanyaan singkat yang boleh dilewati.</p></details>
   </div></div></section>
 
-<div class="wrap"><div class="final"><h2>FREE DEMO: Rasakan sistem kami membantu naikkan omzet bisnis Anda</h2><p>Ikuti sistem kami bekerja memahami pelanggan Anda.</p><button class="btn-prim hero-cta" type="button" onclick="LC.open()">Mulai Demo: Cek Kebutuhan Website</button></div></div>
+<div class="wrap"><div class="final"><h2>FREE DEMO: Rasakan sistem kami membantu naikkan omzet bisnis Anda</h2><p id="lc-final-note">Isi demo singkat, setujui persetujuan, lalu tim kami menghubungi Anda via WhatsApp.</p><button class="btn-prim hero-cta" type="button" onclick="LC.open()">Mulai Demo: Cek Kebutuhan Website</button></div></div>
 </main>
-<footer class="foot"><div class="wrap"><a href="#top" class="brand">rzdev<span>.biz.id</span></a>Website quiz berbasis AI. Halaman demo.<br><br>Pengumpulan data pelanggan dilakukan dengan persetujuan pengunjung. Hasil penjualan bergantung pada produk, penawaran, dan trafik Anda, dan tidak dijamin. Seluruh nama, contoh, dan angka adalah ilustrasi.</div></footer>
+<footer class="foot"><div class="wrap"><a href="#top" class="brand">rzdev<span>.biz.id</span></a>Website quiz berbasis AI.<br><br>Pengumpulan data pelanggan dilakukan dengan persetujuan pengunjung. Hasil penjualan bergantung pada produk, penawaran, dan trafik Anda, dan tidak dijamin. Seluruh nama, contoh, dan angka adalah ilustrasi.</div></footer>
 <script>
 (function () {
   var REPORT_NAME = 'Free Trial atau Demo', REPORT_PLAIN = 'info hasil data, free trial, dan demo';
+
+  /* ===== GOOGLE APPS SCRIPT WEB APP CONFIG ===== */
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwckPvMKuHGTupoidXclC6kzgtGHVRvk6YcHlSCfDjS39xxVE1bxA0GuW6KcOcQNpEI/exec';
+  var WA_BUSINESS = '628XXXXXXXXXX'; // WAJIB DIGANTI dengan nomor WhatsApp bisnis rzdev, format 62...
+
+  var GAS_ENABLED = !!SCRIPT_URL && SCRIPT_URL.indexOf('GANTI_') !== 0;
+  var WA_ENABLED = /^62\d{8,13}$/.test(WA_BUSINESS);
+  var LIVE = GAS_ENABLED && WA_ENABLED;
+
+  var SID = 'rz' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  var REF = 'DIRECT';
+
+  try {
+    var usp = new URLSearchParams(window.location.search);
+    var refParam = usp.get('ref') || usp.get('src');
+    if (refParam) REF = String(refParam).toUpperCase();
+  } catch (e) {}
+
   var LABELS = ['Sangat tidak sesuai','Tidak sesuai','Kadang-kadang','Sesuai','Sangat sesuai'];
   var DIMS = {trust:{n:'Kebutuhan membangun kepercayaan'},leads:{n:'Kebutuhan calon pelanggan'},sales:{n:'Kebutuhan penjualan online'},flow:{n:'Kebutuhan alur khusus'},content:{n:'Kebutuhan konten dan karya'}};
   var DIM_ORDER = ['trust','leads','sales','flow','content'];
@@ -397,14 +430,119 @@ textarea.field-input{resize:none;min-height:64px}
   var TOTAL_STEPS = 6;
   var started = false, busy = false, idx = 0, nama = '', bisnis = '', target = '', reportSent = false, R = null;
   var ans = [];
+  var quiz = null;
+
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (t) { return t == null ? '' : String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
   var nm = function () { return '<strong>' + esc(nama || 'Anda') + '</strong>'; };
-  function normWA(v) { var d = String(v).replace(/\D/g, ''); if (d.indexOf('0') === 0) d = '62' + d.slice(1); else if (d.indexOf('8') === 0) d = '62' + d; return d; }
+
+  function normWA(v) {
+    var d = String(v).replace(/\D/g, '');
+    if (d.indexOf('0') === 0) d = '62' + d.slice(1);
+    else if (d.indexOf('8') === 0) d = '62' + d;
+    return d;
+  }
+
   function levelOf(s) { return s >= 75 ? 'Tinggi' : s >= 50 ? 'Sedang' : s >= 25 ? 'Ringan' : 'Rendah'; }
   function avg() { var s = 0; for (var i = 0; i < arguments.length; i++) s += arguments[i]; return s / arguments.length; }
   function noop() {}
+
+  function track(name) {
+    try {
+      if (window.fbq) fbq('trackCustom', name);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: name });
+    } catch (e) {}
+  }
+
+  function buildPayload(extra) {
+    var payload = {
+      sid: SID,
+      ref: REF,
+      ts: new Date().toISOString(),
+      page: window.location.href,
+      nama: nama || '',
+      jawaban: {
+        kebutuhan: ans[0] || '',
+        anggaran: ans[1] || '',
+        waktu: ans[2] || '',
+        rasa: ans[3] || ''
+      },
+      hasil_simulasi: quiz || null
+    };
+
+    if (extra) {
+      for (var k in extra) {
+        if (Object.prototype.hasOwnProperty.call(extra, k)) {
+          payload[k] = extra[k];
+        }
+      }
+    }
+
+    return payload;
+  }
+
+  function sendToGas(data) {
+    if (!GAS_ENABLED) return Promise.resolve({ status: 'demo' });
+    if (typeof fetch !== 'function') return Promise.reject(new Error('Browser tidak mendukung fetch'));
+
+    return fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (txt) {
+        try {
+          return JSON.parse(txt);
+        } catch (e) {
+          return { status: 'ok', raw: txt };
+        }
+      });
+  }
+
+  function updateLiveCopy() {
+    var heroNote = $('lc-hero-note');
+    if (heroNote) {
+      if (GAS_ENABLED) {
+        heroNote.textContent = 'Gratis, tanpa daftar akun. Data hanya dikirim ke sistem rzdev setelah Anda menekan tombol kirim dan menyetujui persetujuan.';
+      } else {
+        heroNote.textContent = 'Gratis, tanpa daftar akun. Demo ini tidak mengirim data ke server.';
+      }
+    }
+
+    var finalNote = $('lc-final-note');
+    if (finalNote) {
+      if (GAS_ENABLED && WA_ENABLED) {
+        finalNote.textContent = 'Isi demo singkat, setujui persetujuan, lalu tim kami menghubungi Anda via WhatsApp.';
+      } else if (GAS_ENABLED) {
+        finalNote.textContent = 'Isi demo singkat dan setujui persetujuan; data akan masuk ke sistem rzdev.';
+      } else {
+        finalNote.textContent = 'Ikuti sistem kami bekerja memahami pelanggan Anda.';
+      }
+    }
+
+    var faqData = $('lc-faq-data');
+    if (faqData) {
+      if (GAS_ENABLED) {
+        faqData.textContent = 'Ya. Tidak ada pembayaran. Data hanya dikirim jika Anda menekan tombol kirim dan menyetujui persetujuan.';
+      } else {
+        faqData.textContent = 'Ya. Di halaman demo ini tidak ada pembayaran dan tidak ada data yang dikirim atau disimpan.';
+      }
+    }
+
+    if (GAS_ENABLED && !WA_ENABLED) {
+      console.warn('rzdev: GAS aktif, tetapi WA_BUSINESS belum diganti. Tombol WhatsApp akan dinonaktifkan.');
+    }
+  }
+
   function scrollDown() { var b = $('lc-msgs'); if (b) b.scrollTop = b.scrollHeight; }
+
   function msg(cls, av, html, bc) {
     var box = $('lc-msgs'); if (!box) return;
     var m = document.createElement('div'); m.className = 'msg ' + cls;
@@ -412,9 +550,12 @@ textarea.field-input{resize:none;min-height:64px}
     var b = document.createElement('div'); b.className = 'bubble' + (bc ? ' ' + bc : ''); b.innerHTML = html;
     m.appendChild(a); m.appendChild(b); box.appendChild(m); scrollDown();
   }
+
   function bot(html, cls) { msg('bot', 'rz', html, cls); }
   function user(text) { msg('user', '', esc(text)); }
+
   function hideTyping() { var t = $('lc-typing'); if (t && t.parentNode) t.parentNode.removeChild(t); }
+
   function typing(ms, cb) {
     hideTyping();
     var box = $('lc-msgs'); if (!box) return;
@@ -423,9 +564,11 @@ textarea.field-input{resize:none;min-height:64px}
     box.appendChild(m); scrollDown();
     setTimeout(function () { hideTyping(); cb(); }, ms);
   }
+
   function setProgress(p) { var f = $('lc-prog'); if (f) f.style.width = Math.min(p, 100) + '%'; }
   function clearInput() { var ci = $('lc-input'); if (ci) ci.innerHTML = ''; return ci; }
   function isMobile() { return window.matchMedia('(max-width:900px)').matches; }
+
   function updateSticky() {
     var s = $('lc-sticky'), chatSection = $('lc-chat-section'), ctaBtn = $('lc-start');
     if (!s || !chatSection || !ctaBtn) return;
@@ -434,6 +577,7 @@ textarea.field-input{resize:none;min-height:64px}
     var ctaVisible = rect.bottom > 0 && rect.top < window.innerHeight;
     s.classList.toggle('show', !ctaVisible && !chatOpen);
   }
+
   function open() {
     var section = $('lc-chat-section'); if (!section) return;
     section.classList.add('open'); section.setAttribute('aria-hidden', 'false');
@@ -446,18 +590,20 @@ textarea.field-input{resize:none;min-height:64px}
     }
     var b = $('lc-start'); if (b) b.textContent = 'Lanjutkan Cek Kebutuhan';
   }
+
   function close() {
     var section = $('lc-chat-section'); if (!section) return;
     section.classList.remove('open'); section.setAttribute('aria-hidden', 'true');
     updateSticky();
-    
   }
+
   function greet() {
     typing(700, function () {
       bot('Halo! Saya asisten rzdev.biz.id.<br><br><em>Coba rasakan sistemnya: Anda berperan sebagai pelanggan, lalu lihat data dan penawaran yang dihasilkan.</em>', 'greeting');
       setTimeout(function () { ask(0); }, 600);
     });
   }
+
   function ask(i) {
     idx = i; setProgress((i + 1) / TOTAL_STEPS * 90);
     var N = QUESTIONS.length;
@@ -471,7 +617,9 @@ textarea.field-input{resize:none;min-height:64px}
       });
     } else { summary(); }
   }
+
   function noop2() {}
+
   function choice(i) {
     var ci = clearInput(); if (!ci) return;
     var w = document.createElement('div'); w.className = 'opts';
@@ -483,6 +631,7 @@ textarea.field-input{resize:none;min-height:64px}
     });
     ci.appendChild(w);
   }
+
   function textInput(ph, skippable, done) {
     var ci = clearInput(); if (!ci) return;
     var ta = document.createElement('textarea'); ta.className = 'field-input'; ta.placeholder = ph; ta.setAttribute('aria-label', ph);
@@ -496,18 +645,57 @@ textarea.field-input{resize:none;min-height:64px}
     ta.addEventListener('focus', function () { setTimeout(scrollDown, 300); });
     setTimeout(scrollDown, 400);
   }
+
   function summary() {
     setProgress(95);
+    track('LC_QuizComplete');
+
     var need = ans[0], bud = ans[1], when = ans[2], taste = ans[3];
-    var sc = (when === 'Hari ini atau besok' ? 2 : when === 'Minggu ini' ? 1 : 0) + (bud === 'Di atas Rp250 ribu' ? 2 : bud === 'Rp100 sampai 250 ribu' ? 1 : 0) + (need === 'Acara kantor atau arisan' ? 1 : 0);
+
+    var sc = (when === 'Hari ini atau besok' ? 2 : when === 'Minggu ini' ? 1 : 0)
+      + (bud === 'Di atas Rp250 ribu' ? 2 : bud === 'Rp100 sampai 250 ribu' ? 1 : 0)
+      + (need === 'Acara kantor atau arisan' ? 1 : 0);
+
     var pri = sc >= 4 ? 'Tinggi' : sc >= 2 ? 'Sedang' : 'Ringan';
     var pc = sc >= 4 ? '#B9300F' : sc >= 2 ? '#B45309' : '#646B92';
-    var prod = {'Ulang tahun':'Paket Kue Ulang Tahun + lilin dan kartu ucapan gratis','Hadiah atau hampers':'Paket Hampers + kemasan hadiah gratis','Acara kantor atau arisan':'Paket Box 20 porsi harga grosir','Dikonsumsi sendiri':'Beli 2 gratis 1 kue pilihan'}[need];
-    var disc = bud === 'Di atas Rp250 ribu' ? 'Diskon 15% + gratis ongkir' : bud === 'Rp100 sampai 250 ribu' ? 'Diskon 10%' : 'Potongan Rp10 ribu';
-    var valid = when === 'Hari ini atau besok' ? 'Berlaku 24 jam, pengiriman prioritas' : when === 'Minggu ini' ? 'Berlaku 3 hari' : 'Berlaku 7 hari, disertai rekomendasi menu';
+
+    var prod = {
+      'Ulang tahun': 'Paket Kue Ulang Tahun + lilin dan kartu ucapan gratis',
+      'Hadiah atau hampers': 'Paket Hampers + kemasan hadiah gratis',
+      'Acara kantor atau arisan': 'Paket Box 20 porsi harga grosir',
+      'Dikonsumsi sendiri': 'Beli 2 gratis 1 kue pilihan'
+    }[need];
+
+    var disc = bud === 'Di atas Rp250 ribu'
+      ? 'Diskon 15% + gratis ongkir'
+      : bud === 'Rp100 sampai 250 ribu'
+        ? 'Diskon 10%'
+        : 'Potongan Rp10 ribu';
+
+    var valid = when === 'Hari ini atau besok'
+      ? 'Berlaku 24 jam, pengiriman prioritas'
+      : when === 'Minggu ini'
+        ? 'Berlaku 3 hari'
+        : 'Berlaku 7 hari, disertai rekomendasi menu';
+
     var flavor = taste === 'Belum tahu' ? 'menu terlaris' : 'varian ' + taste.toLowerCase();
+
+    quiz = {
+      need: need,
+      budget: bud,
+      when: when,
+      taste: taste,
+      score: sc,
+      priority: pri,
+      product: prod,
+      discount: disc,
+      validity: valid,
+      flavor: flavor
+    };
+
     typing(1000, function () {
       bot('Terima kasih, ' + nm() + '. Inilah yang terjadi di balik layar setelah Anda menjawab.');
+
       setTimeout(function () {
         bot('<div class="sum-card"><h4>1. Data tersimpan di database pemilik toko</h4>' +
           '<div class="sum-item"><strong>Nama</strong>' + esc(nama) + '</div>' +
@@ -515,18 +703,23 @@ textarea.field-input{resize:none;min-height:64px}
           '<div class="sum-item"><strong>Anggaran dan waktu</strong>' + esc(bud) + ' \u2022 ' + esc(when) + '</div>' +
           '<div class="sum-item"><strong>Rasa favorit</strong>' + esc(taste) + '</div>' +
           '<div class="sum-item"><strong>Prioritas pelanggan</strong><b style="color:' + pc + '">' + pri + '</b></div></div>', 'wide');
+
         setTimeout(function () {
           bot('<div class="res-card"><span class="res-eyebrow">2. AI GENERATE OFFER (SIMULASI)</span>' +
             '<div class="res-en">' + esc(prod) + '</div><div class="res-id">' + esc(disc) + '</div>' +
             '<p class="res-tag">' + esc(valid) + '</p>' +
             '<p class="res-quote">Pesan WhatsApp otomatis: "Halo ' + esc(nama) + ', kami siapkan ' + esc(prod.toLowerCase()) + ' dengan ' + esc(disc.toLowerCase()) + ', pilihan ' + esc(flavor) + '. ' + esc(valid) + '."</p>' +
             '<div class="sum-item"><strong>Hasilnya untuk bisnis Anda</strong>Pelanggan masuk daftar, mendapat penawaran yang relevan, dan pelanggan prioritas bisa ditangani lebih dulu. Ringkasan data ini dikirim otomatis ke WhatsApp Anda dalam 1 menit.</div></div>', 'wide');
-          var ci = clearInput(); if (ci) ci.innerHTML = '<p class="chat-note">Itulah cara kerja sistemnya.</p>';
+
+          var ci = clearInput();
+          if (ci) ci.innerHTML = '<p class="chat-note">Itulah cara kerja sistemnya.</p>';
+
           setTimeout(reportOffer, 1800);
         }, 1200);
       }, 900);
     });
   }
+
   function reflect() {
     typing(900, function () {
       bot('Sebelum lanjut, luangkan satu menit untuk tiga pertanyaan perencanaan ini. Tidak perlu dijawab di sini, cukup dipikirkan.');
@@ -539,6 +732,7 @@ textarea.field-input{resize:none;min-height:64px}
       }, 700);
     });
   }
+
   function tip() {
     var P = PAT[R.primary];
     typing(900, function () {
@@ -547,49 +741,199 @@ textarea.field-input{resize:none;min-height:64px}
       setTimeout(reportOffer, 2200);
     });
   }
+
   function reportOffer() {
     typing(900, function () {
-      bot('Satu lagi untuk Anda, ' + nm() + ': akses <strong>' + REPORT_NAME + '</strong> untuk bisnis Anda sendiri. Hasil data Anda dikirim otomatis ke WhatsApp dalam 1 menit. (Di demo ini, langkah pengiriman hanya simulasi.)');
+      bot(
+        'Satu lagi untuk Anda, ' + nm() + ': akses <strong>' + REPORT_NAME + '</strong> untuk bisnis Anda sendiri. ' +
+        (GAS_ENABLED
+          ? (WA_ENABLED
+            ? 'Data Anda akan dikirim ke sistem rzdev, lalu Anda diarahkan ke WhatsApp untuk konfirmasi.'
+            : 'Data Anda akan dikirim ke sistem rzdev setelah persetujuan.')
+          : 'Di demo ini, langkah pengiriman hanya simulasi.')
+      );
+
       setTimeout(function () {
+        var submitLabel = GAS_ENABLED
+          ? (WA_ENABLED ? 'Kirim Hasil & Lanjut ke WhatsApp' : 'Kirim Hasil ke Sistem')
+          : 'Kirim Hasil ke WhatsApp (Simulasi)';
+
+        var introText = GAS_ENABLED
+          ? (WA_ENABLED
+            ? 'Isi data berikut dan centang persetujuan. Data akan dikirim ke sistem rzdev untuk menyiapkan free trial/demo.'
+            : 'Isi data berikut dan centang persetujuan. Data akan dikirim ke sistem rzdev.')
+          : 'Isi data berikut dan centang persetujuan. Pada versi sungguhan, hasil data dikirim otomatis ke WhatsApp Anda dalam 1 menit.';
+
+        var consentText = GAS_ENABLED
+          ? 'Saya setuju nama, nomor WhatsApp, dan jawaban demo ini disimpan oleh rzdev untuk keperluan follow-up.'
+          : 'Saya mengerti ini halaman demo dan data saya tidak dikirim atau disimpan.';
+
         var h = '<div class="rep-card" id="lc-rep"><h4>' + REPORT_NAME + '</h4>' +
-          '<p>Isi data berikut dan centang persetujuan. Pada versi sungguhan, hasil data dikirim otomatis ke WhatsApp Anda dalam 1 menit.</p>' +
+          '<p>' + introText + '</p>' +
           '<div class="rep-field"><span class="rep-label">Apakah usaha Anda sudah punya website? *</span><div class="rep-radio"><label><input type="radio" name="lc-g" value="Sudah"> Sudah</label><label><input type="radio" name="lc-g" value="Belum"> Belum</label></div></div>' +
           '<div class="rep-field"><label class="rep-label" for="lc-wa">Nomor WhatsApp Aktif *</label><input type="tel" id="lc-wa" class="field-input" inputmode="tel" placeholder="Contoh: 0812XXXXXXXX"></div>' +
-          '<label class="rep-agree" for="lc-agree"><input type="checkbox" id="lc-agree"><span>Ya, saya bersedia menerima <strong>' + REPORT_PLAIN + '</strong>. Saya mengerti ini halaman demo dan data saya tidak dikirim atau disimpan.</span></label>' +
+          '<label class="rep-agree" for="lc-agree"><input type="checkbox" id="lc-agree"><span>Ya, saya bersedia menerima <strong>' + REPORT_PLAIN + '</strong> lewat WhatsApp. ' + consentText + '</span></label>' +
           '<div class="rep-err" id="lc-err" role="alert"></div>' +
-          '<button type="button" class="btn-prim rep-send" id="lc-send">Kirim Hasil ke WhatsApp (Simulasi)</button>' +
+          '<button type="button" class="btn-prim rep-send" id="lc-send">' + submitLabel + '</button>' +
           '<div class="legal-disclaimer">Ringkasan bersifat rekomendasi awal, bukan penawaran harga resmi.</div></div>';
-        bot(h, 'wide'); setProgress(98);
-        var ci = clearInput(); if (ci) ci.innerHTML = '<p class="chat-note">Belum siap? Anda boleh menutup chat ini kapan saja.</p>';
-        var agree = $('lc-agree'), send = $('lc-send');
-        agree.addEventListener('change', function () { send.classList.toggle('on', agree.checked); if (agree.checked) setTimeout(function () { send.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 120); });
+
+        bot(h, 'wide');
+        setProgress(98);
+
+        var ci = clearInput();
+        if (ci) ci.innerHTML = '<p class="chat-note">Belum siap? Anda boleh menutup chat ini kapan saja.</p>';
+
+        var agree = $('lc-agree');
+        var send = $('lc-send');
+
+        agree.addEventListener('change', function () {
+          send.classList.toggle('on', agree.checked);
+          if (agree.checked) {
+            setTimeout(function () {
+              send.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 120);
+          }
+        });
+
         send.addEventListener('click', submitReport);
       }, 700);
     });
   }
+
   function reportErr(m) { var e = $('lc-err'); if (!e) return; e.textContent = m || ''; e.classList.toggle('on', !!m); }
+
   function submitReport() {
     if (reportSent) return;
-    var send = $('lc-send'), agree = $('lc-agree'); reportErr('');
+
+    var send = $('lc-send');
+    var agree = $('lc-agree');
+
+    reportErr('');
+
     var gEl = document.querySelector('#lc-chat-section input[name="lc-g"]:checked');
-    var w = normWA($('lc-wa').value);
-    if (!gEl || !$('lc-wa').value.trim()) { reportErr('Lengkapi pilihan website dan nomor WhatsApp Anda.'); return; }
-    if (!/^\d{9,15}$/.test(w)) { reportErr('Nomor WhatsApp tidak valid. Contoh: 0812XXXXXXXX.'); return; }
-    if (!agree.checked) { reportErr('Centang persetujuan terlebih dahulu.'); return; }
-    send.disabled = true; send.innerHTML = '<span class="spin"></span> Memproses (simulasi)...';
-    setTimeout(function () { reportSent = true; done(); }, 1200);
+    var raw = $('lc-wa').value.trim();
+    var w = normWA(raw);
+
+    if (!gEl || !raw) {
+      reportErr('Lengkapi pilihan website dan nomor WhatsApp Anda.');
+      return;
+    }
+
+    if (!/^62\d{8,13}$/.test(w)) {
+      reportErr('Nomor WhatsApp tidak valid. Contoh: 0812XXXXXXXX.');
+      return;
+    }
+
+    if (!agree.checked) {
+      reportErr('Centang persetujuan terlebih dahulu.');
+      return;
+    }
+
+    track('LC_LeadSubmit');
+
+    send.disabled = true;
+    send.innerHTML = '<span class="spin"></span> ' + (GAS_ENABLED ? 'Mengirim data...' : 'Memproses (simulasi)...');
+
+    var payload = buildPayload({
+      action: 'save_demo_lead',
+      wa: w,
+      website_status: gEl.value
+    });
+
+    if (!GAS_ENABLED) {
+      setTimeout(function () {
+        reportSent = true;
+        track('LC_LeadDemo');
+        done(w, { demo: true });
+      }, 1200);
+      return;
+    }
+
+    sendToGas(payload)
+      .then(function (d) {
+        reportSent = true;
+        track('LC_LeadSaved');
+        done(w, d);
+      })
+      .catch(function (err) {
+        reportErr(
+          'Data belum terkirim (' + ((err && err.message) || 'koneksi gagal') + '). Periksa koneksi Anda lalu coba lagi.'
+        );
+
+        send.disabled = false;
+        send.innerHTML = GAS_ENABLED
+          ? (WA_ENABLED ? 'Kirim Hasil & Lanjut ke WhatsApp' : 'Kirim Hasil ke Sistem')
+          : 'Kirim Hasil ke WhatsApp (Simulasi)';
+      });
   }
-  function done() {
-    var card = $('lc-rep'); if (!card) return;
+
+  function done(w, d) {
+    var card = $('lc-rep');
+    if (!card) return;
+
     setProgress(100);
-    card.innerHTML = '<div class="done"><div class="done-check">✓</div><h4>Simulasi berhasil</h4>' +
-      '<p>Terima kasih, <strong>' + esc(nama) + '</strong>. Pada versi sungguhan, ringkasan hasil data dikirim otomatis ke WhatsApp Anda dalam 1 menit, lalu tim kami menghubungi Anda untuk mengatur free trial atau demo.</p>' +
-      '<button type="button" class="btn-prim dark" id="lc-again">Ulangi Demo</button>' +
-      '<div class="must-click"><strong>Catatan demo:</strong> tidak ada data yang dikirim, disimpan, atau dilacak oleh halaman ini.</div></div>';
+
+    var waText = 'Halo rzdev, saya ' + (nama || 'Calon klien') + ' sudah mengisi demo quiz. Mohon kirimkan info free trial/demo dan hasil data saya.';
+    var waLink = 'https://wa.me/' + WA_BUSINESS + '?text=' + encodeURIComponent(waText);
+
+    var title, desc, mainButton, note;
+
+    if (GAS_ENABLED && WA_ENABLED) {
+      title = 'Data terkirim';
+      desc = 'Terima kasih, <strong>' + esc(nama) + '</strong>. Data Anda sudah masuk sistem rzdev. Tekan tombol WhatsApp berikut untuk melanjutkan.';
+      mainButton = '<a class="btn-prim" id="lc-wa-link" href="' + waLink + '" target="_blank" rel="noopener">💬 Buka WhatsApp & Lanjutkan Demo</a>';
+      note = '<strong>Catatan:</strong> nomor WhatsApp hanya dipakai untuk mengirim info demo/free trial. Anda dapat berhenti kapan saja.';
+    } else if (GAS_ENABLED) {
+      title = 'Data terkirim ke sistem';
+      desc = 'Terima kasih, <strong>' + esc(nama) + '</strong>. Data Anda sudah masuk sistem rzdev. Nomor WhatsApp bisnis belum diatur di halaman ini, jadi tombol WhatsApp dinonaktifkan.';
+      mainButton = '<button type="button" class="btn-prim dark" disabled>WhatsApp bisnis belum diatur</button>';
+      note = '<strong>Untuk pemilik halaman:</strong> ganti WA_BUSINESS dengan nomor 62... agar tombol WhatsApp aktif.';
+    } else {
+      title = 'Simulasi berhasil';
+      desc = 'Terima kasih, <strong>' + esc(nama) + '</strong>. Pada versi sungguhan, ringkasan hasil data dikirim otomatis ke WhatsApp Anda dalam 1 menit.';
+      mainButton = '<button type="button" class="btn-prim dark" disabled>Mode Demo: WhatsApp tidak dibuka</button>';
+      note = '<strong>Catatan demo:</strong> tidak ada data yang dikirim, disimpan, atau dilacak oleh halaman ini.';
+    }
+
+    card.innerHTML =
+      '<div class="done">' +
+        '<div class="done-check">✓</div>' +
+        '<h4>' + title + '</h4>' +
+        '<p>' + desc + '</p>' +
+        mainButton +
+        '<button type="button" class="btn-prim dark" id="lc-again" style="margin-top:10px">Ulangi Demo</button>' +
+        '<div class="must-click">' + note + '</div>' +
+      '</div>';
+
     scrollDown();
-    var ci = clearInput(); if (ci) ci.innerHTML = '<p class="chat-note">Terima kasih sudah mencoba demo rzdev.biz.id.</p>';
-    var again = $('lc-again'); if (again) again.addEventListener('click', function () { location.reload(); });
+
+    var ci = clearInput();
+    if (ci) ci.innerHTML = '<p class="chat-note">Terima kasih sudah mencoba rzdev.biz.id.</p>';
+
+    var again = $('lc-again');
+    if (again) {
+      again.addEventListener('click', function () {
+        location.reload();
+      });
+    }
+
+    var wa = $('lc-wa-link');
+    if (wa) {
+      wa.addEventListener('click', function () {
+        track('LC_WhatsAppClick');
+
+        if (!GAS_ENABLED) return;
+
+        sendToGas({
+          action: 'trigger_send_demo',
+          sid: SID,
+          wa: w,
+          nama: nama
+        }).catch(function () {});
+      });
+    }
   }
+
   function renderPatternList() {
     var box = $('lc-pat-list'); if (!box) return;
     box.innerHTML = PAT_ORDER.map(function (k, n) {
@@ -597,8 +941,10 @@ textarea.field-input{resize:none;min-height:64px}
       return '<div class="pat"><div class="pn">0' + (n + 1) + '</div><b>' + esc(p.en) + '</b><i>' + esc(p.id) + '</i><p>' + esc(p.tag) + '</p></div>';
     }).join('');
   }
+
   function init() {
     renderPatternList();
+    updateLiveCopy();
     $('lc-close').addEventListener('click', close);
     var scrollTick = false;
     window.addEventListener('scroll', function () {
@@ -608,8 +954,25 @@ textarea.field-input{resize:none;min-height:64px}
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && $('lc-chat-section').classList.contains('open')) close(); });
     updateSticky();
   }
+
   window.LC = { open: open, close: close };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
 </body></html>
+
+
+              <script>
+                              function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  // simpan ke Spreadsheet / database
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: 'ok', sid: data.sid }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+
+              </script>
+                        </body>
+                        </html>
+                    
