@@ -99,8 +99,8 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{
 .msg.user{flex-direction:row-reverse}
 .msg-ava{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
 .msg.bot .msg-ava{background:var(--green-pale);border:1px solid var(--green-line)}
-.msg.user .msg-ava{display:none}
-.bubble{max-width:calc(100% - 50px);padding:12px 15px;border-radius:18px;font-size:15px;line-height:1.65;overflow-wrap:anywhere}
+.msg.user .msg-ava,.msg.bot .msg-ava{display:none}
+.bubble{max-width:92%;padding:12px 15px;border-radius:18px;font-size:15px;line-height:1.65;overflow-wrap:anywhere}
 .msg.user .bubble{max-width:85%;background:linear-gradient(135deg,var(--green),#17583C);color:#fff;border-bottom-right-radius:5px;box-shadow:0 4px 12px rgba(31,107,74,.25)}
 .msg.bot .bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:5px;box-shadow:0 2px 8px rgba(15,51,36,.06)}
 .bubble.wide{max-width:100%;width:100%}
@@ -122,6 +122,12 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
 .chat-input .btn-prim{margin-top:10px;padding:14px 20px;font-size:15px;min-height:48px}
 .skip-btn{display:block;width:100%;background:none;border:none;color:var(--ink-3);font-family:var(--f);font-size:14px;text-decoration:underline;cursor:pointer;padding:12px 0 2px}
 .chat-note{text-align:center;color:var(--ink-3);font-size:14px;padding:6px;line-height:1.6}
+
+/* ---------- Fullscreen chat ---------- */
+.chat-section.open{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10000;margin:0;max-height:none;overflow:hidden;background:var(--cream)}
+.chat-section.open .chat-card{height:100%;max-width:640px;margin:0 auto;border-radius:0;border-top:none;border-bottom:none;box-shadow:none}
+.chat-section.open .chat-msgs{flex:1;min-height:0;max-height:none}
+.chat-section.open .chat-input{max-height:60%;overflow-y:auto}
 
 /* Cards in chat */
 .sum-card{background:var(--card);border:1px solid var(--green-line);border-radius:var(--r);padding:18px;position:relative;overflow:hidden}
@@ -209,9 +215,10 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
   .cta-zone{margin:0 -20px;padding:24px 20px 28px}
   .body{padding:8px 20px 22px}
   .hero-title{font-size:31px}
-  .bubble{max-width:calc(100% - 45px);padding:11px 14px}
+  .bubble{max-width:92%;padding:11px 14px}
   .msg.user .bubble{max-width:88%}
   .chat-msgs{max-height:50vh;max-height:50dvh;padding:16px 14px}
+  .chat-section.open .chat-msgs{max-height:none}
   .why-grid{gap:8px}.why{padding:14px 12px}
 }
 @media (max-width:360px){.why-grid{grid-template-columns:1fr}.hero-title{font-size:28px}}
@@ -224,7 +231,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
 <div class="shell">
 
 <div class="band">
-  <div class="header"><div class="logo-name"><span class="logo-mark">🌿</span><span class="wordmark">MOSGO</span></div><div class="logo-sub">Suara Pelanggan</div></div>
+  <div class="header"><div class="logo-name"><span class="wordmark">MOSGO</span></div><div class="logo-sub">Suara Pelanggan</div></div>
 
   <div class="hero">
     <div class="eyebrow">Survey singkat 2 menit</div>
@@ -252,7 +259,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
 <div class="chat-section" id="mg-chat-section" role="region" aria-labelledby="mg-chat-title" aria-hidden="true">
 <div class="chat-card">
 <div class="prog-track"><div class="prog-fill" id="mg-prog" style="width:0%"></div></div>
-<div class="chat-head"><div class="chat-ava">🌿</div><div class="chat-title"><h3 id="mg-chat-title">Asisten MOSGO</h3><p>Online &middot; Survey kepuasan pelanggan</p></div><button type="button" class="chat-close" id="mg-close" aria-label="Tutup chat">✕</button></div>
+<div class="chat-head"><div class="chat-title"><h3 id="mg-chat-title">Asisten MOSGO</h3><p>Online &middot; Survey kepuasan pelanggan</p></div><button type="button" class="chat-close" id="mg-close" aria-label="Tutup chat">✕</button></div>
 <div class="chat-msgs" id="mg-msgs" role="log" aria-live="polite"></div>
 <div class="chat-input" id="mg-input"></div>
 </div></div>
@@ -293,7 +300,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
   const WA_BUSINESS = '628XXXXXXXXXX';                  // nomor WhatsApp bisnis Mosgo (format 62...)
   const VOUCHER_FOR = ['ya'];                           // jawaban repeat order yang berhak voucher: ['ya'] atau ['ya','mungkin']
   const MAX_USE = 2;
-  const BOT = '🌿';
+  const BOT = '';
   const DEMO = SCRIPT_URL.indexOf('GANTI_') === 0;     // mode demo: tidak mengirim data ke server
   let REF = 'DIRECT';
 
@@ -347,20 +354,20 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
   }
   function open(){
     const sec=$('mg-chat-section'); if(!sec) return;
-    sec.classList.add('open'); sec.setAttribute('aria-hidden','false'); updateSticky();
+    sec.classList.add('open'); sec.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; updateSticky();
     if(!started){ started=true; track('MG_Start'); setTimeout(function(){ sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(greet,700); },400); }
     else { sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(scrollDown,500); }
     const b=document.querySelector('#mg-sticky .btn-prim'); if(b) b.textContent='Lanjutkan Survey';
   }
   function close(){
     const sec=$('mg-chat-section'); if(!sec) return;
-    sec.classList.remove('open'); sec.setAttribute('aria-hidden','true'); updateSticky();
+    sec.classList.remove('open'); sec.setAttribute('aria-hidden','true'); document.body.style.overflow=''; updateSticky();
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
   function greet(){
     typing(700,function(){
-      bot('Terima kasih sudah membeli <strong>MOSGO</strong> Racun Tikus Organik! 🌿<br>Saya asisten MOSGO dan ingin mendengar pengalaman Anda.<br><br><em>Jawab apa adanya saja ya. Kritik Anda sama berharganya dengan pujian.</em>','greeting');
+      bot('Terima kasih sudah membeli <strong>MOSGO</strong> Racun Tikus Organik!<br>Saya asisten MOSGO dan ingin mendengar pengalaman Anda.<br><br><em>Jawab apa adanya saja ya. Kritik Anda sama berharganya dengan pujian.</em>','greeting');
       setTimeout(askPlatform,600);
     });
   }
@@ -394,7 +401,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
     if(i<QS.length){
       const q=QS[i];
       const intro = i===0 ? 'Terima kasih, '+nm()+'. Ada '+QS.length+' pertanyaan singkat. Tidak ada jawaban benar atau salah.<br><br>' : '';
-      const mid = i===4 ? 'Hampir selesai. 🌿<br><br>' : '';
+      const mid = i===4 ? 'Hampir selesai.<br><br>' : '';
       typing(i===0?800:450,function(){
         bot(intro+mid+'<span class="qn">Pertanyaan '+(i+1)+' dari '+QS.length+'</span>'+q.t);
         choices(q,i);
@@ -448,16 +455,15 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
     typing(1000,function(){
       bot('Terima kasih banyak, '+nm()+'. Masukan Anda sudah kami catat.');
       setTimeout(function(){
-        let h='<div class="sum-card"><h4>🌿 Ringkasan Masukan '+esc(nama)+'</h4><div class="sub">Dari pembelian di '+esc(platform)+'.</div>';
+        let h='<div class="sum-card"><h4>Ringkasan Masukan '+esc(nama)+'</h4><div class="sub">Dari pembelian di '+esc(platform)+'.</div>';
         QS.forEach(function(q){ if(A[q.k]) h+='<div class="sum-row"><span>'+q.label+'</span><b>'+esc(A[q.k].text)+'</b></div>'; });
         if(komentar) h+='<div class="sum-row"><span>Saran</span><b>'+esc(komentar)+'</b></div>';
         h+='</div>';
         if(flagged){
-          const t='Halo Mosgo, saya '+nama+' (beli di '+platform+'). Saya ingin menyampaikan kendala dengan produk/pesanan saya.';
-          h+='<div class="sum-card warn"><h4>Kami ingin membantu</h4><p>Maaf pengalaman Anda belum memuaskan. Tim kami siap membantu mencari solusinya, misalnya penggantian atau panduan pemakaian.</p><a class="btn-prim" href="https://wa.me/'+WA_BUSINESS+'?text='+encodeURIComponent(t)+'" target="_blank" rel="noopener" id="mg-cs-link">💬 Hubungi Tim Mosgo</a></div>';
+          h+='<div class="sum-card warn"><h4>Terima kasih atas kejujuran Anda</h4><p style="margin-bottom:0">Masukan Anda akan kami pelajari untuk memperbaiki produk dan pelayanan Mosgo.</p></div>';
         }
         bot(h,'wide');
-        const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Survey selesai. 🌿</p>';
+        const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Survey selesai.</p>';
         setTimeout(afterSummary,1500);
         const cs=$('mg-cs-link'); if(cs) cs.addEventListener('click',function(){ track('MG_CSClick'); });
       },900);
@@ -468,7 +474,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
     const rv = A.repeat ? A.repeat.val : 'tidak';
     if(VOUCHER_FOR.indexOf(rv)!==-1){ voucherOffer(); return; }
     typing(800,function(){
-      bot('Terima kasih sudah meluangkan waktu, '+nm()+'. Jika suatu hari Anda berubah pikiran tentang membeli lagi, kami selalu senang mendengar dari Anda. 🌿');
+      bot('Terima kasih sudah meluangkan waktu, '+nm()+'. Jika suatu hari Anda berubah pikiran tentang membeli lagi, kami selalu senang mendengar dari Anda.');
       setProgress(100); sendLite();
     });
   }
@@ -496,7 +502,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
           '<button type="button" class="btn-prim green rep-send" id="mg-send">Simpan Nomor &amp; Lanjut ke WhatsApp</button>'+
           '<div class="legal-disclaimer">Voucher tunduk pada syarat dan ketentuan yang tertera saat dikirim.</div></div>';
         bot(h,'wide'); setProgress(96);
-        const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Belum siap? Boleh ditutup. Nomor Anda tidak disimpan tanpa persetujuan. 🌿</p>';
+        const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Belum siap? Boleh ditutup. Nomor Anda tidak disimpan tanpa persetujuan.</p>';
         const ag=$('mg-agree'), sd=$('mg-send');
         ag.addEventListener('change',function(){ sd.classList.toggle('on',ag.checked); if(ag.checked) setTimeout(function(){ sd.scrollIntoView({behavior:'smooth',block:'nearest'}); },120); });
         sd.addEventListener('click',submitVoucher);
@@ -543,7 +549,7 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
       '<a class="btn-prim wa-btn" id="mg-wa-link" href="'+waLink+'" target="_blank" rel="noopener">💬 Buka WhatsApp &amp; Terima Voucher</a>'+
       '<div class="must-click"><strong>Penting:</strong> Tekan tombol di atas untuk mengonfirmasi. Voucher baru dikirim <em>setelah</em> Anda memulai chat WhatsApp ini, sesuai kebijakan pesan WhatsApp.</div></div>';
     scrollDown();
-    const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Terima kasih, '+esc(nama)+'. Silakan tekan tombol WhatsApp di atas. 🌿</p>';
+    const ci=clearInput(); if(ci) ci.innerHTML='<p class="chat-note">Terima kasih, '+esc(nama)+'. Silakan tekan tombol WhatsApp di atas.</p>';
     const wa=$('mg-wa-link');
     if(wa) wa.addEventListener('click',function(){
       track('MG_WhatsAppClick');
