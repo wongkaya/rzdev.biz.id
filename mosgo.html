@@ -39,22 +39,13 @@ body{background:radial-gradient(1200px 600px at 50% -10%,#D5E8DB 0%,#ECEFE8 55%,
 .wordmark{color:#fff;letter-spacing:2px;font-weight:800}
 .logo-mark{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;font-size:16px}
 .logo-sub{font-size:12px;font-weight:600;color:rgba(255,255,255,.78);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:999px}
-.hero{padding:30px 0 6px;text-align:center}
+.hero{padding:30px 0 32px;text-align:center}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--gold);background:rgba(242,184,75,.12);border:1px solid rgba(242,184,75,.38);padding:6px 13px;border-radius:999px;margin-bottom:18px}
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,184,75,.25)}
 .hero-title{font-family:var(--fd);font-size:34px;font-weight:700;line-height:1.14;letter-spacing:-.8px;margin-bottom:14px;text-wrap:balance}
 .hero-title em{font-style:italic;color:var(--gold);font-weight:700}
 .hero-desc{font-size:16px;color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:6px;max-width:36ch;margin-left:auto;margin-right:auto}
 .hero-desc strong{color:#fff;font-weight:700}
-
-.visual{position:relative;height:250px;margin:6px -8px 0;display:flex;justify-content:center;align-items:flex-end}
-.visual svg.pack{height:236px;width:auto;filter:drop-shadow(0 22px 24px rgba(0,0,0,.38));animation:mgFloat 6s ease-in-out infinite}
-@keyframes mgFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
-.chip{position:absolute;background:rgba(255,255,255,.96);color:var(--ink);font-size:12.5px;font-weight:700;padding:8px 13px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.22);display:flex;align-items:center;gap:7px;white-space:nowrap}
-.chip.c1{left:0;top:38px;animation:mgBob 5s ease-in-out infinite}
-.chip.c2{right:0;top:96px;animation:mgBob 5.6s ease-in-out -1.5s infinite}
-.chip.c3{left:14px;bottom:26px;animation:mgBob 6.2s ease-in-out -3s infinite}
-@keyframes mgBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
 .cta-zone{background:var(--cream);margin:0 -24px;padding:26px 24px 30px;border-radius:28px 28px 0 0;position:relative;box-shadow:0 -14px 30px rgba(0,0,0,.12)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
@@ -223,8 +214,8 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
   .chat-msgs{max-height:50vh;max-height:50dvh;padding:16px 14px}
   .why-grid{gap:8px}.why{padding:14px 12px}
 }
-@media (max-width:360px){.why-grid{grid-template-columns:1fr}.chip.c1,.chip.c3{display:none}.hero-title{font-size:28px}}
-@media (prefers-reduced-motion:reduce){.chat-section,.prog-fill{transition:none}.typing span,.visual svg.pack,.chip,.msg,.done-check{animation:none}.chat-msgs{scroll-behavior:auto}.btn-prim,.opt-btn{transition:none}}
+@media (max-width:360px){.why-grid{grid-template-columns:1fr}.hero-title{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.chat-section,.prog-fill{transition:none}.typing span,.msg,.done-check{animation:none}.chat-msgs{scroll-behavior:auto}.btn-prim,.opt-btn{transition:none}}
 </style>
 </head>
 <body>
@@ -241,35 +232,13 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
     <p class="hero-desc">Boleh minta 2 menit untuk berbagi pengalaman Anda? Masukan Anda <strong>langsung dibaca tim kami</strong> dan dipakai untuk memperbaiki produk, kemasan, dan pelayanan.</p>
   </div>
 
-  <div class="visual" aria-hidden="true">
-    <span class="chip c1">⭐ Kepuasan</span>
-    <span class="chip c2">📦 Kemasan</span>
-    <span class="chip c3">💬 Saran Anda</span>
-    <svg class="pack" viewBox="0 0 220 262" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi kemasan Mosgo">
-      <ellipse cx="110" cy="248" rx="70" ry="9" fill="rgba(0,0,0,.28)"/>
-      <path d="M46 40 Q46 28 58 28 H162 Q174 28 174 40 V224 Q174 238 160 238 H60 Q46 238 46 224 Z" fill="#FBF8F1"/>
-      <path d="M46 40 Q46 28 58 28 H162 Q174 28 174 40 V56 H46 Z" fill="#E6DCC3"/>
-      <path d="M52 40 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" fill="none" stroke="#C9BC9A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M110 70 C92 74 84 90 92 108 C104 106 114 96 110 70 Z" fill="#1F6B4A"/>
-      <path d="M110 70 C128 74 136 90 128 108 C116 106 106 96 110 70 Z" fill="#2E8A62"/>
-      <path d="M110 74 V112" stroke="#F2B84B" stroke-width="2.4" stroke-linecap="round"/>
-      <rect x="46" y="124" width="128" height="64" fill="#1F6B4A"/>
-      <text x="110" y="160" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="31" font-weight="800" fill="#fff" letter-spacing="1">MOSGO</text>
-      <text x="110" y="177" text-anchor="middle" font-family="Plus Jakarta Sans,Arial,sans-serif" font-size="8.6" font-weight="700" fill="#F2B84B" letter-spacing="1.6">RACUN TIKUS ORGANIK</text>
-      <rect x="46" y="188" width="128" height="3" fill="#F2B84B"/>
-      <text x="110" y="214" text-anchor="middle" font-family="Plus Jakarta Sans,Arial,sans-serif" font-size="8" font-weight="600" fill="#566A5F">Gunakan sesuai petunjuk label</text>
-      <path d="M62 38 V224" stroke="rgba(255,255,255,.55)" stroke-width="5" stroke-linecap="round" opacity=".5"/>
-    </svg>
-  </div>
-
   <div class="cta-zone">
     <div class="stats">
       <div class="stat"><b>8</b><span>pertanyaan singkat</span></div>
       <div class="stat"><b>2&prime;</b><span>Langsung dari HP</span></div>
       <div class="stat"><b>🎁</b><span>Free Gift</span></div>
     </div>
-    <button id="mg-start" class="btn-prim hero-cta" type="button" onclick="MG.open()">Isi Survey Mosgo (2 menit)</button>
-    <p class="cta-note"><strong>Gratis,</strong> jawaban Anda bersifat rahasia.<br>Survey ini terpisah dari ulasan di marketplace.</p>
+    <p class="cta-note" style="margin-top:0"><strong>Gratis,</strong> jawaban Anda bersifat rahasia.<br>Survey ini terpisah dari ulasan di marketplace.</p>
   </div>
 </div>
 
@@ -373,21 +342,20 @@ textarea.field-input:focus-visible,input.field-input:focus-visible{outline:none;
   function clearInput(){ const ci=$('mg-input'); if(ci) ci.innerHTML=''; return ci; }
 
   function updateSticky(){
-    const s=$('mg-sticky'), cs=$('mg-chat-section'), cta=$('mg-start'); if(!s||!cs||!cta) return;
-    const r=cta.getBoundingClientRect(); const vis=r.bottom>0 && r.top<window.innerHeight;
-    s.classList.toggle('show', !vis && !cs.classList.contains('open'));
+    const s=$('mg-sticky'), cs=$('mg-chat-section'); if(!s||!cs) return;
+    s.classList.toggle('show', !cs.classList.contains('open'));
   }
   function open(){
     const sec=$('mg-chat-section'); if(!sec) return;
     sec.classList.add('open'); sec.setAttribute('aria-hidden','false'); updateSticky();
     if(!started){ started=true; track('MG_Start'); setTimeout(function(){ sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(greet,700); },400); }
     else { sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(scrollDown,500); }
-    const b=$('mg-start'); if(b) b.textContent='Lanjutkan Survey';
+    const b=document.querySelector('#mg-sticky .btn-prim'); if(b) b.textContent='Lanjutkan Survey';
   }
   function close(){
     const sec=$('mg-chat-section'); if(!sec) return;
     sec.classList.remove('open'); sec.setAttribute('aria-hidden','true'); updateSticky();
-    const s=$('mg-start'); if(s) s.scrollIntoView({behavior:'smooth',block:'center'});
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
   function greet(){
