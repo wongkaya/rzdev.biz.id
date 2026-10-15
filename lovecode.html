@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pola Hati</title>
+<meta name="description" content="Template demo tes pola emosional dalam hubungan oleh rzdev.biz.id">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+/* Layout: shell ponsel 460px. Hero rata kiri dengan diagram Venn (kamu + dia), hasil berbentuk tiket gelap dengan meter bersegmen, keluhan berupa daftar centang, manfaat berupa bento, pola berupa rel geser, chat tanpa gelembung. Satu tema terang (sengaja). */
+:root{
+  color-scheme:light;
+  --paper:#F3F6F1;--white:#FFFFFF;
+  --ink:#14211B;--ink2:#3A4A42;--ink3:#5A6A61;
+  --green:#1E6B52;--green-deep:#0F3D2E;--green-soft:#DCEEE4;
+  --coral:#FF8A6B;--coral-soft:#FFE6DD;--coral-ink:#B23F1E;
+  --line:rgba(20,33,27,.14);
+  --err:#B3261E;--err-bg:#FDECEA;--warn-bg:#FFF2D6;
+  --fd:'Sora','Trebuchet MS',system-ui,sans-serif;
+  --fb:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --gl:max(20px,env(safe-area-inset-left,0px));
+  --gr:max(20px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:24px 16px;background:var(--green-deep);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--green);font-weight:700}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.shell{max-width:460px;margin:0 auto;background:var(--paper);border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative}
+.wrap{padding-left:var(--gl);padding-right:var(--gr)}
+.ctr{text-align:center}
+.ctr .ticket,.ctr .checks,.ctr .chk,.ctr .prev,.ctr .steps3{text-align:left}
+.ctr .venn svg{margin:0 auto}
+.ctr .facts div{padding:12px 4px;text-align:center}
+.kick{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+
+/* tombol pil dengan panah */
+.btn{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:56px;padding:8px 8px 8px 24px;background:var(--ink);color:var(--paper);border:0;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;text-align:left;transition:transform .15s,background .2s}
+.btn .ar{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--coral);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;transition:transform .2s}
+.btn:hover .ar{transform:translateX(3px)}.btn:active{transform:translateY(1px)}
+.btn.coral{background:var(--coral);color:var(--ink)}.btn.coral .ar{background:var(--ink);color:var(--paper)}
+.btn.plain{justify-content:center;padding:0 22px;min-height:50px}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.logo{font-family:var(--fd);font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.tagd{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--ink);border-radius:999px;padding:2px 11px}
+
+/* hero */
+.hero .wrap{padding-block:6px 40px}
+.venn{margin:0 0 14px}
+.venn svg{display:block;width:100%;max-width:340px;height:auto}
+.venn text{font-family:var(--fd);font-weight:600;font-size:11px}
+.ht{font-family:var(--fd);font-weight:600;font-size:clamp(26px,7.6vw,32px);line-height:1.2;letter-spacing:-.02em;margin-bottom:14px;text-wrap:balance}
+.ht span{background:linear-gradient(transparent 62%,var(--coral) 62%,var(--coral) 92%,transparent 92%)}
+.lead{font-size:16.5px;color:var(--ink2);margin-bottom:22px}.lead strong{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:24px;border-block:1.5px solid var(--ink)}
+.facts div{padding:12px 4px 12px 0;border-right:1.5px solid var(--ink);padding-left:12px}
+.facts div:first-child{padding-left:0}.facts div:last-child{border-right:0}
+.facts b{display:block;font-family:var(--fd);font-weight:700;font-size:24px;line-height:1.1}
+.facts span{font-size:12.5px;color:var(--ink3);font-weight:600}
+.note{font-size:12.5px;color:var(--ink3);margin-top:14px}
+
+/* seksi */
+.sec{padding-block:48px}
+.sec.tint{background:var(--green-soft)}.sec.white{background:var(--white)}
+.st{font-family:var(--fd);font-weight:700;font-size:22px;line-height:1.25;letter-spacing:-.015em;text-wrap:balance;margin-bottom:8px}
+.ss{font-size:15.5px;color:var(--ink3);margin-bottom:22px}
+
+/* meter bersegmen */
+.seg{--track:rgba(255,255,255,.16);--fill:var(--coral);position:relative;height:10px;background:var(--track);-webkit-mask-image:repeating-linear-gradient(90deg,#000 0,#000 calc(10% - 3px),transparent calc(10% - 3px),transparent 10%);mask-image:repeating-linear-gradient(90deg,#000 0,#000 calc(10% - 3px),transparent calc(10% - 3px),transparent 10%)}
+.seg b{position:absolute;top:0;bottom:0;left:0;background:var(--fill)}
+.seg.lt{--track:var(--green-soft);--fill:var(--green)}
+.m4{margin:14px 0}
+.m4 .l{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px}
+
+/* tiket contoh hasil */
+.ticket{background:var(--ink);color:var(--paper);border-radius:22px;padding:20px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--coral);color:var(--ink);border-radius:999px;padding:3px 12px;margin-bottom:14px}
+.ticket h3{font-family:var(--fd);font-weight:600;font-size:18px;line-height:1.3;margin-bottom:12px}
+.pat{background:var(--coral);color:var(--ink);border-radius:14px;padding:13px 15px;margin-bottom:6px}
+.pat em{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.12em}
+.pat b{display:block;font-family:var(--fd);font-weight:600;font-size:17px;line-height:1.3;margin-top:2px}
+.pat span{font-size:13.5px}
+.perf{position:relative;margin:20px -20px 16px;border-top:2px dashed rgba(255,255,255,.28)}
+.perf::before,.perf::after{content:'';position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--paper)}
+.perf::before{left:-11px}.perf::after{right:-11px}
+.ticket .lock{font-size:14px;color:#C9D6CE}.ticket .lock strong{color:#fff}
+
+/* centang keluhan */
+.checks{display:flex;flex-direction:column;gap:10px}
+.chk{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;padding:16px;background:var(--white);border:1.5px solid var(--line);border-radius:16px;cursor:pointer;font-size:15.5px;color:var(--ink);transition:background .15s,border-color .15s}
+.chk .bx{width:24px;height:24px;border:2px solid var(--ink);border-radius:7px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--white)}
+.chk[aria-pressed="true"]{border-color:var(--green);background:#fff}
+.chk[aria-pressed="true"] .bx{background:var(--green);border-color:var(--green)}
+.chk[aria-pressed="true"] .bx::after{content:'';width:11px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.cnt{font-size:14px;font-weight:700;color:var(--green);margin:14px 0 0;min-height:22px}
+.pain-end{margin:18px 0 0;font-family:var(--fd);font-weight:600;font-size:17px;line-height:1.4;text-wrap:balance}
+
+/* bento manfaat */
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{border-radius:20px;padding:18px;min-width:0}
+.tile.w{grid-column:1/-1}
+.tile h3{font-family:var(--fd);font-weight:600;font-size:15px;line-height:1.3;margin-bottom:6px}
+.tile p{font-size:14px;line-height:1.5}
+.tile .pill{display:inline-block;margin-top:12px;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 11px}
+.t1{background:var(--green);color:#fff}.t1 .pill{background:rgba(255,255,255,.2)}
+.t2{background:var(--coral-soft)}.t2 .pill{background:#fff}
+.t3{background:var(--green-soft)}.t3 .pill{background:#fff}
+.t4{background:var(--ink);color:var(--paper)}.t4 .pill{background:var(--coral);color:var(--ink)}
+.t2 .seg,.t1 .seg{margin-top:14px}
+.t2 .seg{--track:#fff;--fill:var(--coral)}
+.t1 .seg{--track:rgba(255,255,255,.22);--fill:#fff}
+
+/* rel pola */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gr)*-1) 0 calc(var(--gl)*-1);padding:2px var(--gr) 14px var(--gl);scroll-padding-left:var(--gl);-webkit-overflow-scrolling:touch}
+.rc{flex:0 0 184px;scroll-snap-align:start;border-radius:20px;padding:16px;min-height:178px;display:flex;flex-direction:column;justify-content:space-between}
+.rc .ini{font-family:var(--fd);font-weight:700;font-size:42px;line-height:1}
+.rc b{display:block;font-family:var(--fd);font-weight:600;font-size:14px;line-height:1.3;margin-bottom:4px}
+.rc span{display:block;font-size:13.5px;line-height:1.4}
+.rc:nth-child(4n+1){background:var(--green);color:#fff}
+.rc:nth-child(4n+2){background:var(--coral);color:var(--ink)}
+.rc:nth-child(4n+3){background:var(--ink);color:var(--paper)}
+.rc:nth-child(4n+4){background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.hint{font-size:12.5px;font-weight:700;color:var(--green);margin-top:4px}
+
+/* pratinjau chat */
+.prev{background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:16px}
+.prev .qn{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:6px}
+.prev .q{border-left:3px solid var(--green);padding-left:12px;font-size:15px}
+.dots{display:flex;gap:8px;margin-top:14px;align-items:center}
+.dots i{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink3)}
+.dots i.on{background:var(--coral);border-color:var(--coral);color:var(--ink)}
+.dots small{font-size:12.5px;color:var(--ink3);margin-left:4px}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.steps3 b.n{display:block;font-family:var(--fd);font-weight:700;font-size:30px;color:var(--green);line-height:1;margin-bottom:8px}
+.steps3 b.t{display:block;font-size:14.5px;line-height:1.3;margin-bottom:3px}
+.steps3 p{font-size:13px;color:var(--ink3);line-height:1.5}
+
+/* FAQ */
+.faq{border-bottom:1.5px solid var(--ink)}
+.faq details{border-top:1.5px solid var(--ink)}
+.faq summary{list-style:none;cursor:pointer;padding:17px 0;font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--fd);font-size:20px;line-height:1;flex-shrink:0}
+.faq details[open] summary::after{content:'\2212'}
+.faq details p{padding:0 0 18px;color:var(--ink2);font-size:15.5px}
+
+/* untuk klien */
+.dark{background:var(--ink);color:var(--paper)}
+.dark .kick{color:var(--coral)}
+.dark .ss{color:#B9C8BF}
+.kr{display:grid;grid-template-columns:42% 1fr;gap:12px;padding:13px 0;border-top:1px solid rgba(255,255,255,.16);font-size:14.5px}
+.kr b{font-weight:700}.kr span{color:#B9C8BF;font-size:13.5px;line-height:1.5}
+.krs{border-bottom:1px solid rgba(255,255,255,.16);margin-bottom:24px}
+
+.fin{background:var(--coral);padding-block:48px}
+.fin h2{font-family:var(--fd);font-weight:600;font-size:23px;line-height:1.25;letter-spacing:-.02em;margin-bottom:8px;text-wrap:balance}
+.fin p{font-size:16px}
+
+footer .wrap{padding-block:22px 0;font-size:13px;color:var(--ink2)}
+footer .wrap span{display:block}
+.legal{font-size:12px;color:var(--ink3);line-height:1.65;padding:12px var(--gr) 96px var(--gl)}
+
+/* chat */
+.chs{background:var(--white);border-block:1.5px solid var(--ink)}
+.chh{display:flex;align-items:center;gap:12px;padding:14px var(--gr) 12px var(--gl)}
+.ava{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:600;font-size:14px;flex-shrink:0}
+.cht{flex:1;min-width:0}.cht h3{font-family:var(--fd);font-weight:600;font-size:14px;line-height:1.2}.cht p{font-size:12.5px;color:var(--ink3)}
+.cx{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;cursor:pointer;font-weight:700}
+.cx:hover{background:var(--green-soft)}
+.pseg{display:flex;gap:3px;padding:0 var(--gr) 14px var(--gl)}
+.pseg i{flex:1;height:5px;border-radius:3px;background:var(--green-soft);transition:background .3s}
+.pseg i.on{background:var(--coral)}
+.msgs{padding:18px var(--gr) 8px var(--gl);background:var(--paper);max-height:58vh;max-height:58dvh;overflow-y:auto;scroll-behavior:smooth;border-top:1px solid var(--line)}
+.m{margin-bottom:16px}
+.m.bot .tx{border-left:3px solid var(--green);padding-left:13px;font-size:15.5px;line-height:1.6;overflow-wrap:anywhere}
+.m.bot .tx.gr{background:var(--green-soft);border-left:0;padding:12px 14px;border-radius:14px}
+.m.bot .tx.wide{border-left:0;padding-left:0}
+.m.user{display:flex;justify-content:flex-end}
+.m.user .tx{background:var(--coral);color:var(--ink);font-weight:600;border-radius:18px 18px 4px 18px;padding:9px 15px;max-width:86%;font-size:15px;overflow-wrap:anywhere}
+.qn{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:5px}
+.typ{display:flex;gap:4px;padding:6px 0}.typ span{width:7px;height:7px;background:var(--green);border-radius:50%;animation:t 1.2s infinite}
+.typ span:nth-child(2){animation-delay:.2s}.typ span:nth-child(3){animation-delay:.4s}
+@keyframes t{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.ci{padding:14px var(--gr) calc(16px + env(safe-area-inset-bottom,0px)) var(--gl);background:var(--white);border-top:1px solid var(--line)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.ob{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--white);font-weight:600;font-size:14.5px;cursor:pointer;text-align:left;min-height:48px;transition:border-color .15s,background .15s}
+.ob:hover{border-color:var(--green);background:var(--green-soft)}
+.ob b{width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.fi{width:100%;padding:12px 14px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;display:block;font-size:16px}
+textarea.fi{resize:none;min-height:60px}.fi:focus-visible{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.ci .btn{margin-top:10px}
+.cn{text-align:center;color:var(--ink3);font-size:13.5px;padding:6px}
+
+.res{background:var(--white);border:1.5px solid var(--ink);border-radius:18px;padding:16px}
+.res h4{font-family:var(--fd);font-weight:600;font-size:16px;line-height:1.3;margin-bottom:4px}
+.res .sub{font-size:13px;color:var(--ink3);margin-bottom:10px}
+.res .pat{margin:10px 0 4px}
+.si{padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink2)}.si:last-child{border:0}
+.si strong.k{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
+.res .lock{background:var(--coral-soft);border:1.5px dashed var(--coral-ink);border-radius:12px;padding:11px 13px;font-size:13.5px;color:var(--ink2);margin-top:10px}
+
+.rep{background:var(--white);border:1.5px solid var(--ink);border-radius:18px;padding:16px}
+.rep h4{font-family:var(--fd);font-weight:600;font-size:16px;line-height:1.3;margin-bottom:6px}.rep>p{font-size:14px;color:var(--ink3);margin-bottom:14px}
+.rl{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+.ag{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px;cursor:pointer;font-size:13.5px;color:var(--ink2);margin-top:11px}
+.ag input{accent-color:var(--green);width:19px;height:19px;margin-top:2px;flex-shrink:0}
+.demo-badge{display:inline-block;font-size:11.5px;font-weight:700;background:var(--coral);color:var(--ink);border-radius:999px;padding:2px 12px;margin-bottom:10px}
+.err{display:none;background:var(--err-bg);color:var(--err);border-radius:10px;padding:9px 12px;font-size:13.5px;font-weight:600;margin-top:12px}.err.on{display:block}
+.done{text-align:center}.dc{width:56px;height:56px;background:var(--green-soft);color:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:26px;font-weight:700}
+.done h4{font-family:var(--fd);font-weight:600;font-size:17px;margin-bottom:7px}.done p{font-size:14.5px;color:var(--ink3);margin-bottom:14px}
+.mc{text-align:left;background:var(--warn-bg);border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:14px}
+.spin{width:18px;height:18px;border:3px solid rgba(243,246,241,.4);border-top-color:var(--paper);border-radius:50%;animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+
+.stk{position:fixed;left:max(0px,calc(50% - 230px));right:max(0px,calc(50% - 230px));bottom:0;z-index:50;padding:11px var(--gr) calc(11px + env(safe-area-inset-bottom,0px)) var(--gl);background:rgba(243,246,241,.96);backdrop-filter:blur(8px);border-top:1.5px solid var(--ink);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.stk.show{transform:none;visibility:visible;transition-delay:0s}
+
+@media(max-width:520px){
+  body{padding:0;background:var(--paper)}
+  .shell{border-radius:0;box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){.pseg i,.btn,.btn .ar,.stk{transition:none}.typ span{animation:none;opacity:.6}.msgs{scroll-behavior:auto}}
+</style>
+
+<div class="stk" id="stk"><button type="button" class="btn" onclick="PH.open(this)"><span>Mulai Tes Pola Hati (± 4 menit)</span><i class="ar">&rarr;</i></button></div>
+
+<div class="shell">
+<header class="wrap top"><a class="logo" href="https://rzdev.biz.id" target="_blank" rel="noopener">rzdev.biz.id</a><span class="tagd">Template Demo</span></header>
+
+<section class="hero"><div class="wrap ctr">
+  <div class="venn" aria-hidden="true"><svg viewBox="0 0 300 140"><defs><clipPath id="ca"><circle cx="112" cy="70" r="60"/></clipPath></defs><circle cx="112" cy="70" r="60" style="fill:var(--coral)"/><circle cx="188" cy="70" r="60" style="fill:var(--green)"/><circle cx="188" cy="70" r="60" clip-path="url(#ca)" style="fill:var(--green-deep)"/><text x="78" y="74" text-anchor="middle" style="fill:var(--ink)">KAMU</text><text x="222" y="74" text-anchor="middle" style="fill:#fff">DIA</text><text x="150" y="74" text-anchor="middle" style="fill:#fff;font-size:9px">POLA</text></svg></div>
+  <p class="kick">Tes gratis · 10 pertanyaan · ± 4 menit</p>
+  <h1 class="ht">Kenali pola emosionalmu <span>dalam hubungan.</span></h1>
+  <p class="lead">Kenali <strong>pola emosional, cara menghadapi konflik, dan kebutuhan cintamu</strong>. Bukan untuk membaca pikiran pasangan, tapi untuk memahami perasaanmu sendiri.</p>
+  <div class="facts"><div><b>10</b><span>pernyataan</span></div><div><b>4</b><span>menit</span></div><div><b>Rp0</b><span>biaya</span></div></div>
+  <p class="note">Alat refleksi diri, bukan diagnosis dan bukan pengganti tes psikologi. Tanpa daftar akun.</p>
+</div></section>
+
+<section class="chs" id="chs" hidden aria-label="Tes pola hati">
+  <div class="chh"><div class="ava">H</div><div class="cht"><h3>Hati</h3><p>pendamping refleksi digitalmu</p></div><button type="button" class="cx" id="cx" aria-label="Tutup chat">&#10005;</button></div>
+  <div class="pseg" id="prog" aria-hidden="true"></div>
+  <div class="msgs" id="msgs" role="log" aria-live="polite"></div>
+  <div class="ci" id="ci"></div>
+</section>
+
+<main>
+<section class="sec white" id="hasil"><div class="wrap ctr">
+  <p class="kick">Contoh hasil</p>
+  <h2 class="st">Seperti inilah hasilmu</h2>
+  <p class="ss">Profil langsung muncul di layar. Sisanya ada di laporan WhatsApp.</p>
+  <div class="ticket">
+    <span class="tag">Contoh ilustrasi</span>
+    <h3>Profil Emosional Rina</h3>
+    <div class="pat"><em>POLA UTAMA</em><b>Pelindung yang Diam</b><span>Memproses emosi sendiri dulu</span></div>
+    <div class="m4"><div class="l"><span>Kedekatan emosional</span><span>50</span></div><div class="seg"><b style="width:50%"></b></div></div>
+    <div class="m4"><div class="l"><span>Ekspresi perasaan</span><span>25</span></div><div class="seg"><b style="width:25%"></b></div></div>
+    <div class="m4"><div class="l"><span>Keterbukaan saat konflik</span><span>50</span></div><div class="seg"><b style="width:50%"></b></div></div>
+    <div class="m4"><div class="l"><span>Rasa aman</span><span>75</span></div><div class="seg"><b style="width:75%"></b></div></div>
+    <div class="perf"></div>
+    <p class="lock">Di laporan WhatsApp: <strong>apa yang dilihat pasangan vs yang sebenarnya terjadi</strong> dan <strong>"Cara Mencintai Saya"</strong>.</p>
+  </div>
+</div></section>
+
+<section class="sec tint"><div class="wrap ctr">
+  <p class="kick">Cek cepat</p>
+  <h2 class="st">Mana yang pernah kamu rasakan?</h2>
+  <p class="ss">Ketuk yang terasa dekat.</p>
+  <div class="checks" id="checks">
+    <button type="button" class="chk" aria-pressed="false"><span class="bx"></span><span>Pasangan membalas lebih singkat dari biasanya, dan kamu langsung bertanya, "Dia masih peduli nggak, ya?"</span></button>
+    <button type="button" class="chk" aria-pressed="false"><span class="bx"></span><span>Kamu memilih diam dan memendam kecewa supaya tidak jadi ribut.</span></button>
+    <button type="button" class="chk" aria-pressed="false"><span class="bx"></span><span>Kamu sudah menunjukkan cinta lewat tindakan, tapi pasangan seperti menunggu kata-kata.</span></button>
+    <button type="button" class="chk" aria-pressed="false"><span class="bx"></span><span>Kalian bertengkar soal hal kecil, padahal yang dicari bukan itu.</span></button>
+  </div>
+  <p class="cnt" id="cnt" aria-live="polite">Belum ada yang dipilih.</p>
+  <p class="pain-end">Semua itu bukan soal siapa yang salah. Itu pola, dan pola bisa dikenali.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <p class="kick">Yang kamu dapat</p>
+  <h2 class="st">Setelah 4 menit, kamu pegang ini</h2>
+  <p class="ss">Tanpa daftar akun, tanpa bayar.</p>
+  <div class="bento">
+    <div class="tile w t1"><h3>Pola emosional utama</h3><p>Satu dari 8 pola, lengkap dengan kekuatan dan tantangannya dalam hubungan.</p><span class="pill">hasil instan</span></div>
+    <div class="tile t2"><h3>Peta 4 dimensi</h3><p>Kedekatan, ekspresi, konflik, rasa aman.</p><div class="seg"><b style="width:60%"></b></div></div>
+    <div class="tile t3"><h3>Tanpa akun</h3><p>Mulai langsung dari HP, tanpa daftar.</p><span class="pill">gratis</span></div>
+    <div class="tile w t4"><h3>Laporan lengkap via WhatsApp</h3><p>Apa yang mungkin dilihat pasanganmu vs yang kamu rasakan, plus "Cara Mencintai Saya".</p><span class="pill">gratis</span></div>
+  </div>
+</div></section>
+
+<section class="sec white" id="tipe"><div class="wrap">
+  <p class="kick">8 pola</p>
+  <h2 class="st">Kamu yang mana?</h2>
+  <p class="ss">Hasilmu jatuh di salah satunya. Tidak ada pola yang buruk.</p>
+  <div class="rail" tabindex="0" role="region" aria-label="Daftar 8 pola, geser ke samping">
+    <div class="rc"><div class="ini">T</div><div><b>Si Terbuka</b><span>Mudah mengungkapkan perasaan</span></div></div>
+    <div class="rc"><div class="ini">P</div><div><b>Pelindung yang Diam</b><span>Memproses emosi sendiri dulu</span></div></div>
+    <div class="rc"><div class="ini">K</div><div><b>Pencari Kepastian</b><span>Tenang saat ada kepastian</span></div></div>
+    <div class="rc"><div class="ini">M</div><div><b>Hati yang Mandiri</b><span>Butuh ruang pribadi</span></div></div>
+    <div class="rc"><div class="ini">D</div><div><b>Penjaga Kedamaian</b><span>Menghindari konflik</span></div></div>
+    <div class="rc"><div class="ini">L</div><div><b>Komunikator Langsung</b><span>Selesaikan dengan bicara</span></div></div>
+    <div class="rc"><div class="ini">A</div><div><b>Pecinta Lewat Tindakan</b><span>Cinta dalam perbuatan</span></div></div>
+    <div class="rc"><div class="ini">R</div><div><b>Perasa yang Mendalam</b><span>Peka pada perubahan suasana</span></div></div>
+  </div>
+  <p class="hint">Geser ke samping untuk melihat semua &rarr;</p>
+</div></section>
+
+<section class="sec tint" id="cara"><div class="wrap ctr">
+  <p class="kick">Cara kerjanya</p>
+  <h2 class="st">Seperti ngobrol, bukan mengisi formulir</h2>
+  <p class="ss">Satu pernyataan per layar, lima pilihan jawaban.</p>
+  <div class="prev">
+    <span class="qn">Rasa Aman · 7 dari 10</span>
+    <p class="q">Perubahan kecil pada sikap pasangan mudah membuat saya bertanya, "Apakah dia masih peduli?"</p>
+    <div class="dots" aria-hidden="true"><i>A</i><i>B</i><i>C</i><i class="on">D</i><i>E</i><small>Sesuai</small></div>
+  </div>
+  <div class="steps3">
+    <div><b class="n">1</b><b class="t">Kenalan</b><p>Nama, status, dan lama hubungan.</p></div>
+    <div><b class="n">2</b><b class="t">Jawab 10</b><p>Tidak ada jawaban benar atau salah.</p></div>
+    <div><b class="n">3</b><b class="t">Terima hasil</b><p>Profil instan, laporan via WhatsApp.</p></div>
+  </div>
+</div></section>
+
+<section class="sec white" id="faq"><div class="wrap">
+  <p class="kick">FAQ</p>
+  <h2 class="st">Sebelum kamu mulai</h2>
+  <div class="faq" style="margin-top:22px">
+    <details><summary>Apakah ini diagnosis psikologis?</summary><p>Bukan. Hasil menggambarkan kecenderungan saat ini, bersifat edukatif dan reflektif, dan bukan penentu apakah kamu harus bertahan atau berpisah.</p></details>
+    <details><summary>Berapa lama tesnya?</summary><p>Sekitar 4 menit: beberapa pertanyaan pembuka, lalu 10 pernyataan singkat dengan lima pilihan jawaban.</p></details>
+    <details><summary>Siapa yang bisa ikut?</summary><p>Pengguna usia 17 tahun ke atas yang sedang menikah atau berada dalam hubungan.</p></details>
+    <details><summary>Apakah pasangan saya perlu ikut mengisi?</summary><p>Tidak. Tes ini hanya membaca polamu sendiri. Kamu bisa membagikan hasilnya ke pasangan jika mau.</p></details>
+  </div>
+</div></section>
+
+<section class="sec dark" id="klien"><div class="wrap">
+  <p class="kick">Untuk klien</p>
+  <h2 class="st">Template ini bisa disesuaikan dengan bisnismu</h2>
+  <p class="ss">Topik hubungan di halaman ini hanya contoh. Struktur, alur chat, dan sistem laporannya bisa diganti ke industri apa pun.</p>
+  <div class="krs">
+    <div class="kr"><b>Brand dan warna</b><span>Logo, palet, huruf, dan nada bahasa</span></div>
+    <div class="kr"><b>Topik dan pertanyaan</b><span>Jumlah, isi, dan sistem penilaian</span></div>
+    <div class="kr"><b>Pola hasil</b><span>Nama, deskripsi, dan saran tiap pola</span></div>
+    <div class="kr"><b>WhatsApp dan Sheets</b><span>Laporan otomatis dan rekap leads</span></div>
+    <div class="kr"><b>Pelacakan iklan</b><span>Meta Pixel dan Google Tag</span></div>
+    <div class="kr"><b>Domain sendiri</b><span>Dipasang di domain milik klien</span></div>
+  </div>
+  <a class="btn coral" href="https://rzdev.biz.id" target="_blank" rel="noopener" style="color:var(--ink)"><span>Diskusikan proyekmu</span><i class="ar">&rarr;</i></a>
+</div></section>
+
+<section class="fin"><div class="wrap ctr">
+  <h2>Hasilnya langsung muncul di layar.</h2>
+  <p>Gratis, tanpa daftar akun, dan tidak sampai 5 menit.</p>
+</div></section>
+</main>
+
+<footer>
+  <div class="wrap"><span><strong>Pola Hati</strong> adalah halaman demo. Nama dan isi hanya contoh.</span><span>Template oleh <a href="https://rzdev.biz.id" target="_blank" rel="noopener">rzdev.biz.id</a></span></div>
+  <p class="legal"><strong>Disclaimer:</strong> Hasil menggambarkan kecenderungan saat ini, bersifat edukatif dan reflektif, bukan diagnosis psikologis atau medis, dan bukan penentu apakah kamu harus bertahan atau berpisah. Jika mengalami tekanan emosional berat atau krisis, hubungi profesional berlisensi atau layanan kesehatan jiwa 119 ext. 8. Jika kamu mengalami kekerasan dalam hubungan, hubungi SAPA 129.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+/* ====== KONFIGURASI ====== */
+const CFG={
+  WA:'6281234567890',   // ganti dengan nomor WhatsApp bisnis klien
+  SCRIPT_URL:''         // kosong = mode demo (data tidak dikirim ke mana pun)
+};
+/* ========================= */
+const AGREE=['Sangat tidak sesuai','Tidak sesuai','Kadang-kadang','Sesuai','Sangat sesuai'];
+const STEPS=[
+{p:'Kedekatan Emosional',q:'Saya bisa menceritakan perasaan saya yang sebenarnya kepada pasangan, termasuk saat itu membuat saya terlihat rapuh.'},
+{p:'Kedekatan Emosional',q:'Ada sisi diri saya yang paling rapuh dan sampai sekarang belum pernah benar-benar saya tunjukkan kepada pasangan.'},
+{p:'Ekspresi Perasaan',q:'Saya sering memilih menyimpan rasa kecewa, supaya tidak menimbulkan masalah baru.'},
+{p:'Ekspresi Perasaan',q:'Saya lebih mudah menunjukkan cinta lewat tindakan (membantu, mengantar, menyiapkan) daripada lewat kata-kata.'},
+{p:'Respons Konflik',q:'Saat marah atau kecewa, saya cenderung diam dan menarik diri dulu sebelum mau bicara.'},
+{p:'Respons Konflik',q:'Saat ada masalah, saya ingin langsung membicarakannya sampai tuntas. Dibiarkan menggantung terasa menyiksa.'},
+{p:'Rasa Aman',q:'Perubahan kecil pada sikap pasangan (balasan lebih singkat, nada lebih dingin) mudah membuat saya bertanya, "Apakah dia masih peduli?"'},
+{p:'Rasa Aman',q:'Saya sering butuh tanda atau kepastian bahwa saya masih penting bagi pasangan.'},
+{p:'Kebutuhan Emosional',q:'Agar tetap nyaman dalam hubungan, saya butuh ruang dan waktu pribadi yang cukup.'},
+{p:'Kebutuhan Emosional',q:'Saya merasa paling dicintai ketika pasangan memberi perhatian secara konsisten, bukan sesekali.'}];
+const OPEN=4, TOTAL=OPEN+STEPS.length;
+const KEYS=['OPEN','SILENT','REASS','INDEP','PEACE','DIRECT','ACTION','DEEP'];
+const PAT={
+OPEN:['Si Terbuka','Mudah mengungkapkan perasaan','Kamu mudah mengungkapkan perasaan dan membangun kedekatan.','komunikasi dan keterbukaan','bisa frustrasi saat pasangan terlalu tertutup'],
+SILENT:['Pelindung yang Diam','Memproses emosi sendiri dulu','Kamu cenderung memproses emosi sendiri dulu sebelum berbicara.','tidak mudah bereaksi impulsif','pasangan bisa mengira diammu berarti tidak peduli'],
+REASS:['Pencari Kepastian','Tenang saat ada kepastian','Kamu lebih tenang ketika ada perhatian, kepastian, dan respons yang konsisten.','sangat menghargai hubungan','perubahan kecil dari pasangan terasa sangat berarti'],
+INDEP:['Hati yang Mandiri','Butuh ruang pribadi','Kamu menghargai hubungan, tetapi juga butuh ruang pribadi.','tetap punya identitas diri dalam hubungan','kebutuhan ruang bisa disalahartikan sebagai menjauh'],
+PEACE:['Penjaga Kedamaian','Menghindari konflik','Kamu cenderung menghindari konflik demi menjaga hubungan tetap tenang.','diplomatis dan tidak memperbesar masalah','terlalu banyak menyimpan ketidakpuasan'],
+DIRECT:['Komunikator Langsung','Selesaikan dengan bicara','Kamu nyaman menyelesaikan masalah dengan membicarakannya secara langsung.','jelas dan terbuka','merasa pasangan terlalu lambat atau terlalu diam'],
+ACTION:['Pecinta Lewat Tindakan','Cinta dalam perbuatan','Kamu menunjukkan cinta lewat tindakan nyata, bukan kata-kata.','perhatian diwujudkan secara konkret','bisa merasa tidak dihargai jika pasangan hanya menilai cinta dari kata-kata'],
+DEEP:['Perasa yang Mendalam','Peka pada perubahan suasana','Kamu sangat peka terhadap perubahan suasana, perhatian, dan respons pasangan.','empati dan kepekaan tinggi','perubahan kecil mudah menjadi beban pikiran']};
+const DUR=['Kurang dari 1 tahun','1 sampai 3 tahun','Lebih dari 3 tahun'];
+
+function track(n){try{(window.dataLayer=window.dataLayer||[]).push({event:n})}catch(e){}}
+let st='',nama='',dur='',started=false,busy=false,sent=false,R=null;
+const A={q:[]};
+const $=function(id){return document.getElementById(id)};
+const esc=function(t){return t==null?'':String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')};
+const nm=function(){return '<strong>'+esc(nama||'Sahabat')+'</strong>'};
+function normWA(v){let d=String(v).replace(/\D/g,'');if(d.indexOf('0')===0)d='62'+d.slice(1);else if(d.indexOf('8')===0)d='62'+d;return d}
+function down(){const b=$('msgs');if(b)b.scrollTop=b.scrollHeight}
+function bot(h,c){const box=$('msgs');if(!box)return;const m=document.createElement('div');m.className='m bot';const t=document.createElement('div');t.className='tx'+(c?' '+c:'');t.innerHTML=h;m.appendChild(t);box.appendChild(m);down()}
+function user(t){const box=$('msgs');if(!box)return;const m=document.createElement('div');m.className='m user';const x=document.createElement('div');x.className='tx';x.textContent=t;m.appendChild(x);box.appendChild(m);down()}
+function hideT(){const t=$('typ');if(t&&t.parentNode)t.parentNode.removeChild(t)}
+function typing(ms,cb){hideT();const box=$('msgs');if(!box)return;const m=document.createElement('div');m.className='m bot';m.id='typ';m.innerHTML='<div class="tx"><div class="typ"><span></span><span></span><span></span></div></div>';box.appendChild(m);down();setTimeout(function(){hideT();cb()},ms)}
+function prog(k){const p=$('prog');if(!p)return;const s=p.children;for(let i=0;i<s.length;i++)s[i].classList.toggle('on',i<k)}
+function clr(){const c=$('ci');if(c)c.innerHTML='';return c}
+function sticky(){const s=$('stk'),cs=$('chs');if(!s||!cs)return;s.classList.toggle('show',cs.hidden)}
+function place(src){const cs=$('chs');let sec=src&&src.closest?src.closest('section'):null;
+ if(!sec||sec===cs){const e=document.elementFromPoint(window.innerWidth/2,window.innerHeight/2);sec=e&&e.closest?e.closest('section'):null}
+ if(!sec||sec===cs)sec=document.querySelector('.fin');
+ if(sec&&sec.nextElementSibling!==cs)sec.insertAdjacentElement('afterend',cs)}
+function open(src){const s=$('chs');if(!s)return;
+ if(s.hidden)place(src);
+ s.hidden=false;sticky();
+ if(!started){started=true;track('PH_Start');setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(greet,600)},150)}
+ else{s.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(down,400)}
+ const b=$('stk').querySelector('span');if(b)b.textContent='Lanjutkan Tes'}
+function close(){const s=$('chs');if(!s)return;const ref=s.previousElementSibling;s.hidden=true;sticky();if(ref)ref.scrollIntoView({behavior:'smooth',block:'end'})}
+
+function opts(list,cb){const ci=clr();if(!ci)return;const w=document.createElement('div');w.className='opts';
+ list.forEach(function(l,i){const b=document.createElement('button');b.type='button';b.className='ob';b.innerHTML='<b>'+'ABCDE'[i]+'</b><span>'+esc(l)+'</span>';
+  b.onclick=function(){if(busy)return;busy=true;cb(i,l);setTimeout(function(){busy=false},500)};w.appendChild(b)});ci.appendChild(w)}
+function textIn(ph,done){const ci=clr();if(!ci)return;const ta=document.createElement('textarea');ta.className='fi';ta.placeholder=ph;ta.maxLength=40;ta.setAttribute('aria-label',ph);const b=document.createElement('button');b.type='button';b.className='btn plain';b.textContent='Lanjutkan';ci.appendChild(ta);ci.appendChild(b);
+ b.onclick=function(){const v=ta.value.trim();if(!v||busy)return;busy=true;done(v);setTimeout(function(){busy=false},600)};
+ ta.onkeydown=function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();b.click()}};
+ if(!window.matchMedia('(pointer:coarse)').matches)setTimeout(function(){ta.focus({preventScroll:true})},350)}
+
+function greet(){prog(0);typing(700,function(){
+ bot('Halo! Saya <strong>Hati</strong>, pendamping refleksimu.<br><br>Tes ini bukan untuk membaca pikiran pasangan. Ini untuk memahami <strong>pola emosionalmu</strong> saat mencintai, kecewa, dan menghadapi konflik. Ruang ini aman dan tanpa penghakiman.','gr');
+ setTimeout(askAge,800)})}
+function askAge(){typing(600,function(){bot('Layanan ini untuk pengguna berusia 17 tahun ke atas. Apakah kamu memenuhi syarat itu?');
+ opts(['Ya, saya 17 tahun ke atas','Belum'],function(i,l){user(l);clr();
+  if(i===1){typing(600,function(){bot('Terima kasih sudah mampir. Tes ini baru bisa dipakai oleh pengguna berusia 17 tahun ke atas.');const c=$('ci');if(c)c.innerHTML='<p class="cn">Sesi ini selesai.</p>'});return}
+  prog(1);setTimeout(pickStatus,300)})})}
+function pickStatus(){typing(600,function(){bot('Bagaimana status hubunganmu saat ini?');
+ opts(['Saya sudah menikah','Saya sedang dalam hubungan (pacaran atau tunangan)'],function(i,l){st=i?'R':'M';track('PH_Status_'+st);user(l);clr();prog(2);setTimeout(askName,300)})})}
+function askName(){typing(600,function(){bot('Siapa nama panggilanmu?');textIn('Tulis nama panggilanmu...',function(v){nama=v;user(v);clr();prog(3);setTimeout(askDur,350)})})}
+function askDur(){typing(700,function(){bot('Senang berkenalan, '+nm()+'. Sudah berapa lama kalian bersama?');
+ opts(DUR,function(i,l){dur=l;user(l);clr();prog(4);
+  typing(1000,function(){bot('Terima kasih. Apa pun hasil tes ini, perjalanan yang sudah kalian lalui itu nyata dan layak dihargai.<br><br>Ada tawa dan ada air mata, hari yang ingin dikenang dan hari yang ingin dilupakan. Semuanya ikut membentuk caramu mencintai.','gr');setTimeout(function(){q(0)},1700)})})})}
+
+function q(i){if(i>=STEPS.length)return finish();const s=STEPS[i];
+ const intro=i===0?'Sekarang, '+nm()+', ada '+STEPS.length+' pernyataan singkat. Pilih yang paling menggambarkan <em>dirimu yang sebenarnya</em>, bukan dirimu yang ingin terlihat baik.<br><br>':'';
+ const mid=i===5?'Separuh jalan, kamu hebat.<br><br>':'';
+ typing(i===0?800:450,function(){bot(intro+mid+'<span class="qn">'+s.p+' · '+(i+1)+' dari '+STEPS.length+'</span>'+esc(s.q));
+  opts(AGREE,function(k,l){A.q[i]=k+1;user('ABCDE'[k]+'. '+l);clr();prog(OPEN+i+1);setTimeout(function(){q(i+1)},350)})})}
+
+function calc(){const a=A.q,v=function(i){return a[i-1]},r=function(i){return 6-a[i-1]};
+ const d={clo:v(1)+r(2),exp:r(3)+r(4),con:v(6)+r(5),sec:r(7)+r(8)};
+ const p={OPEN:v(1)+r(2)+r(3)+r(4),SILENT:v(5)+v(3)+v(2)+r(6),REASS:v(7)+v(8)+v(10)+r(9),INDEP:v(9)+r(8)+r(7)+v(5),PEACE:v(3)+r(6)+r(5)+r(7),DIRECT:v(6)+r(3)+r(5)+r(4),ACTION:2*v(4)+v(2)+r(1),DEEP:v(7)+v(1)+v(6)+v(10)};
+ const ord=KEYS.slice().sort(function(x,y){return p[y]-p[x]||KEYS.indexOf(x)-KEYS.indexOf(y)});
+ const sp=v(9)>=4,at=v(10)>=4;
+ const need=sp&&at?'Ruang pribadi dan perhatian yang konsisten':sp?'Ruang pribadi untuk bernapas':at?'Perhatian yang konsisten dari pasangan':'Cukup fleksibel, tidak ada kebutuhan yang menonjol';
+ return{d:d,pri:ord[0],sec:ord[1],need:need}}
+const pc=function(x){return Math.round((x-2)/8*100)};
+
+function finish(){track('PH_Complete');prog(TOTAL);R=calc();
+ typing(1000,function(){bot('Perjalanan refleksi kita selesai, '+nm()+'. Terima kasih atas kejujuranmu.');
+  setTimeout(function(){
+   const P=PAT[R.pri],S=PAT[R.sec];
+   let h='<div class="res"><h4>Profil Emosional '+esc(nama)+'</h4><div class="sub">'+(st==='M'?'Pernikahan':'Hubungan')+', bersama '+esc(dur.toLowerCase())+'. Kecenderungan saat ini, bukan diagnosis.</div>'+
+   '<div class="pat"><em>POLA UTAMA</em><b>'+P[0]+'</b><span>'+P[1]+'</span></div>'+
+   '<div class="si"><strong class="k">Pola kamu</strong>'+P[2]+'<br><br><strong class="k">Kekuatan</strong>'+P[3]+'.<br><br><strong class="k">Tantangan</strong>'+P[4]+'.</div>'+
+   '<div class="si"><strong class="k">Pola pendukung</strong>'+S[0]+' ('+S[1]+')</div><div class="si"><strong class="k">Peta emosional</strong>';
+   [['Kedekatan emosional',R.d.clo],['Ekspresi perasaan',R.d.exp],['Keterbukaan saat konflik',R.d.con],['Rasa aman dalam hubungan',R.d.sec]].forEach(function(x){h+='<div class="m4"><div class="l"><span>'+x[0]+'</span><span>'+pc(x[1])+'</span></div><div class="seg lt"><b style="width:'+pc(x[1])+'%"></b></div></div>'});
+   h+='<small style="color:var(--ink3)">Skor rendah bukan berarti buruk. Ini gaya, bukan nilai.</small></div>'+
+   '<div class="si"><strong class="k">Kebutuhan emosional utama</strong>'+R.need+'</div>'+
+   '<div class="lock">Belum tampil di sini: <strong>apa yang mungkin dilihat pasanganmu vs yang sebenarnya terjadi</strong>, serta <strong>"Cara Mencintai Saya"</strong>. Semuanya ada di laporan WhatsApp gratis.</div></div>';
+   bot(h,'wide');const c=clr();if(c)c.innerHTML='<p class="cn">Profil selesai.</p>';setTimeout(offer,1500)},900)})}
+
+function offer(){typing(900,function(){bot('Satu lagi, '+nm()+': <strong>Laporan Profil Emosional</strong> gratis lewat WhatsApp. Isinya pola utama, apa yang dilihat pasangan vs yang sebenarnya terjadi, dan cara mencintai versimu.');
+ setTimeout(function(){
+  const h='<div class="rep" id="rep"><span class="demo-badge">Mode demo: data tidak dikirim</span><h4>Laporan Gratis Profil Emosional</h4><p>Isi nomor WhatsApp, centang persetujuan, lalu kirim.</p>'+
+  '<label class="rl" for="wa">Nomor WhatsApp aktif</label><input type="tel" id="wa" class="fi" inputmode="tel" placeholder="Contoh: 0812XXXXXXXX">'+
+  '<label class="ag" for="agree"><input type="checkbox" id="agree"><span>Saya bersedia menerima laporan lewat WhatsApp dan setuju nama panggilan, nomor WhatsApp, serta ringkasan jawaban saya dipakai untuk menyusun laporan ini.</span></label>'+
+  '<div class="err" id="err" role="alert"></div><button type="button" class="btn plain" id="snd" style="margin-top:14px;width:100%">Simpan Data dan Lanjut ke WhatsApp</button></div>';
+  bot(h,'wide');const c=clr();if(c)c.innerHTML='<p class="cn">Belum siap? Tutup chat ini kapan saja. Jawabanmu tidak dikirim tanpa persetujuan.</p>';
+  $('snd').addEventListener('click',submit)},700)})}
+function rerr(m){const e=$('err');if(!e)return;e.textContent=m||'';e.classList.toggle('on',!!m)}
+
+function submit(){
+ if(sent)return;const sd=$('snd');rerr('');
+ const w=normWA($('wa').value);
+ if(!$('wa').value.trim()){rerr('Lengkapi nomor WhatsApp-mu.');return}
+ if(!/^\d{9,15}$/.test(w)){rerr('Nomor WhatsApp tidak valid. Contoh: 0812XXXXXXXX.');return}
+ if(!$('agree').checked){rerr('Centang persetujuan terlebih dahulu.');return}
+ sd.disabled=true;sd.innerHTML='<span class="spin"></span>&nbsp; Menyimpan data...';
+ if(!CFG.SCRIPT_URL){setTimeout(function(){sent=true;track('PH_ReportSaved');done()},900);return}
+ const payload={action:'save_data',produk:'POLA_HATI_DEMO',nama:nama,wa:w,status_hubungan:st,lama_hubungan:dur,hasil_survey:'a='+A.q.join('.')+' | pola='+R.pri+'/'+R.sec};
+ fetch(CFG.SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+ .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()})
+ .then(function(){sent=true;track('PH_ReportSaved');done()})
+ .catch(function(e){rerr('Data belum terkirim ('+((e&&e.message)||'koneksi gagal')+'). Periksa internetmu lalu coba lagi.');sd.disabled=false;sd.textContent='Simpan Data dan Lanjut ke WhatsApp'})}
+
+function done(){
+ const c=$('rep');if(!c)return;prog(TOTAL);
+ const wl='https://wa.me/'+CFG.WA+'?text='+encodeURIComponent('Halo, saya '+nama+' sudah selesai mengisi Tes Pola Hati. Mohon kirimkan laporan gratis saya.');
+ c.innerHTML='<div class="done"><div class="dc">&#10003;</div><h4>Data kamu berhasil disimpan</h4><p>Hai <strong>'+esc(nama)+'</strong>, klik tombol di bawah untuk membuka WhatsApp dan meminta laporanmu.</p>'+
+ '<a class="btn" id="wal" href="'+wl+'" target="_blank" rel="noopener"><span>Buka WhatsApp dan terima laporan</span><i class="ar">&rarr;</i></a>'+
+ '<div class="mc"><strong>Mode demo:</strong> tidak ada data yang dikirim. Di versi klien, laporan dikirim otomatis setelah tombol ini diklik.</div></div>';
+ down();const ci=clr();if(ci)ci.innerHTML='<p class="cn">Terima kasih, '+esc(nama)+'.</p>';
+ $('wal').addEventListener('click',function(){track('PH_WhatsAppClick')})}
+
+function init(){
+ const p=$('prog');if(p){let h='';for(let i=0;i<TOTAL;i++)h+='<i></i>';p.innerHTML=h}
+ $('cx').addEventListener('click',close);
+ const cnt=$('cnt'),chk=document.querySelectorAll('.chk');
+ chk.forEach(function(b){b.addEventListener('click',function(){
+  b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');
+  const n=document.querySelectorAll('.chk[aria-pressed="true"]').length;
+  cnt.textContent=n===0?'Belum ada yang dipilih.':'Kamu merasakan '+n+' dari '+chk.length+'. Kamu tidak sendirian.'})});
+ let tk=false;
+ window.addEventListener('scroll',function(){if(!tk){requestAnimationFrame(function(){sticky();tk=false});tk=true}},{passive:true});
+ window.addEventListener('resize',sticky);
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('chs').hidden)close()});
+ sticky()}
+window.PH={open:open,close:close};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+</body>
+</html>
