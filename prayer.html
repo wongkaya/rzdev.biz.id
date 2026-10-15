@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Website Demo Peta Doa | rzdev.biz.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF0FB;--card:#fff;--ink:#12123A;--ink2:#51567A;--ink3:#8A8FB0;--line:#E4E6F5;--acc:#6C4DFF;--acc2:#EFEBFF;--gold:#FFB84D;--sub:#F7F7FD;--shadow:rgba(60,40,160,.2);
+--fb:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;--fi:'Fraunces',Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#070719;--card:#10112E;--ink:#F1F2FF;--ink2:#B8BBDD;--ink3:#868AB0;--line:#25274D;--acc:#8C78FF;--acc2:#1E1A4A;--sub:#15173A;--shadow:rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#070719;--card:#10112E;--ink:#F1F2FF;--ink2:#B8BBDD;--ink3:#868AB0;--line:#25274D;--acc:#8C78FF;--acc2:#1E1A4A;--sub:#15173A;--shadow:rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);color:var(--ink);font-size:14px;line-height:1.6;padding:28px 0;-webkit-tap-highlight-color:transparent;
+background:radial-gradient(60% 40% at 0 0,rgba(108,77,255,.2),transparent 70%),radial-gradient(50% 35% at 100% 25%,rgba(34,211,238,.16),transparent 70%),radial-gradient(60% 40% at 50% 100%,rgba(255,184,77,.18),transparent 70%),var(--bg)}
+.page{width:100%;max-width:440px;margin:0 auto;background:var(--card);border-radius:34px;border:1px solid var(--line);box-shadow:0 30px 80px var(--shadow);overflow:hidden}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bar{display:flex;align-items:center;gap:10px;padding:16px 18px}
+.mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--acc),#22D3EE);color:#fff;font:800 12px var(--fb);display:flex;align-items:center;justify-content:center}
+.brand{font-weight:800;letter-spacing:-.3px;flex:1;font-size:15px}
+.live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--ink2);background:var(--sub);border:1px solid var(--line);padding:5px 11px;border-radius:99px}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.hero{position:relative;margin:0 12px;border-radius:28px;padding:30px 20px 0;text-align:center;color:#F5F3FF;overflow:hidden;
+background:radial-gradient(70% 45% at 85% 0,rgba(34,211,238,.4),transparent 70%),radial-gradient(80% 50% at 10% 100%,rgba(255,184,77,.4),transparent 70%),linear-gradient(160deg,#0E0B2E,#2A1B7A 70%,#4B2FB8)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:20px 20px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.hero>*{position:relative}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:1.3px;color:#FFD9A0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:99px;margin-bottom:16px}
+h1{font-size:33px;line-height:1.1;font-weight:800;letter-spacing:-1.2px;margin-bottom:12px}
+h1 em{font-family:var(--fi);font-weight:500;background:linear-gradient(90deg,#FFD27A,#FF9F6B);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:3px}
+.lead{color:#CFCBEE;font-size:13.5px;margin-bottom:18px}
+.stats{display:flex;justify-content:center;gap:8px;margin-bottom:6px}
+.stat{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:9px 4px}
+.stat b{display:block;font-size:18px;font-weight:800}
+.stat span{font-size:10.5px;color:#C9C4EC}
+.phone{position:relative;width:216px;height:206px;margin:22px auto 0;background:#fff;border-radius:30px 30px 0 0;padding:12px 14px 0;color:#12123A;text-align:left;box-shadow:0 -12px 60px rgba(255,184,77,.35)}
+.phone .nt{width:56px;height:6px;border-radius:6px;background:#E4E6F5;margin:0 auto 14px}
+.pg{display:flex;gap:3px;margin-bottom:10px}
+.pg i{flex:1;height:4px;border-radius:4px;background:#E4E6F5}
+.pg i.o{background:linear-gradient(90deg,#6C4DFF,#22D3EE)}
+.phone small{font-size:9.5px;font-weight:800;letter-spacing:.8px;color:#8A8FB0}
+.phone p{font-size:13px;font-weight:700;line-height:1.35;margin:4px 0 12px}
+.dots{display:flex;gap:6px}
+.dots span{flex:1;aspect-ratio:1;border-radius:10px;background:#F1F1FA;font-size:11px;font-weight:700;color:#8A8FB0;display:flex;align-items:center;justify-content:center}
+.dots span.s{background:linear-gradient(135deg,#6C4DFF,#8A6BFF);color:#fff}
+.fl{position:absolute;font-size:11px;font-weight:700;color:#fff;background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:7px 11px;border-radius:12px;animation:fl 4s ease-in-out infinite;white-space:nowrap}
+.fl.a{left:-52px;top:60px}.fl.b{right:-54px;top:122px;animation-delay:1.5s}
+@keyframes fl{50%{transform:translateY(-7px)}}
+.sec{padding:36px 18px 0}
+.kick{font-size:11px;font-weight:800;letter-spacing:1.4px;color:var(--acc);margin-bottom:6px}
+h2{font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.7px;margin-bottom:8px}
+h2 em{font-family:var(--fi);font-weight:500;color:var(--acc)}
+.sub{color:var(--ink2);margin-bottom:18px}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bc{background:var(--sub);border:1px solid var(--line);border-radius:22px;padding:16px}
+.bc.w{grid-column:1/-1}
+.ic{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--acc),#9A7BFF);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 8px 18px rgba(108,77,255,.3)}
+.bc b{display:block;font-size:14.5px;margin-bottom:3px}
+.bc p{font-size:12.5px;color:var(--ink3);line-height:1.5}
+.mini{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px}
+.mini .pg i{background:var(--line)}
+.mini .pg i.o{background:linear-gradient(90deg,var(--acc),#22D3EE)}
+.mrow{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid var(--line)}
+.mrow:first-child{border:0}
+.mrow span{color:var(--ink3)}
+.steps{display:flex;flex-direction:column;gap:10px}
+.st{display:flex;gap:14px;align-items:center;background:var(--sub);border:1px solid var(--line);border-radius:20px;padding:14px 16px}
+.st>b{font-size:34px;font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,var(--acc),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.st strong{display:block;font-size:14px}
+.st p{font-size:12.5px;color:var(--ink3);line-height:1.5}
+.checks{display:grid;gap:9px}
+.ck{display:flex;gap:10px;align-items:center;font-size:13.5px;font-weight:600}
+.ck span{flex:none;width:24px;height:24px;border-radius:50%;background:var(--acc2);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.ck .i{width:14px;height:14px;stroke-width:3}
+details{background:var(--sub);border:1px solid var(--line);border-radius:16px;padding:13px 15px;margin-bottom:8px}
+summary{font-weight:700;font-size:13.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--acc);font-size:18px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{font-size:12.5px;color:var(--ink2);margin-top:8px}
+.try{margin:36px 12px 12px;border-radius:28px;padding:28px 16px;text-align:center;color:#F5F3FF;position:relative;overflow:hidden;
+background:radial-gradient(70% 50% at 100% 0,rgba(34,211,238,.35),transparent 70%),radial-gradient(70% 50% at 0 100%,rgba(255,184,77,.35),transparent 70%),linear-gradient(160deg,#0E0B2E,#2A1B7A)}
+.try h2{color:#fff}
+.try h2 em{color:#FFD27A}
+.try .sub{color:#CFCBEE}
+.btn{width:100%;padding:16px 20px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--acc),#8A6BFF);color:#fff;font:700 15px var(--fb);cursor:pointer;box-shadow:0 12px 26px rgba(108,77,255,.4);transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn.gold{background:linear-gradient(135deg,#FFD98A,#FFB84D);color:#2A1B00;box-shadow:0 12px 30px rgba(255,184,77,.45)}
+.hint{font-size:11.5px;color:#BDB8E6;margin-top:12px}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#demo{display:none;text-align:left}
+.stage{background:var(--card);color:var(--ink);border-radius:22px;padding:18px 16px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.fade{animation:in .4s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.qh{display:flex;align-items:baseline;gap:5px;margin-bottom:8px}
+.qh b{font-size:26px;font-weight:800;letter-spacing:-1px}
+.qh span{color:var(--ink3);font-weight:600}
+.qh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;color:var(--acc)}
+.pb{height:7px;background:var(--line);border-radius:7px;overflow:hidden;margin-bottom:20px}
+.pb i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#22D3EE);border-radius:7px;transition:width .4s}
+.q{font-size:21px;line-height:1.3;font-weight:800;letter-spacing:-.5px;margin-bottom:20px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scale button{aspect-ratio:1;border-radius:16px;border:1.5px solid var(--line);background:var(--sub);font:800 17px var(--fb);color:var(--ink2);cursor:pointer;transition:all .15s}
+.scale button:hover,.scale button.sel{background:linear-gradient(135deg,var(--acc),#8A6BFF);border-color:transparent;color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px rgba(108,77,255,.35)}
+.ends{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);margin-top:9px}
+.back{background:none;border:0;color:var(--ink3);font:600 12.5px var(--fb);margin-top:16px;cursor:pointer;text-decoration:underline}
+.field{width:100%;padding:14px 15px;border-radius:14px;border:1.5px solid var(--line);background:var(--sub);font:16px var(--fb);color:var(--ink);margin-bottom:12px}
+.rc{position:relative;display:flex;align-items:center;gap:12px;border-radius:20px;padding:18px 16px;color:#fff;overflow:hidden;background:radial-gradient(80% 80% at 100% 0,rgba(34,211,238,.4),transparent 70%),linear-gradient(150deg,#1A1250,#4B2FB8)}
+.rc small{font-size:10px;font-weight:800;letter-spacing:1.2px;color:#FFD9A0}
+.rc h3{font-size:23px;line-height:1.1;font-weight:800;letter-spacing:-.6px;margin:3px 0}
+.rc p{font-size:12.5px;color:#E1DDFA}
+.ring{flex:none;width:76px;height:76px}
+.rg{fill:none;stroke:rgba(255,255,255,.2);stroke-width:7}
+.rp{fill:none;stroke:#FFB84D;stroke-width:7;stroke-linecap:round;transform:rotate(-90deg);transform-origin:40px 40px}
+.ring text{fill:#fff;font:800 16px var(--fb)}
+.tabs{display:flex;background:var(--sub);border-radius:14px;padding:4px;margin:14px 0}
+.tabs button{flex:1;padding:9px 4px;border:0;border-radius:11px;background:none;font:700 12.5px var(--fb);color:var(--ink3);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--card);color:var(--acc);box-shadow:0 2px 8px rgba(18,18,58,.12)}
+.rt{font-size:10.5px;font-weight:800;letter-spacing:1.1px;color:var(--ink3);margin-bottom:6px}
+.callout{border-left:3px solid var(--gold);background:var(--sub);border-radius:0 14px 14px 0;padding:11px 13px;margin:0 0 12px;font-size:13px}
+.callout b{display:block;font-size:10.5px;letter-spacing:1px;color:#D98A12}
+.not{font-family:var(--fi);font-style:italic;font-size:17px;line-height:1.35;margin-bottom:14px}
+.br{margin:9px 0;font-size:12px;font-weight:600}
+.br span{display:flex;justify-content:space-between;margin-bottom:4px}
+.br div{height:7px;background:var(--line);border-radius:4px;overflow:hidden}
+.br i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--gold));border-radius:4px}
+.list{padding-left:18px;color:var(--ink2);font-size:13px}
+.list li{margin-bottom:7px}
+.verse{border-radius:18px;padding:24px 18px;text-align:center;color:#fff;background:radial-gradient(90% 70% at 50% 120%,rgba(255,184,77,.5),transparent 70%),linear-gradient(160deg,#1A1250,#4B2FB8)}
+.verse blockquote{font-family:var(--fi);font-style:italic;font-size:21px;line-height:1.35}
+.verse cite{display:block;font-style:normal;font-size:12px;font-weight:800;color:#FFD27A;margin-top:12px}
+.lead-box{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px}
+.lead-box h3{font-size:15px;margin-bottom:2px}
+.agree{display:flex;gap:9px;font-size:12px;color:var(--ink2);margin:10px 0 12px;cursor:pointer}
+.agree input{margin-top:3px;accent-color:var(--acc)}
+.err{display:none;background:#FDECEF;color:#B3263E;border-radius:10px;padding:8px 10px;font-size:12.5px;margin-bottom:10px}
+.err.on{display:block}
+.dash{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:12px 0;font-size:12.5px}
+.dash .dh{background:var(--sub);padding:9px 13px;font-size:10.5px;font-weight:800;letter-spacing:1px;color:var(--ink3)}
+.dash .r{display:flex;justify-content:space-between;padding:10px 13px;border-top:1px solid var(--line)}
+.dash .r span{color:var(--ink3)}
+.ok{width:50px;height:50px;border-radius:50%;background:#DCFCE7;color:#15803D;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.nb{background:var(--acc2);border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink2)}
+.nb b{color:var(--acc)}
+.disc{font-size:11px;color:var(--ink3);line-height:1.6;margin-top:14px}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:s .8s linear infinite;vertical-align:-3px;margin-right:6px}
+@keyframes s{to{transform:rotate(360deg)}}
+footer{padding:26px 18px 24px;text-align:center;font-size:12px;color:var(--ink3)}
+footer b{color:var(--ink)}
+@media (max-width:520px){body{padding:0}.page{border-radius:0;border-width:0;box-shadow:none}.fl.a{left:-40px}.fl.b{right:-42px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="pal" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3A9 9 0 0012 3z"/></symbol>
+<symbol id="ck" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+</defs></svg>
+<main class="page">
+  <div class="bar"><div class="mark">rz</div><div class="brand">rzdev.biz.id</div><span class="live">Live Demo</span></div>
+
+  <section class="hero">
+    <span class="tag">DEMO UNTUK KLIEN</span>
+    <h1>Ubah pengunjung menjadi <em>komunitas</em> yang bertumbuh</h1>
+    <p class="lead">Contoh website kuis refleksi doa yang bisa kami bangun untuk pelayanan, komunitas, atau bisnis rohani Anda. Lihat fiturnya, lalu coba sebagai pengunjung.</p>
+    <div class="stats"><div class="stat"><b>8</b><span>Pertanyaan</span></div><div class="stat"><b>3 mnt</b><span>Durasi</span></div><div class="stat"><b>100%</b><span>Mobile</span></div></div>
+    <div class="phone" aria-hidden="true">
+      <div class="nt"></div>
+      <div class="pg"><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i></div>
+      <small>PERNYATAAN 03 / 08</small>
+      <p>Saya sering merasa lelah menunggu jawaban doa.</p>
+      <div class="dots"><span>1</span><span>2</span><span>3</span><span class="s">4</span><span>5</span></div>
+      <span class="fl a">✓ Hasil instan</span><span class="fl b">+1 Lead baru</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">FITUR UTAMA</p>
+    <h2>Dirancang untuk <em>diselesaikan</em>, bukan ditinggalkan</h2>
+    <p class="sub">Setiap bagian dibuat agar pengunjung nyaman sampai akhir dan Anda mendapat kontak yang berkualitas.</p>
+    <div class="bento">
+      <div class="bc w"><div class="ic"><svg class="i"><use href="#spark"/></svg></div><b>Kuis interaktif satu layar</b><p>Satu pertanyaan per layar dengan skala 1 sampai 5. Ringan dan nyaman dari HP.</p>
+        <div class="mini"><div class="pg"><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i></div><div class="dots"><span style="background:var(--sub)">1</span><span style="background:var(--sub)">2</span><span style="background:var(--sub)">3</span><span class="s">4</span><span style="background:var(--sub)">5</span></div></div></div>
+      <div class="bc"><div class="ic"><svg class="i"><use href="#bolt"/></svg></div><b>Hasil instan</b><p>Pola, langkah, dan ayat tampil seketika.</p></div>
+      <div class="bc"><div class="ic"><svg class="i"><use href="#pal"/></svg></div><b>Mudah disesuaikan</b><p>Warna, logo, dan isi mengikuti brand Anda.</p></div>
+      <div class="bc w"><div class="ic"><svg class="i"><use href="#chat"/></svg></div><b>Lead capture &amp; dashboard</b><p>Nomor WhatsApp pengunjung terkumpul dengan persetujuan dan siap ditindaklanjuti.</p>
+        <div class="mini"><div class="mrow"><b>Maria S.</b><span>The Waiting Heart</span></div><div class="mrow"><b>Daniel K.</b><span>The Silent Soul</span></div><div class="mrow"><b>Ruth A.</b><span>The Faithful Seeker</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">ALUR PENGUNJUNG</p>
+    <h2>Tiga langkah <em>sederhana</em></h2>
+    <p class="sub">Dari penasaran sampai menjadi kontak yang bisa Anda layani.</p>
+    <div class="steps">
+      <div class="st"><b>01</b><div><strong>Menjawab pertanyaan singkat</strong><p>8 pernyataan dengan skala 1 sampai 5.</p></div></div>
+      <div class="st"><b>02</b><div><strong>Menerima hasil personal</strong><p>Ringkasan pola, langkah kecil, dan satu ayat.</p></div></div>
+      <div class="st"><b>03</b><div><strong>Meminta laporan lengkap</strong><p>Data masuk ke dashboard untuk tindak lanjut.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">BISA DISESUAIKAN</p>
+    <h2>Semua mengikuti <em>kebutuhan</em> Anda</h2>
+    <p class="sub">Cocok untuk gereja, komunitas, coach rohani, penulis renungan, dan yayasan.</p>
+    <div class="checks">
+      <div class="ck"><span><svg class="i"><use href="#ck"/></svg></span>Logo, warna, dan gaya visual</div>
+      <div class="ck"><span><svg class="i"><use href="#ck"/></svg></span>Pertanyaan, pola hasil, dan ayat</div>
+      <div class="ck"><span><svg class="i"><use href="#ck"/></svg></span>Integrasi WhatsApp dan database</div>
+      <div class="ck"><span><svg class="i"><use href="#ck"/></svg></span>Domain sendiri dan tampilan mobile</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">PERTANYAAN UMUM</p>
+    <h2>Sebelum Anda <em>memutuskan</em></h2>
+    <p class="sub" style="margin-bottom:14px">Jawaban singkat untuk hal yang paling sering ditanyakan klien.</p>
+    <details><summary>Apakah teks dan warnanya bisa diganti?</summary><p>Bisa. Logo, warna, pertanyaan, pola hasil, dan ayat dapat disesuaikan dengan brand dan pelayanan Anda.</p></details>
+    <details><summary>Ke mana data pengunjung masuk?</summary><p>Pada website asli, data tersimpan di database milik Anda dan bisa diteruskan ke WhatsApp atau CRM. Pada demo ini tidak ada data yang dikirim.</p></details>
+    <details><summary>Berapa lama pengerjaannya?</summary><p>Tergantung kebutuhan. Hubungi tim rzdev.biz.id untuk estimasi yang sesuai dengan proyek Anda.</p></details>
+  </section>
+
+  <!-- SATU-SATUNYA TOMBOL AKSI -->
+  <section class="try" id="try">
+    <p class="kick" style="color:#FFD9A0">COBA SEKARANG</p>
+    <h2>Rasakan sebagai <em>pengunjung</em></h2>
+    <p class="sub">Isi kuis demo ini seperti pengunjung sungguhan. Hanya 3 menit.</p>
+    <button type="button" class="btn gold" id="start">Coba Demo Langsung</button>
+    <p class="hint" id="hint">Refleksi rohani, bukan diagnosis atau tes psikologi. Semua data pada demo ini hanya contoh.</p>
+    <div id="demo"><div class="stage" id="stage" aria-live="polite"></div></div>
+  </section>
+
+  <footer>Website demo oleh <b>rzdev.biz.id</b><br>Tertarik memiliki website seperti ini? Hubungi tim rzdev.biz.id.</footer>
+</main>
+
+<script>
+(function(){
+const ITEMS=[
+{p:'waiting',t:'Saat doa saya belum dijawab, saya merasa lelah menunggu.'},
+{p:'controlling',t:'Saya sering merasa harus mengendalikan bagaimana doa saya dijawab.'},
+{p:'wounded',t:'Pengalaman masa lalu membuat saya takut berharap terlalu tinggi.'},
+{p:'silent',t:'Saya takut mengungkapkan perasaan saya yang sebenarnya kepada Tuhan.'},
+{p:'burdened',t:'Ada hal yang terus memenuhi pikiran bahkan ketika saya sedang berdoa.'},
+{p:'faithful',t:'Saya tetap berdoa meskipun belum melihat perubahan.'},
+{p:'controlling',t:'Saya sulit berhenti memikirkan sesuatu yang sedang saya doakan.'},
+{p:'wounded',t:'Saya sering merasa doa saya tidak akan mengubah keadaan.'}];
+const ORDER=['waiting','controlling','wounded','silent','burdened','faithful'];
+const PAT={
+waiting:{en:'The Waiting Heart',id:'Hati yang Sedang Menunggu',tag:'Anda tetap berharap, tetapi sedang berada dalam fase menunggu jawaban.',block:'Lelah menunggu tanpa tanda yang terlihat.',not:'Anda mungkin bukan kehilangan iman. Anda mungkin sedang kelelahan menunggu.',tries:['Sebut rasa lelah itu kepada Tuhan apa adanya.','Catat satu hal kecil yang masih menopang Anda.','Pilih kebiasaan doa ringan, misalnya 3 menit tiap pagi.'],v:['Nantikanlah TUHAN! Kuatkanlah dan teguhkanlah hatimu!','Mazmur 27:14']},
+controlling:{en:'The Controlling Heart',id:'Hati yang Sulit Melepaskan',tag:'Anda punya keinginan kuat terhadap hasil tertentu dan sulit menyerahkannya.',block:'Sulit menyerahkan hasil setelah meminta.',not:'Anda sudah menyerahkan masalah itu dalam doa, tetapi pikiran masih mengambilnya kembali.',tries:['Sampaikan permintaan Anda dengan jelas.','Akui apa yang tidak dapat Anda kendalikan.','Beri ruang bagi jawaban yang berbeda dari harapan.'],v:['Serahkanlah segala kekuatiranmu kepada-Nya, sebab Ia yang memelihara kamu.','1 Petrus 5:7']},
+wounded:{en:'The Wounded Hope',id:'Harapan yang Pernah Kecewa',tag:'Anda ingin percaya, tetapi pengalaman lalu membuat Anda berhati-hati berharap.',block:'Takut kecewa untuk kedua kalinya.',not:'Masalahnya mungkin bukan tidak percaya Tuhan. Anda mungkin takut kecewa sekali lagi.',tries:['Ceritakan kekecewaan lama kepada Tuhan.','Bedakan berharap pada hasil dan berharap kepada Tuhan.','Mulai dari harapan kecil dan konkret minggu ini.'],v:['Dia menyembuhkan orang-orang yang patah hati dan membalut luka-luka mereka.','Mazmur 147:3']},
+silent:{en:'The Silent Soul',id:'Jiwa yang Sulit Mengungkapkan',tag:'Anda datang kepada Tuhan, tetapi tidak mudah mengatakan isi hati yang sebenarnya.',block:'Perasaan sebenarnya tertahan sebelum sampai kepada Tuhan.',not:'Anda mungkin tidak jauh dari Tuhan. Anda belum merasa aman untuk jujur kepada-Nya.',tries:['Tulis satu kalimat jujur yang selama ini disimpan.','Ucapkan kalimat itu dalam doa, boleh singkat dan berantakan.','Ceritakan kepada satu orang yang Anda percaya.'],v:['Curahkanlah isi hatimu di hadapan-Nya.','Mazmur 62:9']},
+burdened:{en:'The Burdened Prayer',id:'Doa yang Membawa Beban',tag:'Pikiran dan emosi sehari-hari ikut terbawa ketika Anda berdoa.',block:'Beban sehari-hari ikut masuk ke ruang doa.',not:'Anda mungkin bukan kurang bersungguh-sungguh. Anda sedang membawa terlalu banyak sekaligus.',tries:['Tuliskan semua yang memenuhi pikiran sebelum berdoa.','Sebut satu per satu, lalu coret yang sudah diserahkan.','Beri jeda hening 1 menit di akhir doa.'],v:['Marilah kepada-Ku, semua yang letih lesu dan berbeban berat, Aku akan memberi kelegaan kepadamu.','Matius 11:28']},
+faithful:{en:'The Faithful Seeker',id:'Pencari yang Tekun',tag:'Anda tetap mencari Tuhan bahkan ketika jawaban belum terlihat.',block:'Bertahan lama tanpa ruang untuk beristirahat.',not:'Anda mungkin tidak perlu berdoa lebih keras. Anda perlu ruang untuk dipulihkan.',tries:['Izinkan satu hari berdoa singkat tanpa daftar permintaan.','Syukuri satu tanda kecil bahwa Anda ditopang.','Bagikan pergumulan kepada satu teman seiman.'],v:['Orang-orang yang menanti-nantikan TUHAN mendapat kekuatan baru.','Yesaya 40:31']}};
+const REFL=['Apa yang paling saya takutkan jika doa ini belum terjawab?','Apa yang ingin saya kendalikan, padahal di luar kendali saya?','Jika saya sungguh percaya, apa yang perlu saya lepaskan hari ini?'];
+const $=id=>document.getElementById(id);
+const esc=t=>String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+let nama='',R=null,tab=0;const ans=[];
+const view=h=>{$('stage').innerHTML='<div class="fade">'+h+'</div>'};
+function nameStep(){view(`<p class="rt">LANGKAH AWAL</p><div class="q">Siapa nama panggilan Anda?</div><input class="field" id="nm" placeholder="Contoh: Maria" aria-label="Nama panggilan" maxlength="30"><button class="btn" id="go">Mulai Kuis</button>`);
+const go=()=>{const v=$('nm').value.trim();if(!v){$('nm').focus();return}nama=v;ask(0)};
+$('go').onclick=go;$('nm').onkeydown=e=>{if(e.key==='Enter')go()}}
+function ask(i){const N=ITEMS.length,p=Math.round(i/N*100);
+view(`<div class="qh"><b>${String(i+1).padStart(2,'0')}</b><span>/ ${String(N).padStart(2,'0')}</span><em>${p}%</em></div><div class="pb"><i style="width:${p}%"></i></div><div class="q">${esc(ITEMS[i].t)}</div><div class="scale" role="group" aria-label="Skala 1 sampai 5">${[1,2,3,4,5].map(n=>`<button type="button" data-v="${n-1}" aria-label="Skala ${n}" class="${ans[i]===n-1?'sel':''}">${n}</button>`).join('')}</div><div class="ends"><span>Tidak sesuai</span><span>Sangat sesuai</span></div><button class="back" id="bk">Kembali</button>`);
+document.querySelectorAll('.scale button').forEach(b=>b.onclick=()=>{ans[i]=+b.dataset.v;b.classList.add('sel');setTimeout(()=>i+1<N?ask(i+1):result(),240)});
+$('bk').onclick=()=>i===0?nameStep():ask(i-1)}
+function compute(){const s={},c={};ORDER.forEach(k=>{s[k]=0;c[k]=0});ITEMS.forEach((it,i)=>{s[it.p]+=ans[i]||0;c[it.p]++});
+const pct={};ORDER.forEach(k=>pct[k]=Math.round(s[k]/(c[k]*4)*100));
+return{pct,rank:ORDER.slice().sort((a,b)=>pct[b]-pct[a]||ORDER.indexOf(a)-ORDER.indexOf(b))}}
+function result(){R=compute();tab=0;draw()}
+function draw(){const k=R.rank[0],P=PAT[k],S=PAT[R.rank[1]],pc=R.pct[k];let body='';
+if(tab===0){body=`<div class="callout"><b>INNER BLOCK</b>${P.block}</div><p class="not">${P.not}</p><p class="rt">PETA 3 POLA TERATAS</p>`+R.rank.slice(0,3).map(x=>`<div class="br"><span><em style="font-style:normal">${PAT[x].en}</em><b>${R.pct[x]}</b></span><div><i style="width:${R.pct[x]}%"></i></div></div>`).join('')+`<p class="disc" style="margin-top:10px">Pola pendamping: <b>${S.en}</b></p>`}
+else if(tab===1){body=`<p class="rt">YANG DAPAT DICOBA</p><ol class="list" style="margin:8px 0 16px">${P.tries.map(t=>`<li>${t}</li>`).join('')}</ol><p class="rt">PERTANYAAN REFLEKSI</p><ol class="list" style="margin-top:8px;color:var(--ink);font-weight:600">${REFL.map(q=>`<li>${q}</li>`).join('')}</ol>`}
+else{body=`<div class="verse"><blockquote>"${P.v[0]}"</blockquote><cite>${P.v[1]}</cite></div>`}
+view(`<div class="rc"><div><small>POLA UTAMA ${esc(nama).toUpperCase()}</small><h3>${P.en}</h3><p>${P.id}</p></div><svg class="ring" viewBox="0 0 80 80" aria-label="Kecocokan ${pc} persen"><circle class="rg" cx="40" cy="40" r="34"/><circle class="rp" cx="40" cy="40" r="34" stroke-dasharray="${(pc*2.136).toFixed(1)} 214"/><text x="40" y="46" text-anchor="middle">${pc}%</text></svg></div>
+<div class="tabs" role="tablist">${['Ringkasan','Langkah','Ayat'].map((n,i)=>`<button role="tab" aria-selected="${tab===i}" data-t="${i}">${n}</button>`).join('')}</div>${body}
+<div class="lead-box"><h3>Terima laporan lengkap</h3><p class="disc" style="margin:0 0 10px">Simulasi fitur lead capture. Tidak ada data yang dikirim.</p><input type="tel" id="wa" class="field" inputmode="tel" placeholder="Nomor WhatsApp, contoh 0812XXXXXXXX" aria-label="Nomor WhatsApp"><label class="agree"><input type="checkbox" id="ag"><span>Saya setuju menerima laporan lewat WhatsApp (simulasi).</span></label><div class="err" id="err" role="alert"></div><button class="btn" id="send">Kirim Laporan (Simulasi)</button></div>
+<p class="disc">Hasil bersifat reflektif, bukan diagnosis psikologis atau medis. Jika Anda mengalami tekanan berat, hubungi layanan kesehatan jiwa 119 ext. 8.</p>`);
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=+b.dataset.t;draw()});$('send').onclick=send}
+function send(){const e=$('err'),w=$('wa').value.replace(/\D/g,'');e.classList.remove('on');
+if(!/^\d{9,15}$/.test(w)){e.textContent='Nomor WhatsApp tidak valid. Contoh: 0812XXXXXXXX.';e.classList.add('on');return}
+if(!$('ag').checked){e.textContent='Centang persetujuan terlebih dahulu.';e.classList.add('on');return}
+const b=$('send');b.disabled=true;b.innerHTML='<span class="spin"></span>Memproses...';
+setTimeout(()=>{const m=w.slice(0,4)+'****'+w.slice(-2),P=PAT[R.rank[0]];
+view(`<div class="ok"><svg class="i" style="width:24px;height:24px;stroke-width:3"><use href="#ck"/></svg></div><h3 style="text-align:center;font-size:18px;letter-spacing:-.4px">Simulasi berhasil</h3><p style="text-align:center;color:var(--ink2);font-size:13px;margin:4px 0 8px">Beginilah data pengunjung tampil di dashboard Anda.</p><div class="dash"><div class="dh">DASHBOARD KLIEN (CONTOH)</div><div class="r"><span>Nama</span><b>${esc(nama)}</b></div><div class="r"><span>WhatsApp</span><b>${m}</b></div><div class="r"><span>Pola utama</span><b>${P.en}</b></div><div class="r"><span>Status</span><b style="color:#15803D">Siap ditindaklanjuti</b></div></div><div class="nb"><b>Ini hanya demo.</b> Pada website asli, data tersimpan aman dan laporan dikirim otomatis ke WhatsApp pengunjung.</div><button class="back" id="rs" style="display:block;margin:14px auto 0">Ulangi demo</button>`);
+$('rs').onclick=()=>{ans.length=0;nameStep()}},1000)}
+$('start').onclick=()=>{$('start').style.display='none';$('hint').style.display='none';$('demo').style.display='block';nameStep();setTimeout(()=>$('demo').scrollIntoView({behavior:'smooth',block:'center'}),100)};
+})();
+</script>
+</body>
+</html>
