@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rumah Tumbuh</title>
+<meta name="description" content="Template demo tes pola asuh gratis oleh rzdev.biz.id">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+/* Layout: mobile-first. Satu "shell" selebar ponsel (maks 460px) di tengah layar, tanpa kolom ganda. Gaya sticker: outline tebal, bayangan keras, blok warna per seksi. Satu tema terang (sengaja). */
+:root{
+  color-scheme:light;
+  --paper:#F4F7FF;--white:#FFFFFF;
+  --ink:#1A1A3D;--ink2:#43456B;--ink3:#5F6188;
+  --yellow:#FFC93C;--yellow-soft:#FFF0BF;
+  --blue:#5AAAFF;--blue-soft:#D9ECFF;
+  --pink:#FF8FAB;--pink-soft:#FFE1E9;
+  --mint:#7DDCB0;--mint-soft:#D6F5E7;
+  --err:#B3261E;--err-bg:#FFE9E6;
+  --bd:2.5px solid var(--ink);
+  --sh:5px 5px 0 var(--ink);
+  --sh-s:3px 3px 0 var(--ink);
+  --fd:'Bagel Fat One','Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;
+  --fb:'Figtree',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --gl:max(20px,env(safe-area-inset-left,0px));
+  --gr:max(20px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:24px 16px;background:var(--blue-soft);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--ink);font-weight:700}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.shell{max-width:460px;margin:0 auto;background:var(--paper);border:var(--bd);border-radius:28px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;position:relative}
+.wrap{padding-left:var(--gl);padding-right:var(--gr)}
+
+/* pita demo */
+.ribbon{background:var(--ink);color:#fff;font-size:12.5px}
+.ribbon .wrap{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;padding-block:9px}
+.ribbon b{background:var(--yellow);color:var(--ink);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:999px;margin-right:8px}
+.ribbon a{color:#fff;text-underline-offset:3px}
+
+/* header */
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:16px}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-size:22px;line-height:1;color:var(--ink);text-decoration:none;font-weight:400}
+.logo svg{width:34px;height:34px;flex-shrink:0}
+
+/* tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;background:var(--yellow);color:var(--ink);border:var(--bd);border-radius:14px;box-shadow:var(--sh-s);font-weight:800;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s,background .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.white{background:var(--white)}
+.btn.sm{min-height:42px;padding:6px 18px;font-size:14.5px;border-radius:12px}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:var(--sh-s)}
+.btn.block{width:100%}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.blob{position:absolute;pointer-events:none;width:150px;height:150px;border-radius:50%;background:var(--blue-soft);border:var(--bd);top:-70px;left:-70px}
+.hero .wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:34px;text-align:center;padding-block:14px 44px}
+.hero-copy{width:100%}
+.eb{display:inline-block;background:var(--white);border:var(--bd);border-radius:999px;padding:5px 14px;font-size:13px;font-weight:800;box-shadow:var(--sh-s);margin-bottom:20px}
+.ht{font-family:var(--fd);font-weight:400;font-size:clamp(32px,9.2vw,40px);line-height:1.06;margin-bottom:16px;text-wrap:balance}
+.ht mark{background:linear-gradient(transparent 58%,var(--yellow) 58%,var(--yellow) 92%,transparent 92%);color:inherit;padding:0 3px;margin:0 -3px}
+.lead{font-size:16.5px;color:var(--ink2);margin-bottom:24px}
+.lead strong{color:var(--ink)}
+.cta-row{display:flex;flex-direction:column;gap:12px}
+.cta-row .btn{width:100%}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;justify-content:center}
+.chips span{font-size:13px;font-weight:700;background:var(--mint-soft);border:2px solid var(--ink);border-radius:999px;padding:2px 12px}
+.chips span:nth-child(2){background:var(--pink-soft)}.chips span:nth-child(3){background:var(--blue-soft)}
+.note{font-size:12.5px;color:var(--ink3);margin-top:16px}
+
+/* kartu hasil */
+.stage{position:relative;padding-top:22px;width:100%;text-align:left}
+.sticker{position:absolute;z-index:2;top:-2px;right:8px;width:84px;height:84px;border-radius:50%;background:var(--pink);border:var(--bd);box-shadow:var(--sh-s);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--fd);font-size:16px;line-height:1.05}
+.sticker small{font-family:var(--fb);font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.sum{background:var(--white);border:var(--bd);border-radius:20px;padding:18px;box-shadow:var(--sh)}
+.tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--yellow);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;margin-bottom:12px}
+.sum h4{font-family:var(--fd);font-weight:400;font-size:22px;line-height:1.15;margin-bottom:4px}
+.sum .sub{font-size:13.5px;color:var(--ink3);margin-bottom:10px}
+.pat{background:var(--yellow-soft);border:2px solid var(--ink);border-radius:14px;padding:12px 14px;margin:10px 0 8px}
+.pat em{display:block;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--ink2)}
+.pat b{display:block;font-family:var(--fd);font-weight:400;font-size:23px;line-height:1.15}
+.pat span{font-size:13.5px;color:var(--ink2)}
+.br{margin:12px 0;font-size:13.5px}
+.br .l{display:flex;justify-content:space-between;font-weight:700;margin-bottom:5px}
+.bar{height:14px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;border-right:2.5px solid var(--ink)}
+.lock{border:2.5px dashed var(--ink);border-radius:14px;padding:11px 13px;font-size:13.5px;color:var(--ink2);margin-top:14px;background:var(--pink-soft)}
+.si{padding:12px 0;border-bottom:2px dashed rgba(26,26,61,.25);font-size:14.5px;color:var(--ink2)}.si:last-child{border:none}
+.si strong.k{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--ink);margin-bottom:3px}
+.tip{background:var(--mint-soft);border:2px solid var(--ink);border-radius:12px;padding:11px 13px;font-size:14px;color:var(--ink);margin-top:6px}
+
+/* chat */
+.chs{padding-block:0 40px}
+.chs .wrap{padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.chc{background:var(--white);border:var(--bd);border-radius:20px;overflow:hidden;box-shadow:var(--sh-s)}
+.pt{height:12px;background:var(--white);border-bottom:var(--bd)}.pf{height:100%;background:var(--pink);border-right:2.5px solid var(--ink);transition:width .5s;width:0}
+.chh{display:flex;align-items:center;gap:11px;padding:12px 14px;background:var(--yellow);border-bottom:var(--bd)}
+.ava{width:40px;height:40px;border-radius:50%;background:var(--white);border:var(--bd);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:19px;flex-shrink:0}
+.cht{flex:1;min-width:0}.cht h3{font-family:var(--fd);font-weight:400;font-size:19px;line-height:1.1}.cht p{font-size:12.5px;font-weight:600;color:var(--ink2)}
+.cx{width:40px;height:40px;border-radius:50%;border:var(--bd);background:var(--white);cursor:pointer;font-weight:800}
+.cx:hover{background:var(--pink-soft)}
+.msgs{padding:16px 12px;background:var(--blue-soft);max-height:56vh;max-height:56dvh;overflow-y:auto;scroll-behavior:smooth}
+.msg{display:flex;gap:8px;margin-bottom:13px;align-items:flex-start}.msg.user{flex-direction:row-reverse}
+.ma{width:30px;height:30px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fd);font-size:14px}.msg.user .ma{display:none}
+.bub{max-width:calc(100% - 40px);padding:10px 13px;border:2px solid var(--ink);border-radius:16px 16px 16px 4px;font-size:15px;line-height:1.6;overflow-wrap:anywhere;background:var(--white)}
+.msg.user .bub{max-width:85%;background:var(--pink);border-radius:16px 16px 4px 16px;font-weight:600}
+.bub.wide{max-width:100%;width:100%}.bub.gr{background:var(--yellow-soft)}
+.qn{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--blue-soft);border:2px solid var(--ink);border-radius:999px;padding:1px 10px;margin-bottom:8px}
+.typ{display:flex;gap:4px;padding:6px 4px}.typ span{width:7px;height:7px;background:var(--ink);border-radius:50%;animation:t 1.2s infinite}
+.typ span:nth-child(2){animation-delay:.2s}.typ span:nth-child(3){animation-delay:.4s}
+@keyframes t{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.ci{padding:12px;background:var(--white);border-top:var(--bd);padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.opts{display:flex;flex-direction:column;gap:8px}
+.ob{padding:9px 12px;border:var(--bd);border-radius:12px;background:var(--white);font-weight:700;font-size:14.5px;cursor:pointer;text-align:left;min-height:48px;display:flex;align-items:center;gap:11px;box-shadow:var(--sh-s);transition:transform .1s,box-shadow .1s,background .1s}
+.ob:hover{background:var(--yellow-soft);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.ob:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.ob b{background:var(--yellow);border:2px solid var(--ink);border-radius:8px;min-width:27px;height:27px;display:flex;align-items:center;justify-content:center;font-size:12.5px;flex-shrink:0}
+.fi{width:100%;padding:12px 13px;background:var(--white);border:var(--bd);border-radius:12px;display:block;font-size:16px}
+textarea.fi{resize:none;min-height:60px}.fi:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.mrow{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+.ci .btn{margin-top:12px;width:100%}
+.cn{text-align:center;color:var(--ink3);font-size:13.5px;padding:6px}
+
+/* form laporan */
+.rep{background:var(--white);border:var(--bd);border-radius:16px;padding:16px;box-shadow:var(--sh-s)}
+.rep h4{font-family:var(--fd);font-weight:400;font-size:21px;margin-bottom:6px}.rep>p{font-size:14px;color:var(--ink2);margin-bottom:14px}
+.rl{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+.ag{display:flex;gap:10px;align-items:flex-start;background:var(--yellow-soft);border:2px solid var(--ink);border-radius:12px;padding:11px;cursor:pointer;font-size:13.5px;color:var(--ink);margin-top:11px}
+.ag input{accent-color:var(--ink);width:19px;height:19px;margin-top:2px;flex-shrink:0}
+.demo-badge{display:inline-block;font-size:11.5px;font-weight:800;background:var(--pink);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;margin-bottom:10px}
+.err{display:none;background:var(--err-bg);color:var(--err);border:2px solid var(--err);border-radius:10px;padding:9px 12px;font-size:13.5px;font-weight:600;margin-top:12px}.err.on{display:block}
+.done{text-align:center}.dc{width:56px;height:56px;background:var(--mint);border:var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:26px;font-weight:800}
+.done h4{font-family:var(--fd);font-weight:400;font-size:22px;margin-bottom:7px}.done p{font-size:14.5px;color:var(--ink2);margin-bottom:14px}
+.mc{text-align:left;background:var(--yellow-soft);border:2px solid var(--ink);border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:14px}
+.spin{width:18px;height:18px;border:3px solid rgba(26,26,61,.3);border-top-color:var(--ink);border-radius:50%;animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+
+/* seksi */
+.sec{padding-block:48px;border-top:var(--bd)}
+.sec.blue{background:var(--blue-soft)}.sec.yellow{background:var(--yellow)}.sec.pink{background:var(--pink-soft)}.sec.white{background:var(--white)}
+.sh{margin-bottom:26px}
+.st{font-family:var(--fd);font-weight:400;font-size:28px;line-height:1.1;text-wrap:balance;margin-bottom:10px}
+.ss{font-size:16px;color:var(--ink2)}
+
+.pain{display:grid;gap:14px}
+.pain p{background:var(--white);border:var(--bd);border-radius:16px;padding:16px 18px;box-shadow:var(--sh-s);font-weight:500;font-size:15.5px}
+.pain-end{margin-top:26px;font-family:var(--fd);font-size:23px;line-height:1.2;text-wrap:balance}
+
+.ben{display:grid;gap:14px}
+.ben>div{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:14px;align-items:start;border:var(--bd);border-radius:18px;padding:16px;box-shadow:var(--sh-s);min-width:0}
+.ben>div:nth-child(1){background:var(--yellow-soft)}.ben>div:nth-child(2){background:var(--blue-soft)}.ben>div:nth-child(3){background:var(--pink-soft)}.ben>div:nth-child(4){background:var(--mint-soft)}
+.bi{grid-row:1 / span 3;width:48px;height:48px;border-radius:50%;background:var(--white);border:var(--bd);display:flex;align-items:center;justify-content:center}
+.bi svg{width:23px;height:23px}
+.ben b{grid-column:2;display:block;font-family:var(--fd);font-weight:400;font-size:19px;line-height:1.15;margin-bottom:4px}
+.ben p{grid-column:2;font-size:14.5px;color:var(--ink2)}
+.tg{grid-column:2;justify-self:start;margin-top:10px;font-size:11.5px;font-weight:800;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:1px 11px}
+
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pcard{border:var(--bd);border-radius:16px;padding:14px;box-shadow:var(--sh-s);min-width:0}
+.pcard:nth-child(4n+1){background:var(--yellow-soft)}.pcard:nth-child(4n+2){background:var(--blue-soft)}.pcard:nth-child(4n+3){background:var(--pink-soft)}.pcard:nth-child(4n+4){background:var(--mint-soft)}
+.pcard i{display:flex;width:34px;height:34px;border-radius:50%;background:var(--white);border:2px solid var(--ink);align-items:center;justify-content:center;font-style:normal;font-family:var(--fd);font-size:16px;margin-bottom:10px}
+.pcard b{display:block;font-family:var(--fd);font-weight:400;font-size:17px;line-height:1.15;margin-bottom:4px}
+.pcard span{font-size:13.5px;color:var(--ink2);line-height:1.45;display:block}
+
+.steps{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:50px minmax(0,1fr);column-gap:14px;align-items:start;background:var(--white);border:var(--bd);border-radius:18px;padding:16px;box-shadow:var(--sh-s)}
+.step>span{grid-row:1 / span 2;font-family:var(--fd);font-size:46px;line-height:.95}
+.step b{display:block;font-weight:800;font-size:16.5px;margin-bottom:3px}
+.step p{font-size:14.5px;color:var(--ink2)}
+
+.faq details{background:var(--white);border:var(--bd);border-radius:14px;margin-bottom:12px;box-shadow:var(--sh-s)}
+.faq summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:800;font-size:15.5px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--fd);font-size:24px;line-height:1;flex-shrink:0}
+.faq details[open] summary::after{content:'\2212'}
+.faq details[open]{background:var(--yellow-soft)}
+.faq details p{padding:0 16px 16px;color:var(--ink2);font-size:15px}
+
+.cl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.cl div{border:var(--bd);border-radius:14px;padding:12px 13px;background:var(--paper);min-width:0}
+.cl b{display:block;font-weight:800;font-size:14.5px;line-height:1.3;margin-bottom:2px}.cl span{font-size:13px;color:var(--ink2);line-height:1.45;display:block}
+
+.fin{background:var(--ink);color:#fff;padding-block:48px;border-top:var(--bd);text-align:center}
+.fin h2{font-family:var(--fd);font-weight:400;font-size:28px;line-height:1.1;margin-bottom:10px;text-wrap:balance}
+.fin p{color:#C9CBEA;margin-bottom:24px}
+.fin .btn{width:100%;box-shadow:4px 4px 0 var(--pink)}.fin .btn:hover{box-shadow:6px 6px 0 var(--pink)}
+
+footer .wrap{padding-block:22px 0;font-size:13px;color:var(--ink2);text-align:center}
+footer .wrap span{display:block}
+.legal{font-size:12px;color:var(--ink3);line-height:1.65;text-align:center;padding:12px var(--gr) 96px var(--gl)}
+
+.stk{position:fixed;left:max(0px,calc(50% - 230px));right:max(0px,calc(50% - 230px));bottom:0;z-index:50;padding:11px var(--gr) calc(11px + env(safe-area-inset-bottom,0px)) var(--gl);background:var(--yellow);border-top:var(--bd);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.stk.show{transform:none;visibility:visible;transition-delay:0s}
+.stk .btn{display:flex;width:100%;background:var(--white)}
+
+@media(max-width:520px){
+  body{padding:0;background:var(--paper)}
+  .shell{border:none;border-radius:0;box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){.pf,.btn,.ob,.stk{transition:none}.typ span{animation:none;opacity:.6}.msgs{scroll-behavior:auto}}
+</style>
+
+<div class="stk" id="stk"><button type="button" class="btn block" onclick="RT.open()">Mulai Tes Pola Asuh (± 4 menit)</button></div>
+<div class="shell">
+<div class="ribbon"><div class="wrap"><span><b>Demo</b>Template kuis lead funnel. Semua konten adalah contoh.</span><a href="https://rzdev.biz.id" target="_blank" rel="noopener">rzdev.biz.id</a></div></div>
+
+
+
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#FFC93C" stroke="#1A1A3D" stroke-width="2.5"/><path d="M20 30V19" stroke="#1A1A3D" stroke-width="2.8" stroke-linecap="round"/><path d="M20 21c0-5 3-8 8-8 0 5-3 8-8 8z" fill="#7DDCB0" stroke="#1A1A3D" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 24c0-4-2.5-6.500-7-6.500 0 4 2.500 6.500 7 6.500z" fill="#FF8FAB" stroke="#1A1A3D" stroke-width="2.4" stroke-linejoin="round"/></svg>rzdev.biz.id</a>
+  <button type="button" class="btn sm" onclick="RT.open()">Mulai Tes</button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="blob"></div><div class="wrap">
+  <div class="hero-copy">
+    <div class="eb">Tes gratis · 10 pernyataan · ± 4 menit</div>
+    <h1 class="ht">Kenali pola asuhmu, <mark>dampingi anak</mark> dengan lebih tenang.</h1>
+    <p class="lead">Pahami <strong>cara kamu menghadapi emosi anak, menetapkan aturan, dan mengelola lelah</strong>. Bukan untuk menilai benar atau salah, tapi untuk melihat pola yang bisa kamu rawat, mulai dari langkah kecil.</p>
+    <div class="cta-row"><button id="start" class="btn" type="button" onclick="RT.open()">Mulai Tes Pola Asuh</button><a class="btn white" href="#hasil">Lihat contoh hasil</a></div>
+    <div class="chips"><span>100% gratis</span><span>Tanpa akun</span><span>Hasil langsung</span></div>
+    <p class="note">Alat refleksi untuk orang tua, bukan penilaian terhadap anak dan bukan pengganti psikolog. Jawabanmu baru dikirim jika kamu setuju di akhir.</p>
+  </div>
+  <div class="stage" id="hasil">
+    <div class="sticker" aria-hidden="true">Gratis<small>4 menit</small></div>
+    <div class="sum sample"><span class="tag">Contoh ilustrasi</span>
+      <h4>Profil Pola Asuh Rina</h4>
+      <div class="pat"><em>POLA UTAMA</em><b>Pendamping Emosi</b><span>Menemani perasaan anak lebih dulu</span></div>
+      <div class="br"><div class="l"><span>Kehangatan</span><span>75</span></div><div class="bar"><i style="width:75%;background:var(--yellow)"></i></div></div>
+      <div class="br"><div class="l"><span>Struktur dan batasan</span><span>50</span></div><div class="bar"><i style="width:50%;background:var(--blue)"></i></div></div>
+      <div class="br"><div class="l"><span>Penerimaan emosi anak</span><span>75</span></div><div class="bar"><i style="width:75%;background:var(--pink)"></i></div></div>
+      <div class="br"><div class="l"><span>Ketenangan diri</span><span>25</span></div><div class="bar"><i style="width:25%;background:var(--mint)"></i></div></div>
+      <div class="lock">Di laporan WhatsApp: <strong>apa yang mungkin dirasakan anak vs niatmu</strong> dan <strong>rencana langkah kecil 7 hari</strong>.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="chs" id="chs" hidden aria-label="Tes pola asuh"><div class="wrap">
+  <div class="chc">
+    <div class="pt"><div class="pf" id="prog"></div></div>
+    <div class="chh"><div class="ava">T</div><div class="cht"><h3>Tumbuh</h3><p>pendamping refleksi digitalmu</p></div><button type="button" class="cx" id="cx" aria-label="Tutup chat">&#10005;</button></div>
+    <div class="msgs" id="msgs" role="log" aria-live="polite"></div>
+    <div class="ci" id="ci"></div>
+  </div>
+</div></section>
+
+<section class="sec blue"><div class="wrap">
+  <div class="sh"><h2 class="st">Pernah merasa begini sebagai orang tua?</h2><p class="ss">Kalau salah satunya terasa dekat, tes ini dibuat untukmu.</p></div>
+  <div class="pain">
+    <p>Kamu meninggikan suara saat lelah, lalu menyesal begitu anak terdiam.</p>
+    <p>Kamu ingin tegas, tapi tidak tega melihat anak menangis, dan akhirnya aturan melonggar.</p>
+    <p>Kamu sudah memberi yang terbaik, tapi masih merasa kurang dibanding orang tua lain.</p>
+    <p>Kamu bingung kenapa anak sering menolak, padahal niatmu baik.</p>
+  </div>
+  <p class="pain-end">Itu bukan tanda kamu orang tua yang gagal. Itu pola, dan pola bisa dirawat.</p>
+</div></section>
+
+<section class="sec white"><div class="wrap">
+  <div class="sh"><h2 class="st">Yang kamu dapat setelah 4 menit</h2><p class="ss">Tanpa daftar akun, tanpa bayar.</p></div>
+  <div class="ben">
+    <div><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.500 8.500l-2 5-5 2 2-5z"/></svg></div><b>Pola asuh utama</b><p>Satu dari 8 pola, lengkap dengan kekuatan dan tantangannya di rumah.</p><span class="tg">hasil instan</span></div>
+    <div><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A3D" stroke-width="2.2" stroke-linecap="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></div><b>Peta 4 dimensi</b><p>Kehangatan, struktur, penerimaan emosi anak, dan ketenangan dirimu.</p><span class="tg">hasil instan</span></div>
+    <div><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><b>Satu langkah kecil</b><p>Saran praktis sesuai polamu, bisa langsung dicoba hari ini.</p><span class="tg">hasil instan</span></div>
+    <div><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1A3D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><b>Laporan via WhatsApp</b><p>Apa yang mungkin dirasakan anak vs niatmu, plus rencana 7 hari.</p><span class="tg">gratis</span></div>
+  </div>
+</div></section>
+
+<section class="sec pink" id="tipe"><div class="wrap">
+  <div class="sh"><h2 class="st">8 pola asuh. Kamu yang mana?</h2><p class="ss">Hasilmu jatuh di salah satunya. Tidak ada pola yang buruk.</p></div>
+  <div class="pgrid">
+    <div class="pcard"><i>J</i><b>Jangkar Hangat</b><span>Hangat, dengan batas yang jelas</span></div>
+    <div class="pcard"><i>P</i><b>Pendamping Emosi</b><span>Menemani perasaan anak lebih dulu</span></div>
+    <div class="pcard"><i>T</i><b>Pemandu Terstruktur</b><span>Rutinitas dan konsistensi</span></div>
+    <div class="pcard"><i>H</i><b>Hati Lembut</b><span>Dekat, kadang sulit bersikap tegas</span></div>
+    <div class="pcard"><i>S</i><b>Pelindung Siaga</b><span>Waspada demi keselamatan anak</span></div>
+    <div class="pcard"><i>C</i><b>Si Cepat Bereaksi</b><span>Tanggap, tapi mudah meninggi saat lelah</span></div>
+    <div class="pcard"><i>L</i><b>Pahlawan Lelah</b><span>Memberi banyak, jarang rehat</span></div>
+    <div class="pcard"><i>K</i><b>Pemandu Percaya</b><span>Tenang dan memberi ruang tumbuh</span></div>
+  </div>
+</div></section>
+
+<section class="sec yellow" id="cara"><div class="wrap">
+  <div class="sh"><h2 class="st">Cara kerjanya</h2><p class="ss" style="color:var(--ink)">Tiga langkah, langsung dari HP kamu.</p></div>
+  <div class="steps">
+    <div class="step"><span>1</span><b>Kenalkan dirimu dan anakmu</b><p>Cukup nama panggilan serta bulan dan tahun lahir anak. Tanpa data sensitif.</p></div>
+    <div class="step"><span>2</span><b>Jawab 10 pernyataan</b><p>Tentang kehangatan, aturan, respons terhadap emosi anak, dan kondisi dirimu. Tidak ada jawaban benar atau salah.</p></div>
+    <div class="step"><span>3</span><b>Terima profil dan laporan</b><p>Hasil muncul langsung. Laporan yang lebih dalam dikirim lewat WhatsApp bila kamu mau.</p></div>
+  </div>
+</div></section>
+
+<section class="sec white" id="faq"><div class="wrap">
+  <div class="sh"><h2 class="st">Pertanyaan yang sering muncul</h2></div>
+  <div class="faq">
+    <details><summary>Apakah ini menilai atau mendiagnosis anak saya?</summary><p>Tidak. Tes ini hanya menggambarkan kecenderungan pengasuhanmu saat ini. Hasilnya bersifat edukatif, bukan diagnosis dan bukan penilaian perkembangan anak.</p></details>
+    <details><summary>Berapa lama tesnya?</summary><p>Sekitar 4 menit: beberapa pertanyaan pembuka, lalu 10 pernyataan dengan lima pilihan jawaban.</p></details>
+    <details><summary>Siapa yang bisa ikut?</summary><p>Orang tua atau wali sah berusia 18 tahun ke atas, yang mengasuh anak usia 0 sampai 17 tahun.</p></details>
+    <details><summary>Data apa tentang anak saya yang diminta?</summary><p>Hanya nama panggilan (boleh inisial) serta bulan dan tahun lahir. Tidak ada nama lengkap, foto, sekolah, alamat, atau data kesehatan anak.</p></details>
+    <details><summary>Saya punya lebih dari satu anak. Bagaimana?</summary><p>Pilih satu anak yang paling ingin kamu pahami saat ini. Tes bisa diulang untuk anak lain.</p></details>
+  </div>
+</div></section>
+
+<section class="sec blue" id="klien"><div class="wrap cust">
+  <div>
+    <span class="tag" style="background:var(--white)">Untuk klien</span>
+    <h2 class="st">Template ini bisa disesuaikan dengan bisnismu</h2>
+    <p class="ss">Topik parenting di halaman ini hanya contoh. Struktur, alur chat, dan sistem laporannya bisa diganti ke industri apa pun.</p>
+    <div style="margin-top:24px"><a class="btn" href="https://rzdev.biz.id" target="_blank" rel="noopener">Diskusikan proyekmu</a></div>
+  </div>
+  <div class="cl">
+    <div><b>Brand dan warna</b><span>Logo, palet, huruf, dan nada bahasa</span></div>
+    <div><b>Topik dan pertanyaan</b><span>Jumlah, isi, dan sistem penilaian</span></div>
+    <div><b>Pola hasil</b><span>Nama, deskripsi, dan saran tiap pola</span></div>
+    <div><b>WhatsApp dan Sheets</b><span>Laporan otomatis dan rekap leads</span></div>
+    <div><b>Pelacakan iklan</b><span>Meta Pixel dan Google Tag</span></div>
+    <div><b>Domain sendiri</b><span>Dipasang di domain milik klien</span></div>
+  </div>
+</div></section>
+
+<section class="fin"><div class="wrap">
+  <div><h2>Hasilnya langsung muncul di layar.</h2><p>Gratis, tanpa daftar akun, dan tidak sampai 5 menit.</p></div>
+  <button type="button" class="btn" onclick="RT.open()">Mulai Tes Pola Asuh</button>
+</div></section>
+</main>
+
+<footer>
+<div class="wrap"><span><b>Rumah Tumbuh</b> adalah halaman demo. Nama dan isi hanya contoh.</span><span>Template oleh <a href="https://rzdev.biz.id" target="_blank" rel="noopener">rzdev.biz.id</a></span></div>
+<p class="legal"><strong>Disclaimer:</strong> Hasil menggambarkan kecenderungan pengasuhan saat ini, bersifat edukatif dan reflektif, bukan diagnosis psikologis atau medis, dan bukan penilaian terhadap anak. Jika kamu khawatir dengan perkembangan, perilaku, atau keselamatan anak, konsultasikan dengan psikolog anak, dokter anak, atau tenaga profesional berlisensi. Untuk kekerasan terhadap anak, hubungi SAPA 129. Untuk tekanan emosional berat, hubungi layanan kesehatan jiwa 119 ext. 8.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+/* ====== KONFIGURASI ====== */
+const CFG={
+  WA:'6281234567890',   // ganti dengan nomor WhatsApp bisnis klien
+  SCRIPT_URL:'',        // kosong = mode demo (data tidak dikirim ke mana pun)
+  BRAND:'Rumah Tumbuh'
+};
+/* ========================= */
+const AGREE=['Sangat tidak sesuai','Tidak sesuai','Kadang-kadang','Sesuai','Sangat sesuai'];
+const STEPS=[
+{p:'Kehangatan dan Kedekatan',q:'Saya menunjukkan kasih sayang kepada anak setiap hari lewat pelukan, kata-kata, atau waktu bersama, bahkan ketika saya sedang lelah.'},
+{p:'Kehangatan dan Kedekatan',q:'Anak saya lebih sering mendengar instruksi dan koreksi dari saya daripada pujian atau ucapan terima kasih.'},
+{p:'Struktur dan Batasan',q:'Aturan di rumah jelas, dan saya berusaha konsisten menjalankannya meskipun anak merengek atau memprotes.'},
+{p:'Struktur dan Batasan',q:'Saya sering melonggarkan aturan atau mengalah supaya anak berhenti menangis atau protes.'},
+{p:'Penerimaan Emosi Anak',q:'Saat anak menangis atau marah, saya berusaha memahami perasaannya dulu sebelum memberi nasihat atau solusi.'},
+{p:'Penerimaan Emosi Anak',q:'Saya sering berkata seperti "jangan nangis" atau "gitu aja kok sedih" ketika anak sedang emosional.'},
+{p:'Ketenangan Diri',q:'Saat sangat lelah atau banyak pikiran, saya mudah meninggikan suara atau bereaksi keras kepada anak.'},
+{p:'Ketenangan Diri',q:'Setelah emosi mereda, saya bisa minta maaf dan memperbaiki suasana dengan anak jika tadi saya keliru.'},
+{p:'Kebutuhan Pribadi',q:'Saya sering sangat khawatir akan keselamatan atau masa depan anak, sehingga sulit membiarkannya mencoba sendiri.'},
+{p:'Kebutuhan Pribadi',q:'Saya merasa butuh lebih banyak dukungan atau waktu untuk diri sendiri agar bisa mengasuh dengan baik.'}];
+const OPEN=5, TOTAL=OPEN+STEPS.length;
+const KEYS=['WARM','COACH','STEADY','GENTLE','PROTECT','FAST','WEARY','TRUST'];
+const PAT={
+WARM:['Jangkar Hangat','Hangat, dengan batas yang jelas','Kamu memberi kehangatan sekaligus batasan yang jelas, sehingga anak merasa dicintai dan tahu apa yang diharapkan darinya.','konsisten dan hangat, anak merasa aman','bisa terbebani keinginan menjadi orang tua yang selalu ideal','Pilih satu momen harian (misalnya sebelum tidur) dan tanyakan, "Hari ini apa yang paling bikin kamu senang, dan apa yang paling bikin kesal?" Dengarkan tanpa menyela atau menasihati.'],
+COACH:['Pendamping Emosi','Menemani perasaan anak lebih dulu','Kamu cenderung menamai dan memahami perasaan anak lebih dulu sebelum mengarahkan perilakunya.','membantu anak mengenali dan mengelola emosinya','bisa kewalahan bila semua emosi anak ingin segera kamu selesaikan','Ingat, kamu tidak harus menyelesaikan semua perasaan anak. Cukup menemani dan menamai, misalnya "Kamu kecewa ya." Biarkan anak menemukan jalannya, sambil tetap memegang batas perilaku.'],
+STEADY:['Pemandu Terstruktur','Rutinitas dan konsistensi','Kamu menghargai aturan, rutinitas, dan konsistensi sebagai fondasi anak bertumbuh.','anak tahu batas dan rutinitasnya jelas','kehangatan bisa tertutup oleh tuntutan dan koreksi','Untuk setiap satu koreksi, usahakan ada satu apresiasi yang spesifik, misalnya "Terima kasih sudah merapikan sepatumu sendiri."'],
+GENTLE:['Hati Lembut','Dekat, kadang sulit bersikap tegas','Kamu sangat hangat dan peka, dan lebih mengutamakan kedekatan daripada ketegasan.','anak merasa diterima dan dekat denganmu','batas bisa melonggar saat anak protes atau menangis','Pilih satu aturan yang paling penting, sampaikan dengan kalimat singkat dan hangat, lalu pegang dengan tenang meski anak protes. Satu aturan dulu, bukan semuanya.'],
+PROTECT:['Pelindung Siaga','Waspada demi keselamatan anak','Kamu sangat waspada dan ingin anak aman. Itu lahir dari kasih sayang yang besar.','sigap dan penuh perhatian pada kebutuhan anak','kekhawatiran bisa mengurangi ruang anak untuk mencoba dan belajar dari kegagalan','Pilih satu hal kecil yang aman dan biarkan anak melakukannya sendiri minggu ini (misalnya menuang minum atau memilih baju), walau hasilnya tidak sempurna.'],
+FAST:['Si Cepat Bereaksi','Tanggap, tapi mudah meninggi saat lelah','Kamu bergerak cepat ketika ada masalah dan peduli pada disiplin serta perilaku anak.','tegas dan tanggap','saat lelah, reaksimu bisa lebih keras daripada niat sebenarnya','Beri jeda 10 detik sebelum merespons: tarik napas panjang, turunkan bahu, baru bicara. Kalau sempat meninggi, perbaiki dengan, "Tadi suaraku terlalu keras. Maaf ya."'],
+WEARY:['Pahlawan Lelah','Memberi banyak, jarang rehat','Kamu memberi banyak, dan mungkin jarang punya waktu untuk dirimu sendiri.','berdedikasi dan mau terus belajar','kelelahan membuat kesabaran cepat habis dan rasa bersalah menumpuk','Jadwalkan 15 menit milikmu sendiri hari ini, tanpa tugas rumah tangga, dan minta satu bantuan konkret dari pasangan, keluarga, atau teman.'],
+TRUST:['Pemandu Percaya','Tenang dan memberi ruang tumbuh','Kamu cukup tenang, mau memperbaiki saat keliru, dan percaya anak mampu bertumbuh dengan caranya sendiri.','tenang dan memberi ruang tumbuh','bisa terlewat memberi arahan saat anak sebenarnya butuh bimbingan lebih','Sesekali tanyakan, "Mau ditemani, atau mau coba sendiri dulu?" supaya anak belajar meminta bantuan sesuai kebutuhannya.']};
+const ROLE={AYAH:'Ayah',IBU:'Ibu',WALI:'Wali atau pengasuh utama'};
+const MON=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const DIMC=['var(--yellow)','var(--blue)','var(--pink)','var(--mint)'];
+
+function track(n){try{(window.dataLayer=window.dataLayer||[]).push({event:n})}catch(e){}}
+let role='',nama='',anak='',kBulan='',kAge=0,started=false,busy=false,sent=false,R=null;
+const A={q:[]};
+const $=function(id){return document.getElementById(id)};
+const esc=function(t){return t==null?'':String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')};
+const nm=function(){return '<strong>'+esc(nama||'Sahabat')+'</strong>'};
+const cn=function(){return '<strong>'+esc(anak||'si kecil')+'</strong>'};
+function ageLbl(m){return m<1?'baru lahir':m<24?m+' bulan':Math.floor(m/12)+' tahun'}
+function down(){const b=$('msgs');if(b)b.scrollTop=b.scrollHeight}
+function msg(cls,av,html,bc){const box=$('msgs');if(!box)return;const m=document.createElement('div');m.className='msg '+cls;const a=document.createElement('div');a.className='ma';a.textContent=av;const b=document.createElement('div');b.className='bub'+(bc?' '+bc:'');b.innerHTML=html;m.appendChild(a);m.appendChild(b);box.appendChild(m);down()}
+function bot(h,c){msg('bot','T',h,c)}
+function user(t){msg('user','',esc(t))}
+function hideT(){const t=$('typ');if(t&&t.parentNode)t.parentNode.removeChild(t)}
+function typing(ms,cb){hideT();const box=$('msgs');if(!box)return;const m=document.createElement('div');m.className='msg bot';m.id='typ';m.innerHTML='<div class="ma">T</div><div class="bub"><div class="typ"><span></span><span></span><span></span></div></div>';box.appendChild(m);down();setTimeout(function(){hideT();cb()},ms)}
+function prog(p){const f=$('prog');if(f)f.style.width=Math.min(p,100)+'%'}
+function clr(){const c=$('ci');if(c)c.innerHTML='';return c}
+function sticky(){const s=$('stk'),cs=$('chs'),c=$('start');if(!s||!cs||!c)return;const r=c.getBoundingClientRect();s.classList.toggle('show',!(r.bottom>0&&r.top<window.innerHeight)&&cs.hidden)}
+function open(){const s=$('chs');if(!s)return;s.hidden=false;sticky();
+ if(!started){started=true;track('RT_Start');setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(greet,600)},150)}
+ else{s.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(down,400)}
+ const b=$('start');if(b)b.textContent='Lanjutkan Tes'}
+function close(){const s=$('chs');if(!s)return;s.hidden=true;sticky();const b=$('start');if(b)b.scrollIntoView({behavior:'smooth',block:'center'})}
+
+function opts(list,cb){const ci=clr();if(!ci)return;const w=document.createElement('div');w.className='opts';
+ list.forEach(function(l,i){const b=document.createElement('button');b.type='button';b.className='ob';b.innerHTML='<b>'+'ABCDE'[i]+'</b><span>'+esc(l)+'</span>';
+  b.onclick=function(){if(busy)return;busy=true;cb(i,l);setTimeout(function(){busy=false},500)};w.appendChild(b)});ci.appendChild(w)}
+function textIn(ph,done){const ci=clr();if(!ci)return;const ta=document.createElement('textarea');ta.className='fi';ta.placeholder=ph;ta.maxLength=40;ta.setAttribute('aria-label',ph);const b=document.createElement('button');b.type='button';b.className='btn';b.textContent='Lanjutkan';ci.appendChild(ta);ci.appendChild(b);
+ b.onclick=function(){const v=ta.value.trim();if(!v||busy)return;busy=true;done(v);setTimeout(function(){busy=false},600)};
+ ta.onkeydown=function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();b.click()}};
+ if(!window.matchMedia('(pointer:coarse)').matches)setTimeout(function(){ta.focus({preventScroll:true})},350)}
+function monthIn(done){const ci=clr();if(!ci)return;const w=document.createElement('div');w.className='mrow';
+ const m=document.createElement('select');m.className='fi';m.id='kb';m.setAttribute('aria-label','Bulan lahir anak');m.innerHTML='<option value="">Bulan</option>'+MON.map(function(x,i){return '<option value="'+('0'+(i+1)).slice(-2)+'">'+x+'</option>'}).join('');
+ const y=document.createElement('select');y.className='fi';y.id='kt';y.setAttribute('aria-label','Tahun lahir anak');const cy=new Date().getFullYear();let o='<option value="">Tahun</option>';for(let k=cy;k>=cy-18;k--)o+='<option value="'+k+'">'+k+'</option>';y.innerHTML=o;
+ w.appendChild(m);w.appendChild(y);const b=document.createElement('button');b.type='button';b.className='btn';b.textContent='Lanjutkan';ci.appendChild(w);ci.appendChild(b);
+ b.onclick=function(){if(!m.value||!y.value||busy)return;busy=true;done(y.value,m.value);setTimeout(function(){busy=false},600)}}
+
+function greet(){typing(700,function(){
+ bot('Halo! Saya <strong>Tumbuh</strong>, pendamping refleksimu.<br><br>Tes ini bukan untuk menilai benar atau salahnya caramu mengasuh, dan bukan untuk menilai anakmu. Tujuannya memahami <strong>pola pengasuhanmu</strong> saat menghadapi emosi, aturan, dan kelelahan sehari-hari. Ruang ini aman dan tanpa penghakiman.','gr');
+ setTimeout(askAdult,800)})}
+function askAdult(){typing(600,function(){bot('Layanan ini untuk orang tua atau wali yang berusia 18 tahun ke atas. Apakah kamu memenuhi syarat itu?');
+ opts(['Ya, saya 18 tahun ke atas','Belum'],function(i,l){user(l);clr();
+  if(i===1){typing(600,function(){bot('Terima kasih sudah mampir. Tes ini baru bisa dipakai oleh orang tua atau wali berusia 18 tahun ke atas.');const c=$('ci');if(c)c.innerHTML='<p class="cn">Sesi ini selesai.</p>'});return}
+  setTimeout(pickRole,300)})})}
+function pickRole(){prog(1/TOTAL*90);typing(600,function(){bot('Kamu mendampingi anak sebagai siapa?');
+ opts(['Saya Ayah','Saya Ibu','Saya wali atau pengasuh utama (kakek, nenek, kerabat, dll.)'],function(i,l){role=['AYAH','IBU','WALI'][i];track('RT_Role_'+role);user(l);clr();setTimeout(askName,300)})})}
+function askName(){prog(2/TOTAL*90);typing(600,function(){bot('Siapa nama panggilanmu?');textIn('Tulis nama panggilanmu...',function(v){nama=v;user(v);clr();setTimeout(askAnak,350)})})}
+function askAnak(){prog(3/TOTAL*90);typing(700,function(){bot('Senang berkenalan, '+nm()+'. Sekarang tentang anakmu. Kalau punya lebih dari satu, pilih satu anak yang paling ingin kamu pahami saat ini. Siapa nama panggilannya?<br><small style="color:var(--ink3)">Cukup nama panggilan atau inisial.</small>');
+ textIn('Nama panggilan anak...',function(v){anak=v;user(v);clr();setTimeout(askKM,350)})})}
+function askKM(){prog(4/TOTAL*90);typing(600,function(){bot('Kapan '+cn()+' lahir? Cukup bulan dan tahunnya.');
+ monthIn(function(y,m){const n=new Date(),diff=n.getFullYear()*12+n.getMonth()-((+y)*12+(+m-1));user(MON[+m-1]+' '+y);clr();
+  if(diff<0||diff>=216){typing(600,function(){bot('Layanan ini untuk orang tua dari anak usia 0 sampai 17 tahun. Periksa kembali bulan dan tahunnya ya.');setTimeout(askKM,500)});return}
+  kBulan=y+'-'+m;kAge=diff;
+  const t=diff<1?cn()+' baru hadir bulan ini. Selamat!':cn()+' kini berusia <strong>'+ageLbl(diff)+'</strong>.';
+  typing(1000,function(){bot(t+'<br><br>Mengasuh bukan soal menjadi sempurna. Hari yang melelahkan dan hari yang hangat sama-sama bagian dari perjalanan yang layak kamu hargai.','gr');setTimeout(function(){q(0)},1700)})})})}
+
+function q(i){if(i>=STEPS.length)return finish();const s=STEPS[i];prog((OPEN+i)/TOTAL*90);
+ const intro=i===0?'Sekarang, '+nm()+', ada '+STEPS.length+' pernyataan singkat. Pilih yang paling menggambarkan <em>apa yang biasanya terjadi di rumah</em>, bukan yang ingin kamu lakukan. Bayangkan keseharianmu bersama '+cn()+'.<br><br>':'';
+ const mid=i===5?'Separuh jalan, kamu hebat.<br><br>':'';
+ typing(i===0?800:450,function(){bot(intro+mid+'<span class="qn">'+s.p+' · '+(i+1)+' dari '+STEPS.length+'</span><br>'+esc(s.q));
+  opts(AGREE,function(k,l){A.q[i]=k+1;user('ABCDE'[k]+'. '+l);clr();setTimeout(function(){q(i+1)},350)})})}
+
+function calc(){const a=A.q,v=function(i){return a[i-1]},r=function(i){return 6-a[i-1]};
+ const d={war:v(1)+r(2),str:v(3)+r(4),emo:v(5)+r(6),cal:r(7)+v(8)};
+ const p={WARM:v(1)+r(2)+v(3)+r(4),COACH:v(5)+r(6)+v(8)+r(7),STEADY:v(3)+r(4)+r(1)+v(2),GENTLE:v(1)+r(2)+r(3)+v(4),PROTECT:2*v(9)+v(1)+v(4),FAST:r(7)+r(6)+v(3)+v(2),WEARY:2*v(10)+r(7)+r(8),TRUST:r(9)+r(7)+v(8)+v(5)};
+ const ord=KEYS.slice().sort(function(x,y){return p[y]-p[x]||KEYS.indexOf(x)-KEYS.indexOf(y)});
+ const ov=v(9)>=4,sup=v(10)>=4;
+ const need=ov&&sup?'Dukungan untuk dirimu, dan latihan perlahan memberi ruang mandiri pada anak':sup?'Dukungan dan waktu istirahat untuk dirimu sebagai orang tua':ov?'Latihan perlahan memberi ruang mandiri pada anak':'Kebutuhanmu cukup seimbang saat ini';
+ return{d:d,pri:ord[0],sec:ord[1],need:need}}
+const pc=function(x){return Math.round((x-2)/8*100)};
+
+function finish(){track('RT_Complete');prog(95);R=calc();
+ typing(1000,function(){bot('Perjalanan refleksi kita selesai, '+nm()+'. Terima kasih atas kejujuranmu.');
+  setTimeout(function(){
+   const P=PAT[R.pri],S=PAT[R.sec];
+   let h='<div class="sum" style="box-shadow:none;padding:16px"><h4>Profil Pola Asuh '+esc(nama)+'</h4><div class="sub">'+ROLE[role]+' dari '+esc(anak)+' ('+ageLbl(kAge)+'). Kecenderungan saat ini, bukan diagnosis.</div>'+
+   '<div class="pat"><em>POLA UTAMA</em><b>'+P[0]+'</b><span>'+P[1]+'</span></div>'+
+   '<div class="si"><strong class="k">POLA KAMU</strong>'+P[2]+'<br><br><strong class="k">KEKUATAN</strong>'+P[3]+'.<br><br><strong class="k">TANTANGAN</strong>'+P[4]+'.</div>'+
+   '<div class="si"><strong class="k">POLA PENDUKUNG</strong>'+S[0]+' ('+S[1]+')</div><div class="si"><strong class="k">PETA PENGASUHAN</strong>';
+   [['Kehangatan dan kedekatan',R.d.war],['Struktur dan batasan',R.d.str],['Penerimaan emosi anak',R.d.emo],['Ketenangan diri',R.d.cal]].forEach(function(x,i){h+='<div class="br"><div class="l"><span>'+x[0]+'</span><span>'+pc(x[1])+'</span></div><div class="bar"><i style="width:'+pc(x[1])+'%;background:'+DIMC[i]+'"></i></div></div>'});
+   h+='<small style="color:var(--ink3)">Skor rendah bukan berarti buruk. Ini gambaran kecenderungan, bukan nilai.</small></div>'+
+   '<div class="si"><strong class="k">KEBUTUHANMU SAAT INI</strong>'+R.need+'</div>'+
+   '<div class="si"><strong class="k">LANGKAH KECIL MINGGU INI</strong><div class="tip">'+P[5]+'</div></div>'+
+   '<div class="lock">Belum tampil di sini: <strong>apa yang mungkin dirasakan anak vs niatmu</strong>, serta <strong>rencana langkah kecil 7 hari</strong>. Keduanya ada di laporan WhatsApp gratis.</div></div>';
+   bot(h,'wide');const c=clr();if(c)c.innerHTML='<p class="cn">Profil selesai.</p>';setTimeout(offer,1500)},900)})}
+
+function offer(){typing(900,function(){bot('Satu lagi, '+nm()+': <strong>Laporan Profil Pengasuhan</strong> gratis lewat WhatsApp. Isinya pola utamamu, apa yang mungkin dirasakan anak vs niatmu, dan rencana langkah kecil 7 hari.');
+ setTimeout(function(){
+  const h='<div class="rep" id="rep"><span class="demo-badge">Mode demo: data tidak dikirim</span><h4>Laporan Gratis Profil Pengasuhan</h4><p>Isi nomor WhatsApp, centang kedua persetujuan, lalu kirim.</p>'+
+  '<label class="rl" for="wa">Nomor WhatsApp aktif</label><input type="tel" id="wa" class="fi" inputmode="tel" placeholder="Contoh: 0812XXXXXXXX">'+
+  '<label class="ag" for="agree"><input type="checkbox" id="agree"><span>Saya bersedia menerima laporan lewat WhatsApp dan setuju nama panggilan, nomor WhatsApp, serta ringkasan jawaban saya dipakai untuk menyusun laporan ini.</span></label>'+
+  '<label class="ag" for="agreek"><input type="checkbox" id="agreek"><span>Saya adalah orang tua atau wali sah dari anak ini, dan setuju nama panggilan serta bulan dan tahun lahir anak dipakai hanya untuk menyusun laporan ini.</span></label>'+
+  '<div class="err" id="err" role="alert"></div><button type="button" class="btn block" id="snd" style="margin-top:14px">Simpan Data dan Lanjut ke WhatsApp</button></div>';
+  bot(h,'wide');prog(98);const c=clr();if(c)c.innerHTML='<p class="cn">Belum siap? Tutup chat ini kapan saja. Jawabanmu tidak dikirim tanpa persetujuan.</p>';
+  $('snd').addEventListener('click',submit)},700)})}
+function rerr(m){const e=$('err');if(!e)return;e.textContent=m||'';e.classList.toggle('on',!!m)}
+function normWA(v){let d=String(v).replace(/\D/g,'');if(d.indexOf('0')===0)d='62'+d.slice(1);else if(d.indexOf('8')===0)d='62'+d;return d}
+
+function submit(){
+ if(sent)return;const sd=$('snd');rerr('');
+ const w=normWA($('wa').value);
+ if(!$('wa').value.trim()){rerr('Lengkapi nomor WhatsApp-mu.');return}
+ if(!/^\d{9,15}$/.test(w)){rerr('Nomor WhatsApp tidak valid. Contoh: 0812XXXXXXXX.');return}
+ if(!$('agree').checked||!$('agreek').checked){rerr('Centang kedua persetujuan terlebih dahulu.');return}
+ sd.disabled=true;sd.innerHTML='<span class="spin"></span> Menyimpan data...';
+ if(!CFG.SCRIPT_URL){setTimeout(function(){sent=true;track('RT_ReportSaved');done()},900);return}
+ const payload={action:'save_data',produk:'PARENTING_DEMO',nama:nama,wa:w,peran:role,nama_anak:anak,bulan_lahir_anak:kBulan,hasil_survey:'a='+A.q.join('.')+' | pola='+R.pri+'/'+R.sec};
+ fetch(CFG.SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+ .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()})
+ .then(function(){sent=true;track('RT_ReportSaved');done()})
+ .catch(function(e){rerr('Data belum terkirim ('+((e&&e.message)||'koneksi gagal')+'). Periksa internetmu lalu coba lagi.');sd.disabled=false;sd.textContent='Simpan Data dan Lanjut ke WhatsApp'})}
+
+function done(){
+ const c=$('rep');if(!c)return;prog(100);
+ const wl='https://wa.me/'+CFG.WA+'?text='+encodeURIComponent('Halo, saya '+nama+' sudah selesai mengisi Tes Pola Asuh. Mohon kirimkan laporan gratis saya.');
+ c.innerHTML='<div class="done"><div class="dc">&#10003;</div><h4>Data kamu berhasil disimpan</h4><p>Hai <strong>'+esc(nama)+'</strong>, klik tombol di bawah untuk membuka WhatsApp dan meminta laporanmu.</p>'+
+ '<a class="btn block" id="wal" href="'+wl+'" target="_blank" rel="noopener">Buka WhatsApp dan Terima Laporan</a>'+
+ '<div class="mc"><strong>Mode demo:</strong> tidak ada data yang dikirim. Di versi klien, laporan dikirim otomatis setelah tombol ini diklik.</div></div>';
+ down();const ci=clr();if(ci)ci.innerHTML='<p class="cn">Terima kasih, '+esc(nama)+'.</p>';
+ $('wal').addEventListener('click',function(){track('RT_WhatsAppClick')})}
+
+function init(){
+ $('cx').addEventListener('click',close);
+ let tk=false;
+ window.addEventListener('scroll',function(){if(!tk){requestAnimationFrame(function(){sticky();tk=false});tk=true}},{passive:true});
+ window.addEventListener('resize',sticky);
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('chs').hidden)close()});
+ sticky()}
+window.RT={open:open,close:close};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+</body>
+</html>
