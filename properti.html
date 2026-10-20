@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0B2A6B">
+<meta name="robots" content="noindex">
+<title>Kalkulator KPR: Harga Rumah yang Aman untuk Penghasilan Anda</title>
+<meta name="description" content="Isi 2 menit. Hasil langsung muncul dalam laporan profil KPR, lengkap dengan perkiraan cicilan.">
+<meta property="og:title" content="Berapa harga rumah yang aman untuk penghasilan Anda?">
+<meta property="og:description" content="Isi 2 menit. Hasil langsung muncul, lengkap dengan perkiraan cicilan.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<style>
+/* Ganti warna di :root untuk menyesuaikan branding agen */
+:root{
+  color-scheme:light;
+  --bg:#F2F5FB;--white:#fff;--navy:#0B2A6B;--navy2:#123A8C;
+  --teal:#1560D4;--teal-soft:#E6EEFC;--gold:#FF7A1A;--gold-soft:#FFEBDA;
+  --ink:#101C3A;--ink2:#3F4D6B;--ink3:#62718F;--line:#D6DEEE;
+  --err:#B3261E;--err-bg:#FDECEA;
+  --fd:'Newsreader',Georgia,'Times New Roman',serif;
+  --fb:'Manrope',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --gl:max(20px,env(safe-area-inset-left,0px));--gr:max(20px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;padding:24px 16px;background:#DDE5F3;color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--teal);font-weight:700}
+button,input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.shell{max-width:480px;margin:0 auto;background:var(--bg);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(11,42,107,.18)}
+.wrap{padding-left:var(--gl);padding-right:var(--gr)}
+.ctr{text-align:center}
+@media(max-width:520px){body{padding:0;background:var(--bg)}.shell{border-radius:0;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:12px 24px;background:var(--navy);color:#fff;border:0;border-radius:12px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:background .15s}
+.btn:hover{background:var(--navy2)}
+.btn.teal{background:#17803D}.btn.teal:hover{background:#136B33}
+.btn.gold{background:var(--gold);color:var(--navy)}.btn.gold:hover{background:#E86A0A}
+.btn.line{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* header + hero */
+.top{display:flex;justify-content:center;padding-block:16px;border-bottom:1px solid var(--line);background:var(--white)}
+.brand{font-family:var(--fd);font-weight:700;font-size:17px;color:var(--navy);letter-spacing:.01em}
+.hero{background:linear-gradient(180deg,#E3ECFC 0%,#fff 75%);padding-block:32px 36px;border-bottom:1px solid var(--line)}
+.photo{width:92px;height:92px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--navy);border:3px solid #fff;box-shadow:0 0 0 2px var(--gold);display:flex;align-items:center;justify-content:center}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .ini{font-family:var(--fd);font-weight:700;font-size:34px;color:#fff}
+.who b{display:block;font-family:var(--fd);font-weight:700;font-size:19px;color:var(--navy)}
+.who span{font-size:13.5px;color:var(--ink3);font-weight:600}
+.ht{font-family:var(--fd);font-weight:700;font-size:clamp(28px,8.2vw,36px);line-height:1.15;color:var(--navy);letter-spacing:-.01em;margin:0 0 12px;text-wrap:balance}
+.lead{font-size:16.5px;color:var(--ink2);margin-bottom:26px;text-wrap:balance}
+.hook{display:inline-block;background:var(--gold-soft);color:#8A3F00;border:1px solid #FFCFA3;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:800;margin-bottom:16px}
+.callout{margin:18px auto 22px;padding:8px 12px;max-width:340px;background:var(--gold-soft);border:1px solid #FFCFA3;border-radius:10px;text-align:center;font-size:12px;line-height:1.5;color:var(--ink2)}
+.callout strong{color:var(--navy)}
+.tlist{display:grid;gap:12px;text-align:left}
+.tcard{position:relative;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 18px 18px}
+.tcard::before{content:"\201C";position:absolute;top:2px;left:14px;font-family:var(--fd);font-size:54px;line-height:1;color:var(--gold)}
+.tcard p{font-size:15.5px;color:var(--ink);padding-top:16px}
+.tcard footer{padding:12px 0 0;margin-top:12px;border-top:1px solid var(--line);text-align:left;font-size:13px;color:var(--ink3)}
+.tcard footer b{display:inline;margin:0;color:var(--navy);font-size:14px}
+.banner{background:var(--navy);color:#fff;text-align:center;padding:44px 0}
+.banner h2{font-family:var(--fd);font-weight:700;font-size:25px;line-height:1.2;text-wrap:balance;margin:0 0 10px}
+.banner h2 span{color:var(--gold)}
+.banner p{color:#C9D6F2;font-size:15.5px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px;border-top:1px solid var(--line);padding-top:18px}
+.facts div+div{border-left:1px solid var(--line)}
+.facts b{display:block;font-family:var(--fd);font-size:22px;color:var(--navy);line-height:1.1}
+.facts span{font-size:12.5px;color:var(--ink3);font-weight:600}
+
+/* seksi */
+.sec{padding-block:44px}
+.sec.white{background:var(--white);border-block:1px solid var(--line)}
+.st{font-family:var(--fd);font-weight:700;font-size:25px;line-height:1.2;color:var(--navy);text-wrap:balance;margin-bottom:8px}
+.ss{font-size:15.5px;color:var(--ink3);margin-bottom:24px}
+
+/* laporan profil */
+.report{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:4px 4px 14px 14px;text-align:left;box-shadow:0 8px 24px rgba(11,42,107,.08)}
+.rp{padding:20px}
+.rp+.rp{border-top:1px solid var(--line)}
+.rhead{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.rhead small{display:block;font-size:12.5px;font-weight:700;color:var(--teal);margin-bottom:2px}
+.rhead h3{font-family:var(--fd);font-weight:700;font-size:21px;line-height:1.2;color:var(--navy)}
+.rhead p{font-size:13px;color:var(--ink3);margin-top:2px}
+.gauge{position:relative;width:84px;height:84px;flex:none}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge circle{fill:none;stroke-width:7}
+.gauge .bg{stroke:var(--line)}.gauge .fg{stroke:var(--teal);stroke-linecap:round;stroke-dasharray:213.6;transition:stroke-dashoffset .8s}
+.gauge b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:25px;color:var(--navy)}
+.badge{display:inline-block;margin-top:14px;background:var(--teal-soft);color:var(--navy2);font-weight:800;font-size:13px;border-radius:999px;padding:4px 14px}
+.rdesc{font-size:14.5px;color:var(--ink2);margin-top:8px}
+.key{background:var(--navy);color:#fff;border-radius:12px;padding:16px;text-align:center}
+.key small{display:block;font-size:13px;opacity:.8}
+.key b{display:block;font-family:var(--fd);font-weight:700;font-size:34px;line-height:1.15;color:#fff;margin:2px 0}
+.key span{font-size:13.5px;color:#FFC999}
+.sh{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:12px}
+.row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border:0}
+.row span{color:var(--ink3)}.row b{text-align:right;color:var(--ink)}
+.stack{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line);margin:4px 0 10px}
+.stack i{display:block;height:100%;transition:width .6s}
+.legend{display:grid;gap:6px;font-size:13.5px}
+.legend div{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.legend span{display:flex;align-items:center;gap:8px;color:var(--ink2)}
+.legend span::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.legend b{color:var(--ink)}
+.dim{margin-bottom:14px}.dim:last-child{margin-bottom:0}
+.dim .l{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:6px}
+.dim .t{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.dim .t i{display:block;height:100%;background:var(--teal);border-radius:4px;transition:width .6s}
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.notes li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink2)}
+.notes li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold)}
+.notes li.ok::before{background:var(--teal)}
+.rfoot{background:var(--bg);font-size:12px;color:var(--ink3);padding:14px 20px;border-radius:0 0 12px 12px}
+.sampletag{display:inline-block;font-size:12px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:999px;padding:3px 12px;margin-bottom:12px}
+.cons{margin-top:16px;padding:18px;background:var(--white);border:1px solid var(--line);border-radius:14px;text-align:center}
+.cons p{font-size:14.5px;color:var(--ink2);margin-bottom:14px}
+
+/* manfaat */
+.list{display:grid;gap:12px;text-align:left}
+.item{display:flex;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:16px}
+.ic{flex:none;width:40px;height:40px;border-radius:10px;background:var(--teal-soft);color:var(--teal);display:flex;align-items:center;justify-content:center}
+.ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.item h3{font-family:var(--fd);font-weight:700;font-size:17px;color:var(--navy);line-height:1.25}
+.item p{font-size:14.5px;color:var(--ink2);margin-top:2px}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.steps3 b.n{display:flex;width:36px;height:36px;margin:0 auto 10px;border-radius:50%;background:var(--navy);color:#fff;align-items:center;justify-content:center;font-family:var(--fd);font-size:17px}
+.steps3 b.t{display:block;font-size:14.5px;color:var(--navy);line-height:1.3;margin-bottom:3px}
+.steps3 p{font-size:13px;color:var(--ink3);line-height:1.5}
+.agent{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}
+.agent h3{font-family:var(--fd);font-weight:700;font-size:21px;color:var(--navy)}
+.agent .role{font-size:13.5px;font-weight:700;color:var(--teal);margin-bottom:10px}
+.agent .bio{font-size:15px;color:var(--ink2)}
+.afacts{list-style:none;margin:14px 0 0;padding:0;text-align:left;border-top:1px solid var(--line)}
+.afacts li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink2)}
+.afacts:empty{display:none}
+.faq{text-align:left;border-bottom:1px solid var(--line)}
+.faq details{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;font-size:15.5px;color:var(--navy);display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--fd);font-size:22px;line-height:1;flex:none}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 0 16px;font-size:15px;color:var(--ink2)}
+footer{padding:26px 0 96px;text-align:center;font-size:12.5px;color:var(--ink3)}
+footer b{display:block;color:var(--navy);margin-bottom:4px}
+footer p{margin-top:10px;line-height:1.65}
+
+/* kalkulator */
+.chs{background:var(--white);padding:24px var(--gr) 32px var(--gl);border-bottom:1px solid var(--line);scroll-margin-top:0}
+.chh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.chh h2{font-family:var(--fd);font-size:19px;color:var(--navy)}
+.cx{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink2)}
+.qh{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--ink3);margin-bottom:8px}
+.pb{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
+.pb i{display:block;height:100%;background:var(--teal);transition:width .3s}
+.stq{font-family:var(--fd);font-weight:700;font-size:21px;line-height:1.25;color:var(--navy);margin-bottom:4px}
+.p2{font-size:14px;color:var(--ink3);margin-bottom:6px}
+.lb{display:block;font-size:14px;font-weight:700;margin:16px 0 6px}
+.lb small{font-weight:500;color:var(--ink3)}
+.field{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:16px;display:block}
+.field:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.mf{position:relative}.mf span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--ink3)}.mf .field{padding-left:46px}
+.rr{display:grid;gap:8px}
+.rr label{position:relative;display:flex;align-items:center;gap:10px;min-height:48px;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:14.5px;font-weight:600}
+.rr input{accent-color:var(--teal);width:18px;height:18px;margin:0;flex:none}
+.rr label:has(input:checked){border-color:var(--teal);background:var(--teal-soft)}
+.rr.c5{grid-template-columns:repeat(5,1fr);gap:6px}
+.rr.c5 label{flex-direction:column;justify-content:center;gap:0;padding:9px 2px;text-align:center;font-family:var(--fd);font-size:19px;font-weight:700;line-height:1.1}
+.rr.c5 label small{font-family:var(--fb);font-size:11px;font-weight:600;color:var(--ink3)}
+.rr.c5 input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer}
+.rr.c5 label:has(input:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
+.ag{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13.5px;color:var(--ink2);cursor:pointer}
+.ag input{accent-color:var(--teal);width:20px;height:20px;margin-top:2px;flex:none}
+.err{display:none;background:var(--err-bg);color:var(--err);border-radius:10px;padding:9px 12px;font-size:13.5px;font-weight:600;margin-top:14px}.err.on{display:block}
+.step .btn{margin-top:18px}
+.back{display:block;margin:12px auto 0;background:none;border:0;color:var(--ink3);font-weight:600;font-size:13.5px;text-decoration:underline;cursor:pointer;min-height:36px}
+.disc{font-size:12px;color:var(--ink3);margin-top:12px;text-align:center}
+.status{font-size:12.5px;color:var(--ink3);text-align:center;margin-top:12px;min-height:20px}
+.fade{animation:fin .3s ease}@keyframes fin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stk{position:fixed;left:max(0px,calc(50% - 240px));right:max(0px,calc(50% - 240px));bottom:0;z-index:50;padding:10px var(--gr) calc(10px + env(safe-area-inset-bottom,0px)) var(--gl);background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.stk .btn{background:var(--gold);color:var(--navy)}.stk .btn:hover{background:#E86A0A}
+.stk.show{transform:none;visibility:visible;transition-delay:0s}
+</style>
+</head>
+<body>
+<div class="stk" id="stk"><button type="button" class="btn" id="stkBtn">Cek harga rumah aman saya, gratis</button></div>
+
+<div class="shell">
+<header class="top"><span class="brand" id="brand">KPR</span></header>
+
+<section class="hero"><div class="wrap ctr">
+  <span class="hook">Sebelum survei rumah, cek batas aman Anda dulu</span>
+  <h1 class="ht">Berapa harga rumah yang aman untuk penghasilan Anda?</h1>
+  <p class="lead">Isi 2 menit. Hasil langsung muncul, lengkap dengan perkiraan cicilan.</p>
+  <div class="photo" id="heroPhoto" aria-hidden="true"></div>
+  <div class="who"><b id="heroName"></b><span id="heroRole"></span></div>
+  <p class="callout"><strong>Membeli rumah di luar batas kemampuan finansial adalah penyebab utama KPR macet.</strong> Hitung angka aman Anda sekarang dalam 2 menit, sebelum mulai menawar properti.</p>
+  <div class="facts"><div><b>4</b><span>langkah singkat</span></div><div><b>2</b><span>menit</span></div><div><b>Rp0</b><span>biaya</span></div></div>
+</div></section>
+
+<main>
+<section class="sec" id="hasil"><div class="wrap ctr">
+  <h2 class="st">Contoh ilustrasi hasilmu</h2>
+  <p class="ss">Bukan sekadar angka. Anda mendapat skor kesiapan, cicilan, dan rekomendasi dalam satu laporan.</p>
+  <div class="report">
+    <div class="rp">
+      <div class="rhead"><div><small>Laporan Profil KPR</small><h3>Perkiraan untuk Sinta</h3><p>Contoh ilustrasi, bukan data nyata</p></div>
+        <div class="gauge"><svg viewBox="0 0 80 80" aria-hidden="true"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34" style="stroke-dashoffset:83.3"/></svg><b>61</b></div></div>
+      <span class="badge">Profil Siap</span>
+      <p class="rdesc">Penghasilan mendukung cicilan yang nyaman. DP dan cicilan lain perlu dirapikan sebelum mengajukan.</p>
+    </div>
+    <div class="rp"><div class="key"><small>Perkiraan harga rumah yang aman</small><b>Rp 290 juta</b><span>Kisaran sampai Rp 360 juta</span></div></div>
+    <div class="rp"><div class="sh">Pembagian penghasilan bulanan</div>
+      <div class="stack"><i style="background:var(--navy);width:17.5%"></i><i style="background:var(--gold);width:12.5%"></i><i style="background:var(--teal);width:70%"></i></div>
+      <div class="legend">
+        <div><span style="--c:var(--navy)">Cicilan rumah</span><b>Rp 2.100.000</b></div>
+        <div><span style="--c:var(--gold)">Cicilan lain</span><b>Rp 1.500.000</b></div>
+        <div><span style="--c:var(--teal)">Sisa penghasilan</span><b>Rp 8.400.000</b></div></div></div>
+    <div class="rp"><div class="sh">Catatan dan rekomendasi</div>
+      <ul class="notes"><li>DP sekitar 13,8% dari harga. Banyak bank meminta 10 sampai 20%.</li><li>Cicilan lain memakai sebagian kapasitas. Melunasinya menaikkan harga yang aman.</li><li class="ok">Tenor 20 tahun menjaga cicilan tetap ringan.</li></ul></div>
+    <div class="rfoot">Contoh: gaji Rp 12 juta, cicilan lain Rp 1,5 juta, DP Rp 40 juta, tenor 20 tahun, bunga 8%.</div>
+  </div>
+</div></section>
+
+<section class="sec white"><div class="wrap ctr">
+  <h2 class="st">Setelah 2 menit, Anda tidak perlu menebak lagi</h2>
+  <p class="ss">Tanpa daftar akun, tanpa biaya.</p>
+  <div class="list">
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></span><div><h3>Tahu batas harga sebelum survei</h3><p>Satu angka jelas, lengkap dengan batas maksimal dari penghasilan Anda. Survei hanya rumah yang masuk budget.</p></div></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span><div><h3>Cicilan yang tidak mencekik</h3><p>Lihat cicilan aman dan maksimal, serta berapa sisa penghasilan Anda tiap bulan.</p></div></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><h3>Tahu apa yang perlu dibenahi</h3><p>Skor kesiapan menilai beban utang, DP, dan efisiensi bunga, lengkap dengan rekomendasi.</p></div></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><div><h3>Dicarikan properti via WhatsApp</h3><p>Agen membantu mencarikan properti yang sesuai dengan budget Anda, langsung lewat WhatsApp.</p></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="testi" hidden><div class="wrap ctr">
+  <h2 class="st">Cerita mereka yang sudah mencoba</h2>
+  <p class="ss">Pengalaman klien yang kami dampingi.</p>
+  <div class="tlist" id="tlist"></div>
+</div></section>
+
+<section class="sec"><div class="wrap ctr">
+  <h2 class="st">Cara kerjanya</h2>
+  <p class="ss">Satu langkah per layar, bukan formulir panjang.</p>
+  <div class="steps3">
+    <div><b class="n">1</b><b class="t">Isi keuangan</b><p>Penghasilan, cicilan, dan DP.</p></div>
+    <div><b class="n">2</b><b class="t">Atur rencana</b><p>Tenor, bunga, dan tujuan.</p></div>
+    <div><b class="n">3</b><b class="t">Terima laporan</b><p>Angka instan, konsultasi opsional.</p></div>
+  </div>
+</div></section>
+
+<section class="sec white" id="tentang"><div class="wrap ctr">
+  <h2 class="st" id="aboutH">Kenali agen Anda</h2>
+  <p class="ss">Satu orang yang mendampingi dari hitungan sampai serah terima kunci.</p>
+  <div class="agent">
+    <div class="photo" id="aboutPhoto" aria-hidden="true" style="width:84px;height:84px"></div>
+    <h3 id="aboutName"></h3><p class="role" id="aboutRole"></p><p class="bio" id="aboutBio"></p>
+    <ul class="afacts" id="aboutFacts"></ul>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <h2 class="st ctr">Pertanyaan yang sering muncul</h2>
+  <div class="faq" style="margin-top:22px">
+    <details><summary>Apakah ini sama dengan persetujuan KPR?</summary><p>Bukan. Ini perkiraan awal. Persetujuan tetap ditentukan bank setelah memeriksa slip gaji, riwayat kredit, dan dokumen lain.</p></details>
+    <details><summary>Bagaimana angkanya dihitung?</summary><p>Cicilan aman dipatok 30% dari penghasilan, dikurangi cicilan lain. Dari cicilan itu dihitung plafon pinjaman dengan rumus anuitas sesuai tenor dan bunga, lalu ditambah DP. Batas maksimal memakai 35%.</p></details>
+    <details><summary>Apakah bunga 8% sudah pasti?</summary><p>Tidak. Itu asumsi awal. Bunga tiap bank berbeda dan dapat naik setelah masa promo. Ubah angkanya di langkah 2 untuk melihat bedanya.</p></details>
+    <details><summary>Untuk apa nomor WhatsApp saya?</summary><p>Agen memakainya untuk menghubungi Anda terkait hasil ini dan pilihan rumah yang sesuai. Anda tidak wajib membalas.</p></details>
+  </div>
+</div></section>
+<section class="banner"><div class="wrap"><h2>Jangan biarkan rumah impian berujung <span>cicilan yang menyesakkan</span></h2><p>Cek angkanya sekarang, lalu survei dengan tenang.</p></div></section>
+</main>
+
+<section class="chs" id="chs" hidden aria-label="Kalkulator KPR"><div id="stage" aria-live="polite">
+  <div class="chh"><h2>Kalkulator KPR</h2><button type="button" class="cx" id="cx" aria-label="Tutup kalkulator">&#10005;</button></div>
+  <div id="prog"><div class="qh"><span id="ql">Langkah 1 dari 4</span><span id="qn">Keuangan</span></div><div class="pb"><i id="pbf" style="width:25%"></i></div></div>
+
+  <div class="step" data-s="1">
+    <h3 class="stq">Berapa penghasilan dan cicilan Anda?</h3>
+    <p class="p2">Dipakai untuk menghitung cicilan yang masih nyaman tiap bulan.</p>
+    <label class="lb" for="income">Penghasilan bulanan <small>(gabungan jika suami-istri)</small></label>
+    <div class="mf"><span>Rp</span><input id="income" class="field m" type="text" inputmode="numeric" placeholder="10.000.000" autocomplete="off"></div>
+    <label class="lb" for="debt">Cicilan lain per bulan <small>(KTA, kartu kredit, kendaraan. Isi 0 jika tidak ada)</small></label>
+    <div class="mf"><span>Rp</span><input id="debt" class="field m" type="text" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+    <div class="err" role="alert"></div>
+    <button type="button" class="btn" data-next>Lanjut</button>
+  </div>
+
+  <div class="step" data-s="2" hidden>
+    <h3 class="stq">DP dan tenor yang direncanakan</h3>
+    <p class="p2">Bunga adalah asumsi awal. Ubah untuk membandingkan.</p>
+    <label class="lb" for="dp">Dana DP yang sudah ada <small>(isi 0 jika belum ada)</small></label>
+    <div class="mf"><span>Rp</span><input id="dp" class="field m" type="text" inputmode="numeric" placeholder="50.000.000" autocomplete="off"></div>
+    <span class="lb" id="tenorT">Tenor (tahun)</span>
+    <div class="rr c5" role="radiogroup" aria-labelledby="tenorT">
+      <label><input type="radio" name="years" value="10"><span>10<br><small>thn</small></span></label>
+      <label><input type="radio" name="years" value="15"><span>15<br><small>thn</small></span></label>
+      <label><input type="radio" name="years" value="20" checked><span>20<br><small>thn</small></span></label>
+      <label><input type="radio" name="years" value="25"><span>25<br><small>thn</small></span></label>
+      <label><input type="radio" name="years" value="30"><span>30<br><small>thn</small></span></label>
+    </div>
+    <label class="lb" for="rate">Bunga per tahun (%)</label>
+    <input id="rate" class="field" type="text" inputmode="decimal" value="8" autocomplete="off">
+    <div class="err" role="alert"></div>
+    <button type="button" class="btn" data-next>Lanjut</button>
+    <button type="button" class="back" data-back>Kembali</button>
+  </div>
+
+  <div class="step" data-s="3" hidden>
+    <h3 class="stq">Tujuan dan rencana pembelian</h3>
+    <p class="p2">Supaya laporan dan pendampingan sesuai kebutuhan Anda.</p>
+    <span class="lb" id="goalT">Tujuan membeli</span>
+    <div class="rr" role="radiogroup" aria-labelledby="goalT">
+      <label><input type="radio" name="goal" value="Rumah pertama" checked>Rumah pertama</label>
+      <label><input type="radio" name="goal" value="Pindah / upgrade">Pindah atau upgrade rumah</label>
+      <label><input type="radio" name="goal" value="Investasi">Investasi</label>
+    </div>
+    <span class="lb" id="whenT">Rencana beli</span>
+    <div class="rr" role="radiogroup" aria-labelledby="whenT">
+      <label><input type="radio" name="when" value="lt3">Kurang dari 3 bulan</label>
+      <label><input type="radio" name="when" value="mid">3 sampai 12 bulan</label>
+      <label><input type="radio" name="when" value="gt12" checked>Lebih dari 12 bulan</label>
+    </div>
+    <label class="lb" for="city">Kota yang diincar <small>(opsional)</small></label>
+    <input id="city" class="field" type="text" maxlength="60" placeholder="Contoh: Surabaya" autocomplete="off">
+    <div class="err" role="alert"></div>
+    <button type="button" class="btn" data-next>Lanjut</button>
+    <button type="button" class="back" data-back>Kembali</button>
+  </div>
+
+  <div class="step" data-s="4" hidden>
+    <h3 class="stq">Ke mana laporan dikirim?</h3>
+    <p class="p2">Laporan tampil di layar setelah ini. Agen hanya menghubungi lewat WhatsApp.</p>
+    <label class="lb" for="name">Nama</label>
+    <input id="name" class="field" type="text" maxlength="60" placeholder="Nama Anda" autocomplete="name">
+    <label class="lb" for="phone">Nomor WhatsApp</label>
+    <input id="phone" class="field" type="tel" inputmode="tel" placeholder="08123456789" autocomplete="tel">
+    <input id="website" type="text" tabindex="-1" aria-hidden="true" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <label class="ag"><input id="consent" type="checkbox"><span>Saya setuju data ini disimpan dan saya boleh dihubungi lewat WhatsApp terkait hasil perhitungan dan pencarian properti yang sesuai budget saya.</span></label>
+    <div class="err" role="alert"></div>
+    <button type="button" class="btn gold" id="finishBtn">Lihat laporan saya</button>
+    <button type="button" class="back" data-back>Kembali</button>
+    <p class="disc">Hasil berupa perkiraan, bukan persetujuan KPR dan bukan saran keuangan.</p>
+  </div>
+
+  <div class="step" data-s="5" hidden>
+    <div class="report">
+      <div class="rp">
+        <div class="rhead"><div><small>Laporan Profil KPR</small><h3 id="resTitle">-</h3><p id="resMeta">-</p></div>
+          <div class="gauge"><svg viewBox="0 0 80 80" aria-hidden="true"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" id="gArc" cx="40" cy="40" r="34" style="stroke-dashoffset:213.6"/></svg><b id="gNum">0</b></div></div>
+        <span class="badge" id="rBadge">-</span>
+        <p class="rdesc" id="rDesc"></p>
+      </div>
+      <div class="rp"><div class="key"><small>Perkiraan harga rumah yang aman</small><b id="rHarga">-</b><span id="rRange">-</span></div></div>
+      <div class="rp"><div class="sh">Rincian perhitungan</div>
+        <div class="row"><span>Cicilan aman per bulan</span><b id="rCicilan">-</b></div>
+        <div class="row"><span>Cicilan maksimal per bulan</span><b id="rCicilanMaks">-</b></div>
+        <div class="row"><span>Perkiraan plafon pinjaman</span><b id="rPlafon">-</b></div>
+        <div class="row"><span>DP yang ada</span><b id="rDp">-</b></div>
+        <div class="row"><span>Tenor dan bunga</span><b id="rAsumsi">-</b></div></div>
+      <div class="rp"><div class="sh">Pembagian penghasilan bulanan</div>
+        <div class="stack"><i id="sK" style="background:var(--navy);width:0"></i><i id="sD" style="background:var(--gold);width:0"></i><i id="sF" style="background:var(--teal);width:0"></i></div>
+        <div class="legend">
+          <div><span style="--c:var(--navy)">Cicilan rumah</span><b id="pK">-</b></div>
+          <div><span style="--c:var(--gold)">Cicilan lain</span><b id="pD">-</b></div>
+          <div><span style="--c:var(--teal)">Sisa penghasilan</span><b id="pF">-</b></div></div></div>
+      <div class="rp"><div class="sh">Indikator kesiapan</div>
+        <div class="dim"><div class="l"><span>Beban utang saat ini</span><span id="d1n">-</span></div><div class="t"><i id="d1" style="width:0"></i></div></div>
+        <div class="dim"><div class="l"><span>Kesiapan DP</span><span id="d2n">-</span></div><div class="t"><i id="d2" style="width:0"></i></div></div>
+        <div class="dim"><div class="l"><span>Efisiensi bunga</span><span id="d3n">-</span></div><div class="t"><i id="d3" style="width:0"></i></div></div></div>
+      <div class="rp"><div class="sh">Catatan dan rekomendasi</div><ul class="notes" id="notes"></ul></div>
+      <div class="rfoot" id="rFoot">Perkiraan awal berdasarkan rumus anuitas. Bukan persetujuan KPR dan bukan saran keuangan.</div>
+    </div>
+    <div class="cons">
+      <p id="consText">Kami bantu mencarikan properti yang sesuai dengan budget Anda, lewat WhatsApp.</p>
+      <a class="btn teal" id="waBtn" href="#" target="_blank" rel="noopener">Cari properti sesuai budget via WhatsApp</a>
+    </div>
+    <p class="status" id="saveStatus"></p>
+    <button type="button" class="back" id="againBtn">Hitung ulang</button>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><b id="footName"></b><span id="footLic"></span>
+  <p><strong>Disclaimer:</strong> Kalkulator ini memberi perkiraan awal berdasarkan rumus anuitas dan asumsi yang Anda isi. Bukan persetujuan KPR, bukan penawaran pinjaman, dan bukan saran keuangan. Bunga dan syarat tiap bank dapat berbeda.</p></div></footer>
+</div>
+
+<script>
+(function(){
+/* ====== KONFIGURASI: ubah sebelum dipakai ====== */
+var CONFIG = {
+  API_URL: 'GANTI_DENGAN_URL_APPS_SCRIPT_/exec',
+  AGENT_NAME: 'Nama Agen',
+  AGENT_TITLE: 'Konsultan Properti',
+  AGENT_WA: '6281234567890',          // format 62, tanpa + dan tanpa 0 di depan
+  AGENT_PHOTO: 'foto-agen.jpg',       // file foto di folder yang sama, atau URL gambar
+  AGENT_BIO: 'Membantu keluarga menemukan rumah dan KPR yang sesuai kemampuan.',
+  AGENT_FACTS: [],                    // isi hanya fakta nyata, contoh: ['8 tahun pengalaman']
+  AGENT_LICENSE: '',
+  // Isi HANYA dengan testimoni asli dan atas izin klien. Kosongkan array ([]) untuk menyembunyikan bagian ini.
+  TESTIMONIALS: [
+    { text: 'Awalnya bingung mau beli rumah harga 400jt kuat apa nggak. Pas nyoba kalkulator ini baru paham batasan aman cicilanku. Makasih udah dibantu cari unit yang pas!', name: 'Nama Klien', info: 'Pembeli rumah pertama' }
+  ]
+};
+
+// <calc>
+function calc(income, debt, dp, years, ratePct) {
+  var DBR_AMAN = 0.30, DBR_MAKS = 0.35;
+  var r = ratePct / 100 / 12;
+  var n = years * 12;
+  var aman = Math.max(0, income * DBR_AMAN - debt);
+  var maks = Math.max(0, income * DBR_MAKS - debt);
+  var pv = function (pmt) { return r === 0 ? pmt * n : pmt * (1 - Math.pow(1 + r, -n)) / r; };
+  var plafonAman = pv(aman);
+  var plafonMaks = pv(maks);
+  return {
+    cicilanAman: Math.round(aman),
+    cicilanMaks: Math.round(maks),
+    plafonAman: Math.round(plafonAman),
+    plafonMaks: Math.round(plafonMaks),
+    hargaAman: Math.round(plafonAman + dp),
+    hargaMaks: Math.round(plafonMaks + dp)
+  };
+}
+// </calc>
+
+var $ = function (id) { return document.getElementById(id); };
+var digits = function (s) { return Number(String(s || '').replace(/[^\d]/g, '')) || 0; };
+var rupiah = function (n) { return 'Rp ' + Math.round(n).toLocaleString('id-ID'); };
+var clamp = function (x) { return Math.max(0, Math.min(1, x)); };
+function ringkas(n) {
+  n = Math.floor(n / 5000000) * 5000000;
+  if (n >= 1e9) return 'Rp ' + (n / 1e9).toLocaleString('id-ID', { maximumFractionDigits: 2 }) + ' miliar';
+  return 'Rp ' + Math.round(n / 1e6).toLocaleString('id-ID') + ' juta';
+}
+
+/* ---------- profil agen ---------- */
+function initials(nm) { var p = String(nm).trim().split(/\s+/); return ((p[0] || '?').charAt(0) + (p[1] ? p[1].charAt(0) : '')).toUpperCase(); }
+function setPhoto(box) {
+  box.textContent = '';
+  var s = document.createElement('span'); s.className = 'ini'; s.textContent = initials(CONFIG.AGENT_NAME); box.appendChild(s);
+  if (!CONFIG.AGENT_PHOTO) return;
+  var img = new Image(); img.alt = 'Foto ' + CONFIG.AGENT_NAME;
+  img.onload = function () { box.textContent = ''; box.appendChild(img); };
+  img.src = CONFIG.AGENT_PHOTO;
+}
+(function () {
+  var nm = CONFIG.AGENT_NAME;
+  $('brand').textContent = nm; $('heroName').textContent = nm; $('heroRole').textContent = CONFIG.AGENT_TITLE;
+  $('aboutName').textContent = nm; $('aboutRole').textContent = CONFIG.AGENT_TITLE; $('aboutBio').textContent = CONFIG.AGENT_BIO;
+  $('aboutH').textContent = 'Kenali ' + nm; $('footName').textContent = nm + ', ' + CONFIG.AGENT_TITLE; $('footLic').textContent = CONFIG.AGENT_LICENSE;
+  $('consText').textContent = nm + ' siap membantu mencarikan properti yang sesuai dengan budget Anda, langsung lewat WhatsApp. Gratis dan tanpa kewajiban.';
+  CONFIG.AGENT_FACTS.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; $('aboutFacts').appendChild(li); });
+  if (CONFIG.TESTIMONIALS.length) {
+    CONFIG.TESTIMONIALS.forEach(function (t) {
+      var c = document.createElement('div'); c.className = 'tcard';
+      var q = document.createElement('p'); q.textContent = t.text; c.appendChild(q);
+      if (t.name) {
+        var f = document.createElement('footer'), b = document.createElement('b');
+        b.textContent = t.name; f.appendChild(b);
+        if (t.info) f.appendChild(document.createTextNode(' · ' + t.info));
+        c.appendChild(f);
+      }
+      $('tlist').appendChild(c);
+    });
+    $('testi').hidden = false;
+  }
+  setPhoto($('heroPhoto')); setPhoto($('aboutPhoto'));
+  document.title = 'Kalkulator KPR ' + nm;
+})();
+
+document.querySelectorAll('.m').forEach(function (el) {
+  el.addEventListener('input', function () { var v = digits(el.value); el.value = v ? v.toLocaleString('id-ID') : ''; });
+});
+
+/* ---------- alur ---------- */
+var TOTAL = 4, cur = 1, started = false;
+var LBL = ['Keuangan', 'Rencana', 'Tujuan', 'Kontak'];
+function checked(n) { return document.querySelector('input[name=' + n + ']:checked').value; }
+function clearErr() { document.querySelectorAll('.step .err').forEach(function (e) { e.textContent = ''; e.classList.remove('on'); }); }
+function fail(m) { var e = document.querySelector('.step:not([hidden]) .err'); e.textContent = m; e.classList.add('on'); }
+function show(n) {
+  cur = n; clearErr();
+  document.querySelectorAll('.step').forEach(function (s) {
+    var on = Number(s.getAttribute('data-s')) === n; s.hidden = !on;
+    if (on) { s.classList.remove('fade'); void s.offsetWidth; s.classList.add('fade'); }
+  });
+  $('prog').hidden = n > TOTAL;
+  if (n <= TOTAL) { $('ql').textContent = 'Langkah ' + n + ' dari ' + TOTAL; $('qn').textContent = LBL[n - 1]; $('pbf').style.width = (n / TOTAL * 100) + '%'; }
+}
+function collect() {
+  return { name: $('name').value.trim(), phone: $('phone').value.trim(), city: $('city').value.trim(), goal: checked('goal'),
+    income: digits($('income').value), debt: digits($('debt').value), dp: digits($('dp').value), years: Number(checked('years')),
+    rate: Number(String($('rate').value).replace(',', '.')), when: checked('when'), consent: $('consent').checked, website: $('website').value };
+}
+function validate(n, d) {
+  if (n === 1 && d.income < 1000000) return 'Isi penghasilan bulanan, minimal Rp 1.000.000.';
+  if (n === 2 && !(d.rate >= 3 && d.rate <= 20)) return 'Bunga harus antara 3 dan 20 persen.';
+  if (n === 4) {
+    if (d.name.length < 2) return 'Isi nama Anda.';
+    if (!/^(\+?62|0)8\d{7,12}$/.test(d.phone.replace(/[\s-]/g, ''))) return 'Nomor WhatsApp belum benar. Contoh: 08123456789';
+    if (!d.consent) return 'Centang persetujuan agar agen boleh menghubungi Anda.';
+  }
+  return '';
+}
+function openTest() {
+  $('chs').hidden = false; $('stk').classList.remove('show');
+  if (!started) { started = true; show(1); }
+  $('chs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function closeTest() { $('chs').hidden = true; $('stk').classList.add('show'); }
+$('stkBtn').addEventListener('click', openTest);
+$('cx').addEventListener('click', closeTest);
+document.querySelectorAll('[data-next]').forEach(function (b) {
+  b.addEventListener('click', function () { var m = validate(cur, collect()); if (m) return fail(m); show(cur + 1); });
+});
+document.querySelectorAll('[data-back]').forEach(function (b) { b.addEventListener('click', function () { show(cur - 1); }); });
+document.querySelectorAll('.field').forEach(function (f) {
+  f.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return; e.preventDefault();
+    var b = document.querySelector('.step:not([hidden]) .btn'); if (b) b.click();
+  });
+});
+$('finishBtn').addEventListener('click', function () {
+  var d = collect(), m = validate(4, d); if (m) return fail(m);
+  var r = calc(d.income, d.debt, d.dp, d.years, d.rate);
+  render(d, r); save(d);
+});
+$('againBtn').addEventListener('click', function () { show(1); $('chs').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+
+/* ---------- laporan ---------- */
+function level(s) {
+  if (s >= 80) return ['Profil Sangat Siap', 'Kondisi keuangan Anda mendukung pengajuan KPR. Fokus berikutnya memilih unit dan bank.'];
+  if (s >= 60) return ['Profil Siap', 'Penghasilan mendukung cicilan yang nyaman. Beberapa hal perlu dirapikan sebelum mengajukan.'];
+  if (s >= 40) return ['Profil Berkembang', 'Anda sudah di jalur yang benar, tetapi DP atau beban utang perlu diperbaiki lebih dulu.'];
+  return ['Perlu Persiapan', 'Sebaiknya perkuat DP dan kurangi cicilan lain sebelum mengajukan KPR.'];
+}
+function setBar(id, p) { $(id).style.width = p + '%'; }
+
+function render(d, r) {
+  var ok = r.hargaAman > 0, inc = d.income;
+  var dpPct = ok ? d.dp / r.hargaAman * 100 : 0;
+  var s1 = Math.round(clamp(1 - d.debt / (0.30 * inc)) * 100);
+  var s2 = Math.round(clamp(dpPct / 20) * 100);
+  var n = d.years * 12, rm = d.rate / 1200, pmt = r.cicilanAman;
+  var s3 = 0;
+  if (r.plafonAman > 0) s3 = Math.round(clamp(1 - (pmt * n / r.plafonAman - 1) / 2) * 100);
+  var score = Math.round(0.4 * s1 + 0.4 * s2 + 0.2 * s3);
+  var lv = level(score);
+
+  $('resTitle').textContent = 'Perkiraan untuk ' + d.name;
+  $('resMeta').textContent = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + (d.city ? ' · ' + d.city : '') + ' · ' + d.goal;
+  $('gNum').textContent = score;
+  $('gArc').style.strokeDashoffset = 213.6 * (1 - score / 100);
+  $('rBadge').textContent = lv[0]; $('rDesc').textContent = lv[1];
+  $('rHarga').textContent = ok ? ringkas(r.hargaAman) : 'Belum memenuhi syarat';
+  $('rRange').textContent = ok ? 'Kisaran sampai ' + ringkas(r.hargaMaks) : 'Lihat catatan di bawah';
+  $('rCicilan').textContent = rupiah(r.cicilanAman); $('rCicilanMaks').textContent = rupiah(r.cicilanMaks);
+  $('rPlafon').textContent = rupiah(r.plafonAman); $('rDp').textContent = rupiah(d.dp);
+  $('rAsumsi').textContent = d.years + ' tahun, ' + d.rate + '%';
+
+  var debt = Math.min(d.debt, inc), free = Math.max(0, inc - pmt - debt), tot = (pmt + debt + free) || 1;
+  var pK = Math.round(pmt / tot * 100), pD = Math.round(debt / tot * 100), pF = Math.max(0, 100 - pK - pD);
+  $('pK').textContent = pK + '% · ' + rupiah(pmt); $('pD').textContent = pD + '% · ' + rupiah(debt); $('pF').textContent = pF + '% · ' + rupiah(free);
+  setBar('sK', pK); setBar('sD', pD); setBar('sF', pF);
+  $('d1n').textContent = s1 + '/100'; $('d2n').textContent = s2 + '/100'; $('d3n').textContent = s3 + '/100';
+  setBar('d1', s1); setBar('d2', s2); setBar('d3', s3);
+
+  var notes = [];
+  if (r.cicilanAman === 0) notes.push(['Cicilan lain Anda sudah melewati batas aman. Bank biasanya menolak atau mengecilkan plafon. Melunasi sebagian utang lebih dulu akan membantu.', 0]);
+  else if (d.debt > 0) notes.push(['Cicilan lain memakai sebagian kapasitas. Melunasinya akan menaikkan harga rumah yang aman.', 0]);
+  if (ok && dpPct < 10) notes.push(['DP Anda sekitar ' + dpPct.toFixed(1).replace('.', ',') + '% dari harga. Banyak bank meminta DP minimal 10 sampai 20%, jadi siapkan dana tambahan.', 0]);
+  else if (ok && dpPct < 20) notes.push(['DP Anda sekitar ' + dpPct.toFixed(1).replace('.', ',') + '% dari harga. Menaikkannya ke 20% biasanya memperbesar peluang disetujui.', 0]);
+  else if (ok) notes.push(['DP Anda sekitar ' + dpPct.toFixed(1).replace('.', ',') + '% dari harga, sudah memadai untuk sebagian besar bank.', 1]);
+  if (d.years >= 25) notes.push(['Tenor panjang membuat cicilan lebih ringan, tetapi total bunga yang dibayar jauh lebih besar.', 0]);
+  else notes.push(['Tenor ' + d.years + ' tahun menjaga total bunga tetap terkendali.', 1]);
+  $('notes').textContent = '';
+  notes.forEach(function (t) { var li = document.createElement('li'); if (t[1]) li.className = 'ok'; li.textContent = t[0]; $('notes').appendChild(li); });
+
+  var msg = 'Halo ' + CONFIG.AGENT_NAME + ', saya ' + d.name + '. Saya baru memakai kalkulator KPR Anda.\n' +
+    'Profil: ' + lv[0] + ' (skor ' + score + ')\nPenghasilan: ' + rupiah(d.income) + '/bulan\nCicilan lain: ' + rupiah(d.debt) + '/bulan\nDP: ' + rupiah(d.dp) + '\n' +
+    'Hasil: harga aman sekitar ' + ringkas(r.hargaAman) + ', cicilan aman ' + rupiah(r.cicilanAman) + '/bulan (' + d.years + ' tahun, ' + d.rate + '%).\n' +
+    (d.city ? 'Area diincar: ' + d.city + '\n' : '') + 'Mohon dibantu mencarikan properti yang sesuai dengan budget saya (sampai sekitar ' + (ok ? ringkas(r.hargaMaks) : 'budget di atas') + ').';
+  $('waBtn').href = 'https://wa.me/' + CONFIG.AGENT_WA + '?text=' + encodeURIComponent(msg);
+  d.profile = lv[0]; d.score = score;
+
+  show(5);
+  $('chs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function save(data) {
+  var st = $('saveStatus');
+  if (CONFIG.API_URL.indexOf('GANTI_') === 0) { st.textContent = 'Mode demo: belum tersambung ke Google Sheets.'; return; }
+  st.textContent = 'Menyimpan data...';
+  fetch(CONFIG.API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { st.textContent = j.ok ? 'Data tersimpan. Agen akan menghubungi Anda.' : (j.error || 'Data belum tersimpan.'); })
+    .catch(function () { st.textContent = 'Koneksi bermasalah. Anda tetap bisa lanjut lewat tombol WhatsApp.'; });
+}
+
+$('stk').classList.add('show');
+})();
+</script>
+</body>
+</html>
