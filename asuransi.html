@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#0B1B2B" />
   <meta name="robots" content="noindex" />
   <title>Cek Data Analisis Proteksi Rawat Jalan Malaysia & Singapura</title>
-  <meta name="description" content="Hitung estimasi biaya rawat jalan ke Malaysia dan Singapura, beban terhadap keuangan, serta dana proteksi yang perlu disiapkan. Gratis, tanpa akun, hasil dalam 2 menit." />
+  <meta name="description" content="Hitung budget premi yang aman untuk proteksi rawat jalan Malaysia dan Singapura sebelum konsultasi dengan agen asuransi. Gratis, tanpa akun, hasil dalam 1 menit." />
   <meta property="og:title" content="Berobat ke Luar Negeri: Cek Dulu Angkanya, Kami Bantu Anda." />
-  <meta property="og:description" content="Cek estimasi biaya rawat jalan Malaysia & Singapura, dampak keuangan, dan dana proteksi yang perlu disiapkan." />
+  <meta property="og:description" content="Cek budget premi aman untuk proteksi rawat jalan Malaysia & Singapura sebelum konsultasi dengan agen." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -215,7 +215,7 @@
     .step-label { display: flex; justify-content: space-between; margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--ink-3); }
     .step-label b { color: var(--ink); }
     .progress-line { height: 5px; background: var(--line-soft); border-radius: 999px; overflow: hidden; margin-top: 7px; }
-    .progress-line span { display: block; height: 100%; width: 25%; background: linear-gradient(90deg, var(--navy-2), var(--gold)); border-radius: 999px; transition: width 0.28s ease; }
+    .progress-line span { display: block; height: 100%; width: 33%; background: linear-gradient(90deg, var(--navy-2), var(--gold)); border-radius: 999px; transition: width 0.28s ease; }
 
     .calc-body { padding: 20px 18px 22px; }
     .panel-step { animation: fadeUp 0.25s ease; }
@@ -224,7 +224,6 @@
     .step-title { font-family: var(--serif); font-size: 20px; line-height: 1.25; font-weight: 700; margin-bottom: 4px; }
     .step-sub { font-size: 13px; color: var(--ink-3); margin-bottom: 18px; }
     .field-grid { display: grid; gap: 16px; }
-    .field-grid.two { grid-template-columns: 1fr 1fr; gap: 12px; }
 
     .field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13px; font-weight: 800; margin-bottom: 7px; }
     .field-label small { font-size: 11.5px; color: var(--ink-3); font-weight: 600; text-align: right; }
@@ -241,6 +240,7 @@
     .input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(184, 146, 74, 0.15); }
 
     .segmented { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .segmented.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .segment {
       position: relative; display: flex; align-items: center; justify-content: center;
       min-height: 48px; padding: 8px 6px;
@@ -252,16 +252,7 @@
     .segment input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
     .segment.active { border-color: var(--navy); background: var(--navy); color: #fff; box-shadow: 0 6px 14px rgba(11, 27, 43, 0.18); }
 
-    .range { width: 100%; accent-color: var(--gold); height: 28px; cursor: pointer; }
-    .range-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink-3); font-weight: 700; }
-    .range-meta b { color: var(--navy); font-size: 17px; font-family: var(--serif); }
     .helper { margin-top: 6px; font-size: 12px; color: var(--ink-3); line-height: 1.5; }
-
-    .insight-box {
-      margin-top: 16px; padding: 13px; border-radius: 12px;
-      background: var(--gold-soft); border: 1px solid #E8D5A6;
-      color: var(--gold-ink); font-size: 12.8px; line-height: 1.55;
-    }
 
     .step-actions { display: grid; gap: 8px; margin-top: 20px; }
     .back-btn { background: transparent; border: 0; color: var(--ink-3); font-size: 13px; font-weight: 700; text-decoration: underline; cursor: pointer; min-height: 40px; }
@@ -295,7 +286,7 @@
 
     .key-metric { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-soft); }
     .key-metric small.cap { display: block; font-size: 11px; color: var(--ink-3); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .key-metric b.big { display: block; font-family: var(--serif); font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 6px; color: var(--navy); }
+    .key-metric b.big { display: block; font-family: var(--serif); font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 6px; color: var(--navy); }
     .key-metric > span { display: block; font-size: 13px; color: var(--ink-2); line-height: 1.5; }
 
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
@@ -383,7 +374,6 @@
     @media (max-width: 380px) {
       html { font-size: 14.5px; }
       h1 { font-size: 24px; }
-      .field-grid.two { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -413,12 +403,12 @@
       <h1>Berobat ke Luar Negeri: <em>Cek Dulu Angkanya</em>, Kami Bantu Anda.</h1>
 
       <p class="lead">
-        Hitung estimasi biaya medis, dampaknya ke arus kas, dan dana proteksi yang perlu disiapkan sebelum memutuskan.
+        Ketahui budget premi yang aman untuk arus kas Anda, lalu bawa angkanya ke konsultasi dengan agen asuransi.
       </p>
 
       <ul class="hero-points">
-        <li><span class="point-check">✓</span> Isi 4 langkah singkat, ± 2 menit</li>
-        <li><span class="point-check">✓</span> Hasil: skor kesiapan &amp; rekomendasi</li>
+        <li><span class="point-check">✓</span> Isi 3 langkah singkat, ± 1 menit</li>
+        <li><span class="point-check">✓</span> Hasil: skor kesiapan &amp; budget premi</li>
         <li><span class="point-check">✓</span> Lanjut konsultasi via WhatsApp</li>
       </ul>
 
@@ -429,17 +419,17 @@
       <aside class="preview-card" aria-label="Contoh snapshot hasil analisa">
         <div class="preview-head">
           <h3>Contoh Hasil</h3>
-          <span class="preview-badge">± 2 menit</span>
+          <span class="preview-badge">± 1 menit</span>
         </div>
         <div class="preview-rows">
-          <div class="preview-row"><span>Estimasi biaya medis</span><b>Rp 11,3 juta / tahun</b></div>
-          <div class="preview-row"><span>Total dengan perjalanan</span><b>± Rp 19,3 juta / tahun</b></div>
-          <div class="preview-row"><span>Beban penghasilan</span><b>8,1%</b></div>
+          <div class="preview-row"><span>Penghasilan bulanan</span><b>Rp 20 juta</b></div>
+          <div class="preview-row"><span>Budget premi aman</span><b>Rp 12 – 24 juta / tahun</b></div>
+          <div class="preview-row"><span>Setara per bulan</span><b>Rp 1 – 2 juta</b></div>
           <div class="preview-row"><span>Dana proteksi 6 bulan</span><b>Rp 72 juta</b></div>
         </div>
         <div class="preview-note">
-          <strong>Ilustrasi:</strong> penghasilan Rp 20 juta, 4 kunjungan/tahun, premi ditawarkan Rp 9 juta.
-          Secara angka masuk akal, tapi tetap cek limit rawat jalan, pengecualian, dan biaya perjalanan.
+          <strong>Ilustrasi:</strong> penghasilan Rp 20 juta dan pengeluaran rutin Rp 12 juta.
+          Angka ini batas aman anggaran, bukan harga polis. Premi sebenarnya ditentukan agen sesuai plan yang dipilih.
         </div>
       </aside>
     </section>
@@ -450,11 +440,11 @@
           <div class="calc-head-top">
             <div>
               <h2>Cek Data Analisisnya</h2>
-              <p>Masukkan data singkat, sistem hitung estimasinya.</p>
+              <p>Masukkan data singkat, sistem hitung budget premi Anda.</p>
             </div>
             <span class="free-tag">Gratis</span>
           </div>
-          <div class="step-label"><span id="stepName">Keuangan</span><b id="stepCount">Langkah 1 dari 4</b></div>
+          <div class="step-label"><span id="stepName">Keuangan</span><b id="stepCount">Langkah 1 dari 3</b></div>
           <div class="progress-line"><span id="progressBar"></span></div>
         </div>
 
@@ -463,7 +453,7 @@
             <!-- Step 1 -->
             <div class="panel-step" data-step="1">
               <h3 class="step-title">Penghasilan &amp; tujuan berobat</h3>
-              <p class="step-sub">Dipakai untuk menghitung beban biaya terhadap arus kas Anda.</p>
+              <p class="step-sub">Dipakai untuk menghitung budget premi yang aman bagi arus kas Anda.</p>
 
               <div class="field-grid">
                 <div>
@@ -491,89 +481,37 @@
                   </div>
                   <p class="helper">Kosongkan untuk memakai asumsi 70% dari penghasilan.</p>
                 </div>
-
-                <div>
-                  <label class="field-label" for="visits">Kunjungan rawat jalan per tahun</label>
-                  <input class="range" id="visits" type="range" min="1" max="24" value="4" />
-                  <div class="range-meta"><span>1x</span><b id="visitsValue">4 kali</b><span>24x</span></div>
-                </div>
-              </div>
-
-              <div class="err" role="alert"></div>
-              <div class="step-actions">
-                <button type="button" class="btn btn-primary" data-next>Lanjut Next Step</button>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="panel-step" data-step="2" hidden>
-              <h3 class="step-title">Asumsi biaya &amp; masa aman dana</h3>
-              <p class="step-sub">Nilai bawaan bisa dipakai dulu. Ubah sesuai RS, kurs, atau premi yang Anda punya.</p>
-
-              <div class="field-grid two">
-                <div>
-                  <label class="field-label" for="costMY">Biaya/kunjungan MY <small>MYR</small></label>
-                  <input class="input fmt" id="costMY" inputmode="numeric" value="350" />
-                </div>
-                <div>
-                  <label class="field-label" for="costSG">Biaya/kunjungan SG <small>SGD</small></label>
-                  <input class="input fmt" id="costSG" inputmode="numeric" value="350" />
-                </div>
-                <div>
-                  <label class="field-label" for="fxMY">Kurs 1 MYR <small>Rp</small></label>
-                  <input class="input fmt" id="fxMY" inputmode="numeric" value="3.700" />
-                </div>
-                <div>
-                  <label class="field-label" for="fxSG">Kurs 1 SGD <small>Rp</small></label>
-                  <input class="input fmt" id="fxSG" inputmode="numeric" value="12.500" />
-                </div>
-              </div>
-
-              <div class="field-grid" style="margin-top:16px;">
-                <div>
-                  <label class="field-label" for="travel">Biaya perjalanan per kunjungan <small>tiket, transport, hotel</small></label>
-                  <div class="input-shell">
-                    <span class="input-prefix">Rp</span>
-                    <input class="input has-prefix fmt" id="travel" inputmode="numeric" value="2.000.000" />
-                  </div>
-                </div>
-
-                <div>
-                  <span class="field-label" id="monthsLabel">Masa aman penghasilan</span>
-                  <div class="segmented" role="radiogroup" aria-labelledby="monthsLabel">
-                    <label class="segment"><input type="radio" name="months" value="3" /><span>3 bulan</span></label>
-                    <label class="segment active"><input type="radio" name="months" value="6" checked /><span>6 bulan</span></label>
-                    <label class="segment"><input type="radio" name="months" value="12" /><span>12 bulan</span></label>
-                  </div>
-                </div>
-
-                <div>
-                  <label class="field-label" for="premi">Premi tahunan yang ditawarkan <small>opsional</small></label>
-                  <div class="input-shell">
-                    <span class="input-prefix">Rp</span>
-                    <input class="input has-prefix fmt" id="premi" inputmode="numeric" placeholder="9.000.000" autocomplete="off" />
-                  </div>
-                </div>
-              </div>
-
-              <div class="insight-box">
-                <strong>Cara bacanya:</strong> bila premi lebih kecil dari estimasi biaya medis, secara angka bisa masuk akal.
-                Tetap periksa limit rawat jalan, co-payment, pengecualian, masa tunggu, dan jaringan RS.
               </div>
 
               <div class="err" role="alert"></div>
               <div class="step-actions">
                 <button type="button" class="btn btn-primary" data-next>Lanjut ke Rencana</button>
-                <button type="button" class="back-btn" data-back>Kembali</button>
               </div>
             </div>
 
-            <!-- Step 3 -->
-            <div class="panel-step" data-step="3" hidden>
+            <!-- Step 2 -->
+            <div class="panel-step" data-step="2" hidden>
               <h3 class="step-title">Tujuan &amp; rencana penggunaan</h3>
               <p class="step-sub">Membantu agen memberi rekomendasi yang relevan, bukan sekadar menawarkan produk.</p>
 
               <div class="field-grid">
+                <div>
+                  <span class="field-label" id="genderLabel">Jenis kelamin</span>
+                  <div class="segmented two" role="radiogroup" aria-labelledby="genderLabel">
+                    <label class="segment"><input type="radio" name="gender" value="m" /><span>Laki-laki</span></label>
+                    <label class="segment"><input type="radio" name="gender" value="f" /><span>Perempuan</span></label>
+                  </div>
+                </div>
+
+                <div>
+                  <span class="field-label" id="maritalLabel">Status pernikahan</span>
+                  <div class="segmented" role="radiogroup" aria-labelledby="maritalLabel">
+                    <label class="segment"><input type="radio" name="marital" value="single" /><span>Belum menikah</span></label>
+                    <label class="segment"><input type="radio" name="marital" value="married" /><span>Menikah</span></label>
+                    <label class="segment"><input type="radio" name="marital" value="prev" /><span>Cerai / Janda / Duda</span></label>
+                  </div>
+                </div>
+
                 <div>
                   <span class="field-label" id="goalLabel">Tujuan utama</span>
                   <div class="segmented" role="radiogroup" aria-labelledby="goalLabel">
@@ -605,8 +543,8 @@
               </div>
             </div>
 
-            <!-- Step 4 -->
-            <div class="panel-step" data-step="4" hidden>
+            <!-- Step 3 -->
+            <div class="panel-step" data-step="3" hidden>
               <h3 class="step-title">Data kontak</h3>
               <p class="step-sub">Laporan tetap tampil di layar. Agen hanya menghubungi bila Anda menekan tombol WhatsApp.</p>
 
@@ -636,8 +574,8 @@
               <p class="helper" style="text-align:center;margin-top:6px;">Hasil berupa perkiraan, bukan jaminan klaim dan bukan saran keuangan.</p>
             </div>
 
-            <!-- Step 5: Report -->
-            <div class="panel-step" data-step="5" hidden>
+            <!-- Step 4: Report -->
+            <div class="panel-step" data-step="4" hidden>
               <div class="report-shell">
                 <div class="score-card">
                   <small class="cap">Skor Kesiapan</small>
@@ -658,14 +596,14 @@
                 </div>
 
                 <div class="key-metric">
-                  <small class="cap">Estimasi Biaya Medis per Tahun</small>
-                  <b class="big" id="keyMedical">-</b>
+                  <small class="cap">Budget Premi Aman per Tahun</small>
+                  <b class="big" id="keyPremi">-</b>
                   <span id="keySub">-</span>
 
                   <div class="stat-grid">
-                    <div class="stat"><small>Beban Total</small><b id="statBurden">-</b></div>
-                    <div class="stat"><small>Dana Proteksi</small><b id="statFund">-</b></div>
-                    <div class="stat wide"><small>Budget Premi Aman (5–10%)</small><b id="statBudget">-</b></div>
+                    <div class="stat"><small>Premi per Bulan</small><b id="statMonthly">-</b></div>
+                    <div class="stat"><small>Dana Proteksi (6 bln)</small><b id="statFund">-</b></div>
+                    <div class="stat wide"><small>Sisa Penghasilan Setelah Pengeluaran Rutin</small><b id="statSurplus">-</b></div>
                   </div>
                 </div>
 
@@ -675,15 +613,11 @@
                     <div class="row"><span>Penghasilan bulanan</span><b id="repIncome">-</b></div>
                     <div class="row"><span>Pengeluaran rutin</span><b id="repLiving">-</b></div>
                     <div class="row"><span>Negara tujuan</span><b id="repCountry">-</b></div>
-                    <div class="row"><span>Kunjungan per tahun</span><b id="repVisits">-</b></div>
-                    <div class="row"><span>Biaya per kunjungan</span><b id="repPerVisit">-</b></div>
-                    <div class="row"><span>Biaya medis setahun</span><b id="repMedical">-</b></div>
-                    <div class="row"><span>Biaya perjalanan setahun</span><b id="repTravel">-</b></div>
-                    <div class="row"><span>Total termasuk perjalanan</span><b id="repTotal">-</b></div>
+                    <div class="row"><span>Jenis kelamin</span><b id="repGender">-</b></div>
+                    <div class="row"><span>Status pernikahan</span><b id="repMarital">-</b></div>
+                    <div class="row"><span>Budget premi per tahun (5–10%)</span><b id="repBudgetYear">-</b></div>
+                    <div class="row"><span>Budget premi per bulan</span><b id="repBudgetMonth">-</b></div>
                     <div class="row"><span>Dana proteksi penghasilan</span><b id="repFund">-</b></div>
-                    <div class="row"><span>Budget premi aman 5–10%</span><b id="repBudget">-</b></div>
-                    <div class="row" id="repPremiRow" hidden><span>Premi ditawarkan</span><b id="repPremi">-</b></div>
-                    <div class="row" id="repCompareRow" hidden><span>Posisi premi</span><b id="repCompare">-</b></div>
                   </div>
                 </div>
 
@@ -691,14 +625,12 @@
                   <div class="panel-head"><h3>Pembagian Penghasilan Bulanan</h3></div>
                   <div class="panel-body">
                     <div class="stack">
-                      <i id="barMedical" style="background:var(--navy);width:0"></i>
-                      <i id="barTravel" style="background:var(--gold);width:0"></i>
+                      <i id="barPremi" style="background:var(--gold);width:0"></i>
                       <i id="barLiving" style="background:#8A97A5;width:0"></i>
                       <i id="barRemaining" style="background:#E3DCCB;width:0"></i>
                     </div>
                     <div class="legend">
-                      <div><span style="--c:var(--navy)">Biaya medis / bulan</span><b id="labMedical">-</b></div>
-                      <div><span style="--c:var(--gold)">Perjalanan / bulan</span><b id="labTravel">-</b></div>
+                      <div><span style="--c:var(--gold)">Premi (batas atas)</span><b id="labPremi">-</b></div>
                       <div><span style="--c:#8A97A5">Pengeluaran rutin</span><b id="labLiving">-</b></div>
                       <div><span style="--c:#E3DCCB">Sisa penghasilan</span><b id="labRemaining">-</b></div>
                     </div>
@@ -709,16 +641,12 @@
                   <div class="panel-head"><h3>Indikator Kesiapan</h3></div>
                   <div class="panel-body">
                     <div class="indicator">
-                      <div class="indicator-top"><span>Beban biaya terhadap penghasilan</span><span id="indAffordVal">-</span></div>
-                      <div class="indicator-bar"><i id="indAffordBar"></i></div>
+                      <div class="indicator-top"><span>Porsi pengeluaran rutin</span><span id="indSpendVal">-</span></div>
+                      <div class="indicator-bar"><i id="indSpendBar"></i></div>
                     </div>
                     <div class="indicator">
-                      <div class="indicator-top"><span>Kenyamanan arus kas</span><span id="indCashVal">-</span></div>
+                      <div class="indicator-top"><span>Kenyamanan arus kas setelah premi</span><span id="indCashVal">-</span></div>
                       <div class="indicator-bar"><i id="indCashBar" style="background:var(--gold)"></i></div>
-                    </div>
-                    <div class="indicator">
-                      <div class="indicator-top"><span>Posisi premi terhadap estimasi biaya</span><span id="indPremiVal">-</span></div>
-                      <div class="indicator-bar"><i id="indPremiBar" style="background:#8A97A5"></i></div>
                     </div>
                   </div>
                 </div>
@@ -750,7 +678,7 @@
         </div>
         <div class="benefit">
           <div class="benefit-icon">02</div>
-          <div><strong>Membandingkan premi dengan logis</strong><div>Premi bisa dinilai wajar atau tidak dibanding estimasi biaya Anda.</div></div>
+          <div><strong>Membandingkan premi dengan logis</strong><div>Premi yang ditawarkan bisa dinilai wajar atau tidak dibanding batas aman penghasilan Anda.</div></div>
         </div>
         <div class="benefit">
           <div class="benefit-icon">03</div>
@@ -781,28 +709,28 @@
           <p>Bukan. Ini alat bantu estimasi awal. Persetujuan klaim, batas manfaat, pengecualian, masa tunggu, dan underwriting mengikuti polis resmi.</p>
         </details>
         <details>
-          <summary>Dari mana angka biaya per kunjungan?</summary>
-          <p>Itu asumsi ilustrasi yang bisa Anda ubah. Tarif nyata berbeda tergantung rumah sakit, dokter spesialis, jenis pemeriksaan, obat, dan kurs.</p>
+          <summary>Dari mana angka budget premi?</summary>
+          <p>Kalkulator memakai patokan 5–10% dari penghasilan tahunan sebagai batas aman anggaran premi. Ini bukan harga polis. Premi sebenarnya ditentukan oleh usia, kondisi kesehatan, dan plan yang dipilih bersama agen.</p>
         </details>
         <details>
-          <summary>Apakah biaya perjalanan ditanggung asuransi?</summary>
-          <p>Tergantung produk dan polis. Karena itu kalkulator memisahkan biaya medis dari biaya perjalanan agar bisa dicek saat konsultasi.</p>
+          <summary>Kenapa ditanya jenis kelamin dan status pernikahan?</summary>
+          <p>Agar agen bisa menyiapkan opsi yang relevan, misalnya plan perorangan atau keluarga, dan ketentuan khusus tiap peserta. Data ini tidak mengubah angka budget di kalkulator.</p>
         </details>
         <details>
           <summary>Kenapa perlu dana proteksi penghasilan?</summary>
-          <p>Saat sakit atau pemulihan, penghasilan bisa terganggu. Dana proteksi membantu kebutuhan rumah tangga tetap berjalan tanpa menggerus tabungan lain.</p>
+          <p>Saat sakit atau pemulihan, penghasilan bisa terganggu. Dana proteksi dihitung 6 bulan pengeluaran rutin sebagai patokan, agar kebutuhan rumah tangga tetap berjalan tanpa menggerus tabungan lain.</p>
         </details>
       </div>
     </section>
 
     <div class="disclaimer">
-      <strong>Catatan penting:</strong> hasil kalkulator adalah estimasi awal berdasarkan asumsi yang Anda isi. Bukan jaminan klaim,
-      bukan penawaran resmi, dan bukan saran keuangan. Benefit, limit, pengecualian, masa tunggu, dan underwriting mengikuti polis resmi.
+      <strong>Catatan penting:</strong> hasil kalkulator adalah estimasi awal berdasarkan data yang Anda isi. Budget premi adalah patokan anggaran, bukan harga atau penawaran resmi,
+      bukan jaminan klaim, dan bukan saran keuangan. Benefit, limit, pengecualian, masa tunggu, dan underwriting mengikuti polis resmi.
     </div>
 
     <footer class="site-footer">
       <strong data-agent-name>Azrul</strong>
-      <p>Biaya nyata bergantung pada rumah sakit, dokter, jenis pemeriksaan, kurs, pajak, dan syarat polis.</p>
+      <p>Premi dan manfaat nyata bergantung pada usia, kondisi kesehatan, plan, dan syarat polis.</p>
     </footer>
 
     <div class="mobile-bar" id="mobileBar">
@@ -819,7 +747,8 @@
         AGENT_TITLE: "Konsultan Proteksi Kesehatan",
         AGENT_WA: "6282143900864",
         AGENT_PHOTO: "https://i.postimg.cc/TyFkC5W2/foto-agen.jpg",
-        AGENT_BIO: "Membantu keluarga merencanakan rawat jalan Malaysia & Singapura tanpa mengorbankan arus kas."
+        AGENT_BIO: "Membantu keluarga merencanakan rawat jalan Malaysia & Singapura tanpa mengorbankan arus kas.",
+        FUND_MONTHS: 6
       };
 
       const $ = (id) => document.getElementById(id);
@@ -828,10 +757,9 @@
       function digits(value) { return Number(String(value || "").replace(/[^\d]/g, "")) || 0; }
       function rupiah(n) { return "Rp " + Math.round(n).toLocaleString("id-ID"); }
       function compact(n) {
-        n = Math.floor(n / 100000) * 100000;
-        if (n >= 1e9) return "Rp " + (n / 1e9).toLocaleString("id-ID", { maximumFractionDigits: 2 }) + " miliar";
-        if (n >= 1e6) return "Rp " + (n / 1e6).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " juta";
-        return rupiah(n);
+        if (n >= 1e9) return "Rp " + (Math.floor(n / 1e7) / 100).toLocaleString("id-ID", { maximumFractionDigits: 2 }) + " miliar";
+        if (n >= 1e6) return "Rp " + (Math.floor(n / 1e5) / 10).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " juta";
+        return rupiah(Math.round(n / 1000) * 1000);
       }
       function pctText(n) { return (Math.round(n * 10) / 10).toString().replace(".", ",") + "%"; }
       function clamp(x, min, max) { return Math.max(min, Math.min(max, x)); }
@@ -848,14 +776,12 @@
           label.classList.toggle("active", !!(input && input.checked));
         });
       }
-      function setRadio(name, value) {
-        const el = document.querySelector('input[name="' + name + '"][value="' + value + '"]');
-        if (el) { el.checked = true; syncSegments(el.closest(".segmented")); }
-      }
 
       function countryName(v) { return v === "my" ? "Malaysia" : v === "sg" ? "Singapura" : "Malaysia & Singapura"; }
       function goalLabel(v) { return v === "second" ? "Second opinion" : v === "khusus" ? "Penanganan khusus" : "Rawat rutin & kontrol"; }
       function whenLabel(v) { return v === "lt3" ? "Kurang dari 3 bulan" : v === "gt12" ? "Lebih dari 12 bulan" : "3 sampai 12 bulan"; }
+      function genderLabel(v) { return v === "m" ? "Laki-laki" : v === "f" ? "Perempuan" : "-"; }
+      function maritalLabel(v) { return v === "single" ? "Belum menikah" : v === "married" ? "Menikah" : v === "prev" ? "Cerai / Janda / Duda" : "-"; }
 
       function initials(name) {
         const parts = String(name).trim().split(/\s+/);
@@ -898,8 +824,8 @@
       }
 
       let currentStep = 1;
-      const totalSteps = 4;
-      const stepNames = ["Keuangan", "Asumsi", "Rencana", "Kontak", "Laporan"];
+      const totalSteps = 3;
+      const stepNames = ["Keuangan", "Rencana", "Kontak", "Laporan"];
 
       function showStep(n) {
         currentStep = n;
@@ -927,19 +853,13 @@
           nama: $("name").value.trim(),
           wa: $("phone").value.trim(),
           hospital: $("hospital").value.trim(),
+          gender: checkedOr("gender", ""),
+          marital: checkedOr("marital", ""),
           goal: checkedOr("goal", "rutin"),
           when: checkedOr("when", "mid"),
           country: checkedOr("country", "my"),
           income: digits($("income").value),
           living: digits($("living").value),
-          visits: Number($("visits").value) || 4,
-          cost_my: digits($("costMY").value),
-          cost_sg: digits($("costSG").value),
-          fx_my: digits($("fxMY").value),
-          fx_sg: digits($("fxSG").value),
-          travel: digits($("travel").value),
-          months: Number(checkedOr("months", "6")),
-          premi: digits($("premi").value),
           consent: $("consent").checked,
           website: $("website").value,
           k: CONFIG.APP_KEY,
@@ -950,45 +870,32 @@
       function calculate(d) {
         const income = d.income;
         const livingEff = d.living > 0 ? d.living : Math.round(income * 0.7);
-        const cMY = d.cost_my * d.fx_my;
-        const cSG = d.cost_sg * d.fx_sg;
-        const perVisit = d.country === "my" ? cMY : d.country === "sg" ? cSG : (cMY + cSG) / 2;
-        const medicalAnnual = perVisit * d.visits;
-        const travelAnnual = d.travel * d.visits;
-        const totalAnnual = medicalAnnual + travelAnnual;
-        const monthlyMedical = medicalAnnual / 12;
-        const monthlyTravel = travelAnnual / 12;
-        const monthlyTotal = monthlyMedical + monthlyTravel;
         const annualIncome = income * 12;
-        const burden = income > 0 ? (monthlyTotal / income) * 100 : 0;
-        const fund = livingEff * d.months;
         const budgetLo = annualIncome * 0.05;
         const budgetHi = annualIncome * 0.1;
-        return { ...d, livingEff, cMY, cSG, perVisit, medicalAnnual, travelAnnual, totalAnnual, monthlyMedical, monthlyTravel, monthlyTotal, annualIncome, burden, fund, budgetLo, budgetHi };
+        const monthlyLo = budgetLo / 12;
+        const monthlyHi = budgetHi / 12;
+        const monthlyMid = (monthlyLo + monthlyHi) / 2;
+        const surplus = income - livingEff;
+        const fund = livingEff * CONFIG.FUND_MONTHS;
+        const spendRatio = income > 0 ? livingEff / income : 0;
+        return { ...d, livingEff, annualIncome, budgetLo, budgetHi, monthlyLo, monthlyHi, monthlyMid, surplus, fund, spendRatio };
       }
 
       function scoreHealth(r) {
-        const afford = r.burden <= 5 ? 100 : r.burden <= 8 ? 90 : r.burden <= 10 ? 78 : r.burden <= 12 ? 62 : r.burden <= 15 ? 45 : 28;
-        const buffer = r.income - r.livingEff - r.monthlyTotal;
-        const bufferRatio = r.income > 0 ? buffer / r.income : 0;
+        const sr = r.spendRatio;
+        const spend = sr <= 0.5 ? 100 : sr <= 0.6 ? 88 : sr <= 0.7 ? 75 : sr <= 0.8 ? 55 : sr <= 0.9 ? 38 : 25;
+        const bufferRatio = r.income > 0 ? (r.surplus - r.monthlyMid) / r.income : 0;
         const cash = bufferRatio >= 0.2 ? 100 : bufferRatio >= 0.12 ? 88 : bufferRatio >= 0.05 ? 70 : bufferRatio >= 0 ? 50 : 25;
-        let premiScore = 72;
-        if (r.premi > 0) {
-          if (r.premi <= r.medicalAnnual * 0.8) premiScore = 100;
-          else if (r.premi <= r.medicalAnnual) premiScore = 88;
-          else if (r.premi <= r.budgetHi) premiScore = 70;
-          else if (r.premi <= r.budgetHi * 1.25) premiScore = 50;
-          else premiScore = 30;
-        }
-        const score = clamp(Math.round(afford * 0.42 + cash * 0.33 + premiScore * 0.25), 25, 96);
-        return { score, afford, cash, premiScore, buffer, bufferRatio };
+        const score = clamp(Math.round(spend * 0.5 + cash * 0.5), 25, 96);
+        return { score, spend, cash, bufferRatio };
       }
 
       function level(score) {
-        if (score >= 82) return ["Sangat Siap", "Kondisi keuangan Anda mendukung rencana ini. Fokus berikutnya: pilih polis dengan manfaat, limit, dan jaringan RS yang tepat."];
-        if (score >= 66) return ["Siap", "Rencana Anda masuk akal, tapi perhatikan arus kas dan batas manfaat agar tidak terjebak premi yang tidak sesuai."];
-        if (score >= 48) return ["Perlu Perhatian", "Rapikan biaya dan kewajiban rutin dulu. Jangan buru-buru ambil polis sebelum tahu batas aman bulanan Anda."];
-        return ["Belum Aman", "Dengan angka saat ini, rawat jalan luar negeri berisiko menekan keuangan. Pertimbangkan frekuensi, lokasi, atau proteksi yang lebih sederhana."];
+        if (score >= 82) return ["Sangat Siap", "Arus kas Anda longgar untuk membayar premi. Fokus berikutnya: pilih plan dengan manfaat, limit, dan jaringan RS yang tepat."];
+        if (score >= 66) return ["Siap", "Anggaran premi masuk akal. Pastikan pengeluaran rutin tetap terjaga setelah premi dibayar."];
+        if (score >= 48) return ["Perlu Perhatian", "Ruang arus kas terbatas. Tentukan dulu batas premi bulanan sebelum membandingkan polis."];
+        return ["Belum Aman", "Dengan angka ini, premi berisiko menekan keuangan rumah tangga. Mulai dari plan sederhana atau rapikan pengeluaran dulu."];
       }
 
       function setBar(id, value) { const el = $(id); if (el) el.style.width = clamp(value, 0, 100) + "%"; }
@@ -1005,75 +912,65 @@
           new Date().toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) +
           (d.hospital ? " · " + d.hospital : "") + " · " + goalLabel(d.goal) + " · " + whenLabel(d.when);
 
-        $("keyMedical").textContent = compact(r.medicalAnnual);
-        $("keySub").textContent = "Total dengan perjalanan " + compact(r.totalAnnual) + " · beban " + pctText(r.burden) + " dari penghasilan.";
-        $("statBurden").textContent = pctText(r.burden);
+        $("keyPremi").textContent = compact(r.budgetLo) + " – " + compact(r.budgetHi);
+        $("keySub").textContent = "Setara 5–10% dari penghasilan tahunan Anda. Ini batas aman anggaran, bukan harga polis.";
+        $("statMonthly").textContent = compact(r.monthlyLo) + " – " + compact(r.monthlyHi);
         $("statFund").textContent = compact(r.fund);
-        $("statBudget").textContent = compact(r.budgetLo) + " – " + compact(r.budgetHi) + " / tahun";
+        $("statSurplus").textContent = (r.surplus >= 0 ? "" : "-") + compact(Math.abs(r.surplus)) + " / bulan";
 
         $("repIncome").textContent = rupiah(r.income);
         $("repLiving").textContent = rupiah(r.livingEff) + (r.living > 0 ? "" : " (asumsi 70%)");
         $("repCountry").textContent = cn;
-        $("repVisits").textContent = r.visits + " kali";
-        $("repPerVisit").textContent = rupiah(r.perVisit);
-        $("repMedical").textContent = rupiah(r.medicalAnnual);
-        $("repTravel").textContent = rupiah(r.travelAnnual);
-        $("repTotal").textContent = rupiah(r.totalAnnual);
-        $("repFund").textContent = rupiah(r.fund) + " (" + r.months + " bln)";
-        $("repBudget").textContent = compact(r.budgetLo) + " – " + compact(r.budgetHi);
+        $("repGender").textContent = genderLabel(d.gender);
+        $("repMarital").textContent = maritalLabel(d.marital);
+        $("repBudgetYear").textContent = compact(r.budgetLo) + " – " + compact(r.budgetHi);
+        $("repBudgetMonth").textContent = compact(r.monthlyLo) + " – " + compact(r.monthlyHi);
+        $("repFund").textContent = rupiah(r.fund) + " (" + CONFIG.FUND_MONTHS + " bln)";
 
-        if (r.premi > 0) {
-          $("repPremiRow").hidden = false;
-          $("repCompareRow").hidden = false;
-          $("repPremi").textContent = rupiah(r.premi);
-          $("repCompare").textContent = r.premi > r.medicalAnnual ? "Di atas estimasi biaya medis" : "Di bawah estimasi biaya medis";
-        } else {
-          $("repPremiRow").hidden = true;
-          $("repCompareRow").hidden = true;
-        }
-
-        const parts = [r.monthlyMedical, r.monthlyTravel, r.livingEff, Math.max(0, s.buffer)];
+        const parts = [r.monthlyHi, r.livingEff, Math.max(0, r.income - r.livingEff - r.monthlyHi)];
         const sum = parts.reduce((a, b) => a + b, 0) || 1;
-        setBar("barMedical", (parts[0] / sum) * 100);
-        setBar("barTravel", (parts[1] / sum) * 100);
-        setBar("barLiving", (parts[2] / sum) * 100);
-        setBar("barRemaining", (parts[3] / sum) * 100);
+        setBar("barPremi", (parts[0] / sum) * 100);
+        setBar("barLiving", (parts[1] / sum) * 100);
+        setBar("barRemaining", (parts[2] / sum) * 100);
 
-        $("labMedical").textContent = rupiah(parts[0]) + " · " + pctText((parts[0] / r.income) * 100);
-        $("labTravel").textContent = rupiah(parts[1]) + " · " + pctText((parts[1] / r.income) * 100);
-        $("labLiving").textContent = rupiah(parts[2]) + " · " + pctText((parts[2] / r.income) * 100);
-        $("labRemaining").textContent = rupiah(parts[3]) + " · " + pctText((parts[3] / r.income) * 100);
+        $("labPremi").textContent = rupiah(parts[0]) + " · " + pctText((parts[0] / r.income) * 100);
+        $("labLiving").textContent = rupiah(parts[1]) + " · " + pctText((parts[1] / r.income) * 100);
+        $("labRemaining").textContent = rupiah(parts[2]) + " · " + pctText((parts[2] / r.income) * 100);
 
-        $("indAffordVal").textContent = s.afford + "/100";
+        $("indSpendVal").textContent = pctText(r.spendRatio * 100) + " dari penghasilan";
         $("indCashVal").textContent = s.cash + "/100";
-        $("indPremiVal").textContent = s.premiScore + "/100";
-        setBar("indAffordBar", s.afford);
+        setBar("indSpendBar", s.spend);
         setBar("indCashBar", s.cash);
-        setBar("indPremiBar", s.premiScore);
 
         const notes = [];
-        if (r.burden > 12) notes.push(["Total biaya medis dan perjalanan melewati 12% penghasilan. Ini tanda bahaya arus kas. Kurangi frekuensi, bandingkan RS, atau pastikan polis menutup sebagian besar biaya.", false]);
-        else if (r.burden > 8) notes.push(["Beban biaya berada di zona perlu perhatian. Masih mungkin, tapi jangan tambah kewajiban besar lain sebelum ada dana cadangan.", false]);
-        else notes.push(["Beban biaya masih relatif ringan terhadap penghasilan Anda.", true]);
-
-        if (r.travelAnnual > r.medicalAnnual * 0.5) notes.push(["Biaya perjalanan cukup besar dibanding biaya medis. Cek apakah polis menanggung akomodasi/transport, atau siapkan pos terpisah.", false]);
-
-        if (r.premi > 0) {
-          if (r.premi > r.medicalAnnual) notes.push(["Premi yang ditawarkan lebih besar dari estimasi biaya medis Anda. Jangan hanya tergiur brand; minta rincian limit, co-pay, exclusion, dan cashless network.", false]);
-          else notes.push(["Premi yang ditawarkan lebih kecil dari estimasi biaya medis Anda. Secara angka masuk akal, asal manfaat rawat jalan dan limit tahunan sesuai.", true]);
-          if (r.premi > r.budgetHi) notes.push(["Premi melewati 10% penghasilan tahunan. Pertimbangkan plan lebih sederhana atau perkuat kapasitas finansial dulu.", false]);
+        if (r.surplus < r.monthlyLo) {
+          notes.push(["Sisa penghasilan setelah pengeluaran rutin (" + rupiah(Math.max(0, r.surplus)) + "/bulan) lebih kecil dari batas bawah premi. Premi di kisaran ini akan menekan arus kas. Mulai dari plan sederhana atau rapikan pengeluaran dulu.", false]);
+        } else if (r.surplus < r.monthlyHi) {
+          notes.push(["Sisa penghasilan Anda cukup untuk batas bawah premi, tapi belum untuk batas atas. Sebaiknya pilih premi di sisi bawah kisaran.", false]);
         } else {
-          notes.push(["Isi kolom premi jika sudah ada penawaran. Kami bisa bantu membandingkannya dengan estimasi biaya Anda.", true]);
+          notes.push(["Sisa penghasilan Anda cukup untuk membayar premi sampai batas atas kisaran.", true]);
         }
 
+        if (r.spendRatio > 0.8) notes.push(["Pengeluaran rutin sudah lebih dari 80% penghasilan, jadi ruang untuk kewajiban baru sempit.", false]);
         if (r.living <= 0) notes.push(["Pengeluaran rutin dikosongkan, jadi sistem memakai asumsi 70% penghasilan. Isi angka nyata agar hasil lebih akurat.", false]);
-        if (r.country === "both") notes.push(["Karena tujuan keduanya, biaya per kunjungan memakai rata-rata MYR dan SGD. Ubah asumsi bila porsi kunjungan tidak seimbang.", true]);
-        if (r.visits >= 10) notes.push(["Frekuensi kunjungan tinggi. Pastikan benefit rawat jalan tahunan cukup, bukan hanya limit besar sekali pakai.", false]);
-        notes.push(["Dana proteksi " + rupiah(r.fund) + " setara " + r.months + " bulan pengeluaran. Simpan terpisah agar tidak terpakai untuk hal lain.", true]);
+
+        notes.push(["Budget ini hanya batas anggaran. Premi sebenarnya bergantung pada usia, kondisi kesehatan, dan plan yang dipilih, jadi minta agen menghitungnya.", true]);
+
+        if (d.goal === "khusus") notes.push(["Untuk penanganan khusus, sampaikan kondisi kesehatan Anda sejak awal. Penyakit yang sudah ada bisa dikecualikan atau memengaruhi persetujuan polis.", false]);
+        else if (d.goal === "second") notes.push(["Untuk second opinion, pastikan plan menanggung konsultasi dan pemeriksaan rawat jalan di RS tujuan.", true]);
+        else notes.push(["Untuk rawat rutin, cek limit rawat jalan tahunan dan co-payment, bukan hanya limit besar sekali pakai.", true]);
+
+        if (d.marital === "married") notes.push(["Karena sudah menikah, tanyakan ke agen apakah pasangan (dan anak) perlu masuk polis. Premi dihitung per peserta, jadi budget keluarga bisa berbeda.", true]);
+        else if (d.marital === "single") notes.push(["Tanyakan ke agen apakah plan bisa ditambah pasangan atau anak di kemudian hari, dan syaratnya.", true]);
+        else if (d.marital === "prev") notes.push(["Jika ada tanggungan anak, tanyakan ke agen opsi menambahkan mereka ke polis.", true]);
+
+        if (d.gender === "f") notes.push(["Tanyakan ke agen ketentuan kehamilan dan persalinan, karena bisa dikecualikan atau punya masa tunggu.", false]);
+
+        notes.push(["Dana proteksi " + rupiah(r.fund) + " setara " + CONFIG.FUND_MONTHS + " bulan pengeluaran. Simpan terpisah agar tidak terpakai untuk hal lain.", true]);
 
         const notesEl = $("notes");
         notesEl.textContent = "";
-        notes.slice(0, 7).forEach((item) => {
+        notes.forEach((item) => {
           const li = document.createElement("li");
           if (item[1]) li.className = "ok";
           li.textContent = item[0];
@@ -1083,19 +980,16 @@
         const msg =
           "Halo " + CONFIG.AGENT_NAME + ", saya " + (d.nama || "calon klien") + ". Saya baru memakai kalkulator proteksi rawat jalan luar negeri.\n\n" +
           "Tujuan: " + cn + "\n" +
-          "Kunjungan: " + r.visits + "x/tahun\n" +
+          "Jenis kelamin: " + genderLabel(d.gender) + "\n" +
+          "Status pernikahan: " + maritalLabel(d.marital) + "\n" +
           "Penghasilan: " + rupiah(r.income) + "/bulan\n" +
           "Pengeluaran: " + rupiah(r.livingEff) + "/bulan\n" +
-          "Estimasi biaya medis: " + rupiah(r.medicalAnnual) + "/tahun\n" +
-          "Total dengan perjalanan: " + rupiah(r.totalAnnual) + "/tahun\n" +
-          "Beban: " + pctText(r.burden) + " dari penghasilan\n" +
-          "Dana proteksi: " + rupiah(r.fund) + " (" + r.months + " bulan)\n" +
-          "Budget premi aman: " + compact(r.budgetLo) + " - " + compact(r.budgetHi) + "/tahun\n" +
-          (r.premi > 0 ? "Premi ditawarkan: " + rupiah(r.premi) + "/tahun\n" : "") +
+          "Budget premi aman: " + compact(r.budgetLo) + " - " + compact(r.budgetHi) + "/tahun (" + compact(r.monthlyLo) + " - " + compact(r.monthlyHi) + "/bulan)\n" +
+          "Dana proteksi: " + rupiah(r.fund) + " (" + CONFIG.FUND_MONTHS + " bulan)\n" +
           (d.hospital ? "Kota/RS diincar: " + d.hospital + "\n" : "") +
           "Tujuan: " + goalLabel(d.goal) + "\n" +
           "Rencana: " + whenLabel(d.when) + "\n\n" +
-          "Mohon dibantu analisa polis yang sesuai dengan angka saya.";
+          "Mohon dibantu analisa polis yang sesuai dengan budget saya.";
 
         $("waBtn").href = waLink(msg);
       }
@@ -1106,11 +1000,10 @@
           if (!d.country) return "Pilih negara tujuan berobat.";
         }
         if (step === 2) {
-          if (d.cost_my <= 0 || d.cost_sg <= 0) return "Biaya per kunjungan MY dan SGD harus diisi.";
-          if (d.fx_my <= 0 || d.fx_sg <= 0) return "Kurs MYR dan SGD harus diisi.";
-          if (![3, 6, 12].includes(d.months)) return "Pilih masa aman penghasilan.";
+          if (!d.gender) return "Pilih jenis kelamin.";
+          if (!d.marital) return "Pilih status pernikahan.";
         }
-        if (step === 4) {
+        if (step === 3) {
           if (d.nama.length < 2) return "Isi nama Anda.";
           if (!/^(\+?62|0)8\d{7,12}$/.test(d.wa.replace(/[\s-]/g, ""))) return "Nomor WhatsApp belum benar. Contoh: 08123456789";
           if (!d.consent) return "Centang persetujuan agar agen boleh menghubungi Anda.";
@@ -1128,11 +1021,8 @@
         const payload = Object.assign({}, data, {
           score: s.score,
           profile: level(s.score)[0],
-          medical_annual: Math.round(r.medicalAnnual),
-          travel_annual: Math.round(r.travelAnnual),
-          total_annual: Math.round(r.totalAnnual),
-          burden_pct: Number(r.burden.toFixed(2)),
           protection_fund: Math.round(r.fund),
+          surplus_monthly: Math.round(r.surplus),
           budget_premi_low: Math.round(r.budgetLo),
           budget_premi_high: Math.round(r.budgetHi)
         });
@@ -1162,8 +1052,6 @@
       }
 
       function bindEvents() {
-        $("visits").addEventListener("input", function () { $("visitsValue").textContent = this.value + " kali"; });
-
         $$(".segmented").forEach((group) => {
           syncSegments(group);
           group.addEventListener("change", () => syncSegments(group));
@@ -1192,13 +1080,13 @@
         $("calcForm").addEventListener("submit", (e) => {
           e.preventDefault();
           const d = collect();
-          const message = validate(4, d);
+          const message = validate(3, d);
           if (message) return fail(message);
           const r = calculate(d);
           const s = scoreHealth(r);
           render(d, r, s);
           save(d, r, s);
-          showStep(5);
+          showStep(4);
           $("kalkulator").scrollIntoView({ behavior: "smooth", block: "start" });
         });
 
